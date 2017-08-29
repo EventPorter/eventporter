@@ -1,0 +1,66 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #f7f7f7;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+#footer .navbar {
+    position: absolute;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-top: 1px solid black;
+    background-color: #8b9dc3;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 180px; /*stop overlapping footer*/
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-inverse {
+    background-color: #3b5998;
+}
+
+.container > .navbar-header > a {
+    color: yellow;
+}
+
+/*.navbar-inverse .navbar-brand{
+    color: yellow;
+}*/
+
+.navbar-inverse .navbar-brand:hover {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        background-color: white;
+        color: black;
+    }
+
+.nav-pills li a {
+    color: white;
+}
+
+    .nav-pills li a:hover {
+        background-color: #dfe3ee;
+        color: black;
+    }
