@@ -1,0 +1,32 @@
+﻿@model EventPorter.Models.Adam
+@{
+    ViewBag.Title = "Register";
+}
+<h2>Login</h2>
+@using (Html.BeginForm("Register", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "error" })
+    <p>
+        @Html.LabelFor(a => a.Username)
+        @Html.TextBoxFor(a => a.Username)
+    </p>
+    <p>
+        @Html.LabelFor(a => a.Email)
+        @Html.TextBoxFor(a => a.Email)
+    </p>
+    <p>
+        @Html.LabelFor(a => a.Password)
+        @Html.TextBoxFor(a => a.Password)
+    </p>
+    <p>
+        @Html.LabelFor(a => a.PassConf)
+        @Html.TextBoxFor(a => a.PassConf)
+    </p>
+    <p>
+        <input id="Submit1" type="submit" value="Submit" />
+        <input id="Reset1" type="reset" value="Clear" />
+    </p>
+
+}
+
+

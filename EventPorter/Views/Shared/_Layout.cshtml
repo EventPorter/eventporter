@@ -25,8 +25,9 @@
                 @Html.ActionLink("Event Porter", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                
+                <li><span class="glyphicon glyphicon-user"></span>@Html.ActionLink("Register", "Index", "Account")</li>
+                <li><span class="glyphicon glyphicon-log-in"></span>@Html.ActionLink("Login", "Login", "Account")</li>
             </ul>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
