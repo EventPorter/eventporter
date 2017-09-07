@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Security.Claims;
 using System.Web.Mvc;
 using EventPorter.Models;
 
@@ -54,12 +55,32 @@ namespace EventPorter.Controllers
 
 
         }
-
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public ActionResult 0Auth()
+        //{
+        //    return View();
+        //}
+        
 
         public ActionResult LogOut()
         {
             Session.Clear();
             return View("../Home/Index");
+        }
+
+        [Authorize]
+        public ActionResult LoggedIndex()
+        {
+            string email = ClaimsPrincipal.Current.FindFirst("email").Value;
+            string name = ClaimsPrincipal.Current.FindFirst("name").Value;
+            string img = ClaimsPrincipal.Current.FindFirst("picture").Value;
+
+            ViewBag.Message = "Hello" + name + "&lt;br/&gt;Your Email: " + email;
+            ViewBag.Image = img;
+            return View();
+
+            
         }
 
     }

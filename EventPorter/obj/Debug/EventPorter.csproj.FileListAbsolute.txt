@@ -92,3 +92,13 @@ C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\System.Web.Mvc.xml
 C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\obj\Debug\EventPorter.csprojResolveAssemblyReference.cache
 C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\obj\Debug\EventPorter.dll
 C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\obj\Debug\EventPorter.pdb
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.AspNet.dll
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.AuthenticationApi.dll
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.Core.dll
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Newtonsoft.Json.dll
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\WebActivatorEx.dll
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.AuthenticationApi.pdb
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.AuthenticationApi.xml
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.Core.pdb
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Auth0.Core.xml
+C:\Users\Cherena\Documents\DBS\eventporter\EventPorter\bin\Newtonsoft.Json.xml

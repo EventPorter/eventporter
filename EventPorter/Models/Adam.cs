@@ -21,6 +21,7 @@ namespace EventPorter.Models
         [StringLength(50, ErrorMessage = "Password must be at least 7 characters in length", MinimumLength = 7)]
         public string Password { get; set; }
         [Required]
+        [Display(Name ="Confirm Password")]
         [DataType(DataType.Password)]
         [StringLength(50, ErrorMessage = "Password must be at least 7 characters in length", MinimumLength = 7)]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
