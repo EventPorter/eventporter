@@ -45,7 +45,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li>@Html.ActionLink(" Register", "Index", "Account", new { @class="glyphicon glyphicon-user" })</li>
-                    <li>@Html.ActionLink(" Login", "Login", "Account", new { @class = "glyphicon glyphicon-log-in" }))</li>
+                    <li>@Html.ActionLink(" Login", "Login", "Account", new { @class = "glyphicon glyphicon-log-in" })</li>
                 </ul>
             </div>
         </div>
@@ -56,7 +56,41 @@
         @*<div class="navbar navbar-fixed-bottom text-center">*@
     </div>
     <div id="footer" class="text-center">
-        <div class="navbar navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Something</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Something</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Something</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav-justified nav nav-pills">
+                        <li><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @*<div class="navbar navbar-fixed-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -91,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
