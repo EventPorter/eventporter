@@ -3,57 +3,63 @@
     ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
-<div class="container">
-    <div class="row profile">
-        <div class="col-md-3">
-            <div class="profile-sidebar">
-                <!-- sidebar for Adam profile pic -->
-                <div class="profile-Adampic">
-                    <img src="~/Content/images/lil_porter.png" class="img-responsive" alt="">
-                </div>
-                <!-- sidebar for Adam info -->
-                <div class="profile-Adamtitle">
-                    <div class="profile-Adamtitle-Adamname">
-                        Adam
+@section Styles {
+    <link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="container-fluid">
+    <h2>Profile</h2>
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- sidebar for Adam profile pic -->
+                    <div class="profile-Adampic">
+                        <img src="~/Content/images/lil_porter.png" class="img-responsive" alt="">
+                    </div>
+                    <!-- sidebar for Adam info -->
+                    <div class="profile-Adamtitle">
+                        <div class="profile-Adamtitle-Adamname">
+                            Adam
+                        </div>
+                    </div>
+
+                    <!-- buttons -->
+                    <div class="profile-Adambuttons">
+                        <button type="button" class="btn btn-success btn-sm">Invite</button>
+                        <button type="button" class="btn btn-danger btn-sm">Message</button>
+                    </div>
+                    <!-- menu -->
+                    <div class="profile-Adammenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    Overview
+                                </a>
+                            </li>
+                            <li>
+                                @Html.ActionLink("Account Settings", "Settings", "Account", "", new { @class = "glyphicon glyphicon-user profile-Adammenu" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Events", "Event", "Event", "", new { @class = "glyphicon glyphicon-ok profile-Adammenu" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Help", "Help", "Contact", "", new { @class = "glyphicon glyphicon-flag" })
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
-                <!-- buttons -->
-                <div class="profile-Adambuttons">
-                    <button type="button" class="btn btn-success btn-sm">Invite</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
-                </div>
-                <!-- menu -->
-                <div class="profile-Adammenu">
-                    <ul class="nav">
-                        <li class="active">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-home"></i>
-                                Overview
-                            </a>
-                        </li>
-                        <li>
-                            @Html.ActionLink("Account Settings", "Settings", "Account", "", new { @class = "glyphicon glyphicon-user profile-Adammenu"})
-                        </li>
-                        <li>
-                            @Html.ActionLink("Events", "Event", "Event", "", new { @class= "glyphicon glyphicon-ok profile-Adammenu" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("Help", "Help", "Contact", "", new { @class="glyphicon glyphicon-flag"})
-                        </li>
-                    </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-content">
+                    Upcoming Event cards here
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="profile-content">
-                Upcoming Event cards here 
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="profile-content">
-                Past event cards here/only show these to other users
+            <div class="col-md-3">
+                <div class="profile-content">
+                    Past event cards here/only show these to other users
+                </div>
             </div>
         </div>
     </div>
