@@ -112,6 +112,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\lil_porter.png" />
     <Content Include="Content\images\topImgEp.jpg" />
+    <Content Include="Content\Profile.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -149,6 +150,7 @@
       <DependentUpon>LoginCallback.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\Adam.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,8 +163,7 @@
     <Content Include="Views\Shared\RegisterLogin.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\LoggedInAdam\LoggedInIndex.cshtml" />
-    <Content Include="Views\Account\LoggedIndex.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -38,6 +38,8 @@ namespace EventPorter.Models
 
         public bool EventOwner { get; set; }
 
+        public Role userType { get; set; }
+
 
 
     }
