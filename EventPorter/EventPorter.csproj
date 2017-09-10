@@ -147,6 +147,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\SiteScripts\SearchScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

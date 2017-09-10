@@ -7,6 +7,12 @@
     <link href="@Url.Content("~/Content/Homepage.css")" rel="stylesheet" type="text/css" />
 }
 
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/SiteScripts/SearchScript.js"></script>
+    @*<script type="text/javascript">
+        alert("hello");</script>*@
+}
+
 <div class="container-fluid">
     <div class="row">
         <div class="remove_all_padding">
@@ -78,8 +84,31 @@
                     </a>*@
             </div>
         </div>
-
-
+    </div>
+    <div class="row" style="position: relative; top: -50px;">
+        <div class="container">
+            <div class="input-group col-md-offset-4 col-md-8">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">All</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#today">Today</a></li>
+                        <li><a href="#tomorrow">Tomorrow</a></li>
+                        <li><a href="#this_week">This Week</a></li>
+                        <li><a href="#this_month">This Month</a></li>
+                        <li><a href="#this_year">This Year</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#all">All</a></li>
+                    </ul>
+                </div>
+                <input class="col-md-9" type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" id="search_input" placeholder="Search term...">
+                <span class="input-group-btn remove_all_padding col-md-3">
+                    <button id="search_button" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
     </div>
 
     <div class="row">
