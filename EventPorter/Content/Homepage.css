@@ -1,0 +1,28 @@
+﻿/***************CSS for HomePage***************/
+.remove_all_padding {
+    padding: 0;
+}
+
+.carousel.fade {
+    opacity: 1;
+}
+
+.carousel.fade .item {
+    transition: opacity ease-out .7s;
+    left: 0;
+    opacity: 0; /* hide all slides */
+    top: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+}
+
+.carousel.fade .item:first-child {
+    top: auto;
+    opacity: 1; /* show first slide */
+    position: relative;
+}
+
+.carousel.fade .item.active {
+    opacity: 1;
+}

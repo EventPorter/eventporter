@@ -4,7 +4,7 @@
     height: 50px;
 }
 
-.remove-padding {
+.remove-padding-left-right {
     padding-left: 0;
     padding-right: 0;
 }

@@ -111,7 +111,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Event.css" />
+    <Content Include="Content\Homepage.css" />
+    <Content Include="Content\images\home_banner\cinema_banner.jpg" />
+    <Content Include="Content\images\home_banner\cooking_banner.jpg" />
     <Content Include="Content\images\lil_porter.png" />
+    <Content Include="Content\images\home_banner\music_banner.jpg" />
+    <Content Include="Content\images\home_banner\person_running_banner.jpg" />
     <Content Include="Content\images\test_icon.png" />
     <Content Include="Content\images\test_img.jpg" />
     <Content Include="Content\images\test_img2.jpg" />
