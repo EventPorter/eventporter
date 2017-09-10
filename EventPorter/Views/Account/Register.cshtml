@@ -3,34 +3,37 @@
     ViewBag.Title = "Register";
 }
 <br />
-<h2>Register</h2>
-@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class="form-group"}))
-{
-    @Html.ValidationSummary(false, "", new { @class = "error" })
-    <p>
-        @Html.LabelFor(a => a.Username, new { @class = "form-text" })
-        @Html.TextBoxFor(a => a.Username, new { @class="form-control"})
-    </p>
-    <p>
-        @Html.LabelFor(a => a.Email, new { @class = "form-text" })
-        <small class="form-text text-muted">We'll keep your email safe and <strong>private</strong></small>
-        @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
-    </p>
-    <p>
-        @Html.LabelFor(a => a.Password, new { @class = "form-text" })
-        <small class="form-text text-muted">Passwords must between 7 and 50 characters in length</small>
+<div class="container">
+    <h2>Register</h2>
+    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.ValidationSummary(false, "", new { @class = "error" })
+        <p>
+            @Html.LabelFor(a => a.Username, new { @class = "form-text" })
+            @Html.TextBoxFor(a => a.Username, new { @class = "form-control" })
+        </p>
+        <p>
+            @Html.LabelFor(a => a.Email, new { @class = "form-text" })
+            <small class="form-text text-muted">We'll keep your email safe and <strong>private</strong></small>
+            @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+        </p>
+        <p>
+            @Html.LabelFor(a => a.Password, new { @class = "form-text" })
+            <small class="form-text text-muted">Passwords must between 7 and 50 characters in length</small>
 
-        @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
-    </p>
-    <p>
-        @Html.LabelFor(a => a.PassConf, new { @class = "form-text" })
-        @Html.TextBoxFor(a => a.PassConf, new { @class = "form-control" })
-    </p>
-    <p>
-        <input id="Submit1" type="submit" value="Submit" class="btn"/>
-        <input id="Reset1" type="reset" value="Clear" class="btn"/>
-    </p>
+            @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
+        </p>
+        <p>
+            @Html.LabelFor(a => a.PassConf, new { @class = "form-text" })
+            @Html.TextBoxFor(a => a.PassConf, new { @class = "form-control" })
+        </p>
+        <p>
+            <input id="Submit1" type="submit" value="Submit" class="btn" />
+            <input id="Reset1" type="reset" value="Clear" class="btn" />
+        </p>
 
-}
+    }
+</div>
+
 
 
