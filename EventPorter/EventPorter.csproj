@@ -111,6 +111,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\lil_porter.png" />
+    <Content Include="Content\images\test_icon.png" />
+    <Content Include="Content\images\test_img.jpg" />
+    <Content Include="Content\images\test_img2.jpg" />
+    <Content Include="Content\images\test_img3.jpg" />
     <Content Include="Content\images\topImgEp.jpg" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\Site.css" />
@@ -165,6 +169,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Event\Event.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

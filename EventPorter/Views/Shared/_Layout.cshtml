@@ -49,82 +49,69 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    @*<div id="renderbody_wrapper" class="container-fluid body-content">*@
+    <div id="renderbody_wrapper">
         @RenderBody()
         @*<div class="navbar navbar-fixed-bottom text-center">*@
     </div>
-    <div id="footer" class="text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="col-md-4">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Something</a></li>
-                            <li><a href="#">Something</a></li>
-                        </ul>
+
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="col-xs-12">
+                <row>
+                    <div class="col-xs-4">
+                        <span><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></span>
                     </div>
-                    <div class="col-md-4">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Something</a></li>
-                            <li><a href="#">Something</a></li>
-                        </ul>
+                    <div class="col-xs-4">
+                        <span><a href="#">Terms of Service</a></span>
                     </div>
-                    <div class="col-md-4">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Something</a></li>
-                            <li><a href="#">Something</a></li>
-                        </ul>
+                    <div class="col-xs-4">
+                        <span><a href="#">Privacy</a></span>
                     </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="nav-justified nav nav-pills">
-                        <li><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                </div>
+                </row>
             </div>
         </div>
-        @*<div class="navbar navbar-fixed-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="col-md-4">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Something</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Something</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Something</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="nav-justified nav nav-pills">
-                            <li><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
+    </footer>
+
+    @*<div class="navbar navbar-fixed-bottom">*@
+    @*<div id="footer" class="navbar-collapse navbar-fixed-bottom container-fluid text-center">
+        <div class="row col-xs-12">
+            <ul class="nav nav-pills col-xs-6">
+                <li><a href="#">Something</a></li>
+            </ul>
+            <ul class="nav nav-pills col-xs-6">
+                <li><a href="#">Something</a></li>
+            </ul>
+        </div>
+        <div class="row col-xs-12">
+            <ul class="nav nav-pills col-xs-6">
+                <li><a href="#">Something</a></li>
+            </ul>
+            <ul class="nav nav-pills col-xs-6">
+                <li><a href="#">Something</a></li>
+            </ul>
+        </div>
+        <div class="row col-xs-12">
+            <ul class="nav nav-pills col-xs-6">
+                <li><a href="#">Something</a></li>
+            </ul>
+            <ul class="nav nav-pills col-xs-6">
+                <li><a href="#">Something</a></li>
+            </ul>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="nav-justified nav nav-pills">
+                    <li><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
             </div>
-        </div>*@
-    </div>
+        </div>
+    </div>*@
+    @*<script src="~/Scripts/SiteScripts/ResizeEventHandler.js"></script>*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

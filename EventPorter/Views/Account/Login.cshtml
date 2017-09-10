@@ -3,33 +3,35 @@
         ViewBag.Title = "Adam Login";
     }
 <br/>
-<h2 class="text-info">Login</h2>
-@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class="form-group"}))
-{
-    @Html.ValidationSummary(false, "", new { @class="error" })
-    <p>
-        @Html.LabelFor(a=>a.Username, new { @class = "form-text" })
-        @Html.TextBoxFor(a=>a.Username, new { @class = "form-control" })
-    </p>
-    <p>
-        @Html.LabelFor(a => a.Password, new { @class = "form-text" })
-        @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
-    </p>
-    <p>
-        <input id="Submit1" type="submit" value="Submit" class="btn"/>
-        <input id="Reset1" type="reset" value="Clear" class="btn"/>
-    </p>
-   
-    
+<div class="container">
+    <h2 class="text-info">Login</h2>
+    @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.ValidationSummary(false, "", new { @class = "error" })
+        <p>
+            @Html.LabelFor(a => a.Username, new { @class = "form-text" })
+            @Html.TextBoxFor(a => a.Username, new { @class = "form-control" })
+        </p>
+        <p>
+            @Html.LabelFor(a => a.Password, new { @class = "form-text" })
+            @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
+        </p>
+        <p>
+            <input id="Submit1" type="submit" value="Submit" class="btn" />
+            <input id="Reset1" type="reset" value="Clear" class="btn" />
+        </p>
 
-}
 
-@using (Html.BeginForm("LoggedIndex", "Account", FormMethod.Post))
-{
-    @*<p><button onclick="webAuth.authorize();">Log in with current creds</button></p>*@
-    <p>
-        <a href="#" onclick="webAuth.authorize();" class="loginLink">Log in with an external account</a>
-    </p>
-}
+
+    }
+
+    @using (Html.BeginForm("LoggedIndex", "Account", FormMethod.Post))
+    {
+        @*<p><button onclick="webAuth.authorize();">Log in with current creds</button></p>*@
+        <p>
+            <a href="#" onclick="webAuth.authorize();" class="loginLink">Log in with an external account</a>
+        </p>
+    }
+</div>
 
 

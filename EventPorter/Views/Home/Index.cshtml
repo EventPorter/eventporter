@@ -3,7 +3,14 @@
     ViewBag.Title = "Event Porter";
 }
 
-<div class="row">
-    <img src="~/Content/images/topImgEp.jpg" class="col-md-12" alt="people at a beach"/>
+<div class="container-fluid">
+
+    <div class="row">
+        <img src="~/Content/images/topImgEp.jpg" alt="people at a beach" />
+    </div>
+
+    <div class="row">
+        @Html.ActionLink("Event", "Event", "Event")
+    </div>
 </div>
 
