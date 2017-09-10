@@ -1,0 +1,58 @@
+So far
+1.The login and register button are kept on a partial view within the shared folder called _LoginPartial.
+2.This partial view contains a using statement for Microsoft.AspNet.Identity and 
+  and an if statemnt with a Request.IsAuthenticated call to check if the user is already logged in, this is 
+  why identity is included I guess.
+3.The if statment contains a logoff button shown if the user is logged in already.
+	i)a Html.BeginForm that implicates the LogOff action from the Account controller  
+	ii)bit of bootstrap stuff going on there too I think.
+	ii)the logoff button itself within an unordered list which for some reason is a fucin js thing.
+	****urgently figure out the above*****
+	
+4.next come the actual login/register buttons with an unordered list. 
+5. These are html.Actionlinks utilising the login/register action in the account controller
+(6. there are route valuse take in the called actions but the above action links send null route values also  some html attributes)
+
+
+Moving to the Account controller two actions were called, login and register.
+Login
+1. There are actually two login action methods, one retunrs the login view and is a GET request one, t'other is a post and retruns a Task<ActionResult>, 
+instead of just an action result and is below
+2.This post method has the [HttpPost], [AllowAnonymous] and [ValidateAntiForgeryToken]. This last is used to prevent forgery of a request somehow
+3.It accepts as parameters a LoginViewModel and a string called returnUrl(which I think might be the null route values mentioned earlier)
+4.It starts with an if statement to check if the model state is valid, if not it returns the Login view with the LoginViewModel attribute passed to it for some reason
+5.FOllowing this is a result variable assigned to another variable called await, which is an enum in Identity.OWIN indicating success, locked out, requires verification or failure 
+6.This await is, i suppos,e awaiting the result of SignInManager.PasswordSignInAsync.
+SigninManager is an ApplicationSignInManager(a class from OWIN) in the AccountController which returns via it's get method an action in the OWIN thing that you pass model.Email, model.Password, model.RememberMe, shouldLockout: false
+7.There is then a switch statemetn on the above result variable that returns 
+		Success = RedirectToLocal(returnUrl)
+		LockedOut = View("Lockout")
+		RequiresVerification = RedirectToAction("SendCode", new {ReturnUrl = returnUrl, RememberMe = model.RememberMe})
+		Failure = ModelState.AddModelError("", "Invalid login attempt.")
+				  View(LoginViewModel)
+
+
+
+
+PasswordSignInAsync is a virtual method in the Identity.OWIN class returning a Task<SignInStatus> that I assume allows a user to sign in asynchronously.
+It is annotated with [AsyncStateMachine(typeof(SignInManager<,>.<PasswordSignInAsync>d__29))] this literally makes no sense
+It is also annotated with [DebuggerStepThrough] which tells the debugger to step though instead of voeer 
+
+1. It accepts a string username and password, a bool called isPersistent and shouldLockout)
+
+
+LoginViewModel
+This public class contains the attributes for users I guess. It contains
+	string email [required]
+	string password [required]
+	bool rememberMe
+	
+	
+	
+The Login View contains the juice
+here, as well the form for logging in, buttons for registering etc is a:
+ Html.RenderPartial("_ExternalLoginListPartial", new ExternalLoginList{ReturnUrl = ViewBag.ReturnUrl})
+the above renders the _ExternalLoginListPartial View and passes it an ExternalLoginListView, a class in AccountViewModels, containing a Return Url property
+ViewBag.ReturnUrl is initalized as the ReturnUrl
+
+_ExternalLoginListPartial declares a var called loginProviders, intialized as Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();

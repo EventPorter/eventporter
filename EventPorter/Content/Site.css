@@ -9,7 +9,7 @@ html {
     min-height: 100%;
 }
 
-#footer .navbar {
+#footer .text-center{
     position: absolute;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -64,3 +64,5 @@ textarea {
         background-color: #dfe3ee;
         color: black;
     }
+
+

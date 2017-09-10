@@ -7,6 +7,17 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
+    <script type="text/javascript">
+        var webAuth = new auth0.WebAuth({
+            domain: 'eventporter.eu.auth0.com',
+            clientID: 'Q6A3rZv6dswfPNBAaib5P3fQ6PCy3869',
+            redirectUri: 'http://localhost:59769/LoginCallback.ashx',
+            audience: 'https://eventporter.eu.auth0.com/userinfo',
+            responseType: 'code',
+            scope: 'openid profile'
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,15 +35,17 @@
 
                 @Html.ActionLink("Event Porter", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
+            
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Something 1", "Index", "Home", new { area = "" })</li>
                     <li>@Html.ActionLink("Something 2", "Index", "Home", new { area = "" })</li>
                     <li>@Html.ActionLink("Something 3", "Index", "Home", new { area = "" })</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>@Html.ActionLink(" Register", "Index", "Account", new { @class="glyphicon glyphicon-user" })</li>
+                    <li>@Html.ActionLink(" Login", "Login", "Account", new { @class = "glyphicon glyphicon-log-in" })</li>
                 </ul>
             </div>
         </div>
@@ -43,7 +56,41 @@
         @*<div class="navbar navbar-fixed-bottom text-center">*@
     </div>
     <div id="footer" class="text-center">
-        <div class="navbar navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Something</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Something</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Something</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav-justified nav nav-pills">
+                        <li><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @*<div class="navbar navbar-fixed-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -78,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
