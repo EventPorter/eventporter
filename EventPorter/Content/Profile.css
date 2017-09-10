@@ -1,4 +1,8 @@
 ﻿/***************CSS for Adam profile***************/
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
 .profile {
     margin: 20px 0;
 }
@@ -57,10 +61,6 @@
     font-weight: 400;
 }
 
- .profile-Adammenu ul li {
-     border-bottom: 1px solid #f0f4f7;
- }
-
 .profile-Adammenu ul li:last-child {
     border-bottom: none;
 }
@@ -91,6 +91,12 @@
     border-left: 2px solid #5b9bd1;
     margin-left: -2px;
 }
+
+#profile-header {
+    text-align: center;
+    color: #3b3b3b;
+}
+
 /* Profile Content */
 .profile-content {
     padding: 20px;
