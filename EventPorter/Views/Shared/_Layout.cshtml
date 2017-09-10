@@ -43,9 +43,7 @@
                     <li>@Html.ActionLink("Something 3", "Index", "Home", new { area = "" })</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
-                    <li>@Html.ActionLink(" Register", "Index", "Account", new { @class="glyphicon glyphicon-user" })</li>
-                    <li>@Html.ActionLink(" Login", "Login", "Account", new { @class = "glyphicon glyphicon-log-in" })</li>
+                    @RenderPage("RegisterLogin.cshtml")
                 </ul>
             </div>
         </div>

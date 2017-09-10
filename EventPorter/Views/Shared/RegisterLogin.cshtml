@@ -1,2 +1,12 @@
-﻿@Html.ActionLink("Register", "Index", "Account", null, new { @class = "register"})
-@Html.ActionLink("Login", "Login", "Account", null, new { @class = "register"})
+﻿@if (Session["username"] != null)
+{
+    <span>@Session["username"]</span>
+    <li>@Html.ActionLink("Logout", "LogOut", "Account", null)</li>
+    <li>@Html.ActionLink("Profile", "Profile", "Account", null)</li>
+}
+else
+{  
+    <li>@Html.ActionLink(" Register", "Index", "Account", "", new { @class = "glyphicon glyphicon-user" })</li>
+    <li>@Html.ActionLink(" Login", "Login", "Account", "", new { @class = "glyphicon glyphicon-log-in" })</li>
+    
+}

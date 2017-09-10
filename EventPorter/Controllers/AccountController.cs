@@ -23,9 +23,9 @@ namespace EventPorter.Controllers
             if (ModelState.IsValid)
             {
                 //insert user into database here
-                return View("Status");
+                return View("Login");
             }
-            return View(user);
+            return View("Login");
 
         }
 
@@ -69,7 +69,12 @@ namespace EventPorter.Controllers
             return View("../Home/Index");
         }
 
-        [Authorize]
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+        
         public ActionResult LoggedIndex()
         {
             string email = ClaimsPrincipal.Current.FindFirst("email").Value;
