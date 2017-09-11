@@ -36,7 +36,13 @@
     margin: 0 auto;
 }
 
-.row.searchbar_position {
+.input-group{
+    width: 40%;
+    max-width:370px;
+}
+
+.input-group.searchbar_position {
     position: relative; 
-    top: -50px;
+    top: -60px;
+    left: 35%;
 }

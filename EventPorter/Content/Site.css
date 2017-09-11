@@ -38,15 +38,17 @@ html {
     box-shadow: 0 -10px 25px darkgrey;
 }
 
-.footer a{
+.footer a {
     color: white;
     padding: 10px;
+    text-shadow: 2px 1px 1px black;
 }
 
-.footer a:hover{
+.footer a:hover {
     color: black;
     background-color: white;
     text-decoration: none;
+    text-shadow: none;
 }
 
 /* Set padding to keep content from hitting the edges */
