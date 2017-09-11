@@ -58,3 +58,40 @@
     height: auto;
     width: 100%;
 }
+
+.carousel-inner{
+    max-height: 5%;
+}
+
+.carousel-inner > .item > img {
+    height: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-caption h3 {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.carousel-caption p {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.jumbotron {
+    background-color: #f7f7f7;
+    position: relative;
+    top: -50px;
+    border-radius: 20px;
+}
+
+.jumbotron h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.jumbotron p {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.gallery-shadow {
+    box-shadow: 0 10px 50px #262626;
+}

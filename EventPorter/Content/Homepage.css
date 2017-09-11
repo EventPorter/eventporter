@@ -8,7 +8,7 @@
 }
 
 .carousel.fade .item {
-    transition: opacity ease-out .7s;
+    transition: opacity ease-out 1.2s;
     left: 0;
     opacity: 0; /* hide all slides */
     top: 0;
@@ -25,4 +25,18 @@
 
 .carousel.fade .item.active {
     opacity: 1;
+}
+
+.row.gallery-shadow {
+    box-shadow: 0 10px 50px #262626;
+}
+
+.carousel-inner > .item > img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.row.searchbar_position {
+    position: relative; 
+    top: -50px;
 }

@@ -14,82 +14,88 @@
 }
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="remove_all_padding">
-            <div id="home_gallery" class="carousel fade" data-ride="carousel">
-                @*<ol class="carousel-indicators">
-                        @*
-                        need to loop for each of the N images
-                        <li data-target="#event_gallery" data-slide-to="0" class="active"></li>
-                        @for(int i = 1; i < galleryImages.Size(); i++){
-                            <li data-target="#event_gallery" data-slide-to="@i"></li>
-                        }
-
-                        <li data-target="#home_gallery" data-slide-to="0" class="active"></li>
-                        <li data-target="#home_gallery" data-slide-to="1"></li>
-                        <li data-target="#home_gallery" data-slide-to="2"></li>
-                        <li data-target="#home_gallery" data-slide-to="3"></li>
-                    </ol>*@
-
-                @*
-                    images
-                *@
-                <div class="carousel-inner">
+    <div class="row gallery-shadow">
+        <div id="home_gallery" class="carousel fade" data-ride="carousel">
+            @*<ol class="carousel-indicators">
                     @*
-                        need to loop, adding each image in the passed model
-                        <div class="item active">
-                            <img src="image at index 0 in the list" alt="image name / desc / event title">
-                            <div class="carousel-caption">
-                                both of these could be optional, just set empty or null
-                                <h3>image caption</h3>
-                                <p>image text</p>
-                            </div>
-                        </div>
-                    *@
+                    need to loop for each of the N images
+                    <li data-target="#event_gallery" data-slide-to="0" class="active"></li>
+                    @for(int i = 1; i < galleryImages.Size(); i++){
+                        <li data-target="#event_gallery" data-slide-to="@i"></li>
+                    }
+
+                    <li data-target="#home_gallery" data-slide-to="0" class="active"></li>
+                    <li data-target="#home_gallery" data-slide-to="1"></li>
+                    <li data-target="#home_gallery" data-slide-to="2"></li>
+                    <li data-target="#home_gallery" data-slide-to="3"></li>
+                </ol>*@
+
+            @*
+                images
+            *@
+            <div class="carousel-inner">
+                @*
+                    need to loop, adding each image in the passed model
                     <div class="item active">
-                        <img src="~/Content/images/home_banner/cinema_banner-min.jpg" alt="movie event">
-                        @*<div class="carousel-caption">
-                                <h3>Image 1 Caption</h3>
-                                <p>Some text</p>
-                            </div>*@
+                        <img src="image at index 0 in the list" alt="image name / desc / event title">
+                        <div class="carousel-caption">
+                            both of these could be optional, just set empty or null
+                            <h3>image caption</h3>
+                            <p>image text</p>
+                        </div>
                     </div>
-
-                    <div class="item">
-                        <img src="~/Content/images/home_banner/music_banner-min.jpg" alt="music event">
-                        @*<div class="carousel-caption">
-                                <h3>Image 3 Caption</h3>
-                                <p>Some text</p>
-                            </div>*@
-                    </div>
-
-                    <div class="item">
-                        <img src="~/Content/images/home_banner/person_running_banner-min.jpg" alt="running event">
-                        @*<div class="carousel-caption">
-                                <h3>Image 3 Caption</h3>
-                                <p>Some text</p>
-                            </div>*@
-                    </div>
+                *@
+                <div class="item active">
+                    <img src="~/Content/images/home_banner/cinema_banner-min.jpg" alt="movie event">
+                    @*<div class="carousel-caption">
+                            <h3>Image 1 Caption</h3>
+                            <p>Some text</p>
+                        </div>*@
                 </div>
 
-                @*
-                    Left and Right arrow yokes
-                *@
-                @*<a class="left carousel-control" href="#event_gallery" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#event_gallery" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>*@
+                <div class="item">
+                    <img src="~/Content/images/home_banner/music_banner-min.jpg" alt="music event">
+                    @*<div class="carousel-caption">
+                            <h3>Image 3 Caption</h3>
+                            <p>Some text</p>
+                        </div>*@
+                </div>
+
+                <div class="item">
+                    <img src="~/Content/images/home_banner/person_running_banner-min.jpg" alt="running event">
+                    @*<div class="carousel-caption">
+                            <h3>Image 3 Caption</h3>
+                            <p>Some text</p>
+                        </div>*@
+                </div>
+
+                <div class="item">
+                    <img src="~/Content/images/home_banner/swimming_banner-min.jpg" alt="swimming event">
+                    @*<div class="carousel-caption">
+                        <h3>Image 3 Caption</h3>
+                        <p>Some text</p>
+                    </div>*@
+                </div>
             </div>
+
+            @*
+                Left and Right arrow yokes
+            *@
+            @*<a class="left carousel-control" href="#event_gallery" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#event_gallery" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>*@
         </div>
     </div>
-    <div class="row" style="position: relative; top: -50px;">
+    <div class="row searchbar_position">
         <div class="container">
             <div class="input-group col-md-offset-4 col-md-8">
                 <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" id="search_option_btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span id="search_concept">All</span> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
@@ -103,7 +109,7 @@
                     </ul>
                 </div>
                 <input class="col-md-9" type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" id="search_input" placeholder="Search term...">
+                <input type="text" class="form-control" id="search_input" placeholder="Search for event...">
                 <span class="input-group-btn remove_all_padding col-md-3">
                     <button id="search_button" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -111,11 +117,33 @@
         </div>
     </div>
 
-    <div class="row">
-        @Html.ActionLink("Event", "Event", "Event")
-    </div>
-    <div class="row">
-        @Html.ActionLink("Profile", "Profile", "Account")
-    </div>
+    <div class="container">
+        <div class="row">
+            @Html.ActionLink("Event", "Event", "Event")
+        </div>
+        <div class="row">
+            @Html.ActionLink("Profile", "Profile", "Account")
+        </div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
+
+            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
+
+            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
+
+            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
+
+            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim.</p>
+</div>
+     
 </div>
 
