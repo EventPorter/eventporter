@@ -39,10 +39,17 @@
 .input-group{
     width: 40%;
     max-width:370px;
+    z-index: 2000;
 }
 
-.input-group.searchbar_position {
-    position: relative; 
-    top: -60px;
+.relative-searchbar {
+    position: relative;
+    top: -40px;
     left: 35%;
+}
+
+.fix-searchbar {
+    position: fixed;
+    top: 8px;
+    left: 35.4%;
 }

@@ -12,4 +12,15 @@
         var search_text = $('#search_input').val();
         alert("Filter: " + search_filter + " User input: " + search_text);
     });
+
+    $(window).scroll(function () {
+        if (($(window).scrollTop() + $('#site-navbar').outerHeight()) >= $('#home_gallery').innerHeight()) {
+            $('#search-bar').removeClass('relative-searchbar');
+            $('#search-bar').addClass('fix-searchbar');
+        }
+        else if (($(window).scrollTop() + $('#site-navbar').outerHeight()) < $('#home_gallery').innerHeight()) {
+            $('#search-bar').removeClass('fix-searchbar');
+            $('#search-bar').addClass('relative-searchbar');
+        }
+    });
 });

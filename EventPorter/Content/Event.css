@@ -82,6 +82,8 @@
     position: relative;
     top: -50px;
     border-radius: 20px;
+    margin-bottom: -60px;
+    box-shadow: 0 0 80px #272727;
 }
 
 .jumbotron h1 {

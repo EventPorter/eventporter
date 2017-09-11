@@ -23,7 +23,8 @@
     </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-static-top">
+@*      <div class="navbar navbar-inverse navbar-static-top">*@
+    <div id="site-navbar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,18 +34,18 @@
                 </button>
 
                 @*PLACEHOLDER: REMOVE THIS BADASS ADAM AT SOME POINT*@
-                <img src="~/Content/images/lil_porter.png" alt="big P" class="navbar-brand"/>
+                <img src="~/Content/images/lil_porter.png" alt="big P" class="navbar-brand" />
                 @*-------------------------------*@
 
                 @Html.ActionLink("EVENT PORTER", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            
+
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Something 1", "Index", "Home", new { area = "" })</li>
-                    <li>@Html.ActionLink("Something 2", "Index", "Home", new { area = "" })</li>
-                    <li>@Html.ActionLink("Something 3", "Index", "Home", new { area = "" })</li>
-                </ul>*@
+                        <li>@Html.ActionLink("Something 1", "Index", "Home", new { area = "" })</li>
+                        <li>@Html.ActionLink("Something 2", "Index", "Home", new { area = "" })</li>
+                        <li>@Html.ActionLink("Something 3", "Index", "Home", new { area = "" })</li>
+                    </ul>*@
                 <ul class="nav navbar-nav navbar-right">
                     @RenderPage("RegisterLogin.cshtml")
                 </ul>
