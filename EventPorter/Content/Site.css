@@ -34,10 +34,11 @@ html {
     background-color: #7532e5;
     padding-top: 20px;
     /*box-shadow: 0 -10px 50px #262626;*/
-    box-shadow: 0 -10px 25px darkgrey;
+    box-shadow: 0 -10px 30px darkgrey;
 }
 
 .footer a {
+    display:inline;
     color: white;
     padding: 10px;
     text-shadow: 2px 1px 1px black;
