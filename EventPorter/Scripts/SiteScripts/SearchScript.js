@@ -14,11 +14,13 @@
     });
 
     $(window).scroll(function () {
-        if (($(window).scrollTop() + $('#site-navbar').outerHeight()) >= $('#home_gallery').innerHeight()) {
+        //+ $('#site-navbar').outerHeight() if static navbar top
+        if ($(window).scrollTop() >= $('#home_gallery').innerHeight()) {
             $('#search-bar').removeClass('relative-searchbar');
             $('#search-bar').addClass('fix-searchbar');
         }
-        else if (($(window).scrollTop() + $('#site-navbar').outerHeight()) < $('#home_gallery').innerHeight()) {
+        //+ $('#site-navbar').outerHeight() if static navbar top
+        else if ($(window).scrollTop() < $('#home_gallery').innerHeight()) {
             $('#search-bar').removeClass('fix-searchbar');
             $('#search-bar').addClass('relative-searchbar');
         }
