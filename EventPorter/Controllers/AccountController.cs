@@ -90,12 +90,12 @@ namespace EventPorter.Controllers
         public ActionResult Settings()
         {
 
-            return View();
+            return PartialView();
         }
 
         public ActionResult AdamProfile()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult Help()
