@@ -65,16 +65,18 @@ body {
     border-bottom: none;
 }
 
-.profile-Adammenu ul li a {
-    color: #93a3b5;
-    font-size: 14px;
-    font-weight: 400;
-}
+    .profile-Adammenu ul li a {
+        color: #93a3b5;
+        font-size: 14px;
+        font-weight: 400;
+        user-select: none;
+        cursor: pointer;
+    }
 
-.profile-Adammenu ul li a i {
+/*.profile-Adammenu ul li a i {
     margin-right: 8px;
     font-size: 14px;
-}
+}*/
 
 .profile-Adammenu ul li a:hover {
     background-color: #fafcfd;
