@@ -95,7 +95,7 @@ namespace EventPorter.Controllers
 
         public ActionResult AdamProfile()
         {
-            return PartialView();
+            return View();
         }
 
         public ActionResult Help()
