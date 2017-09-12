@@ -4,7 +4,7 @@
 }
 <br />
 <div class="container">
-    <h2>Register</h2>
+    <h2 class="text-info">Register</h2>
     @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-group" }))
     {
         @Html.ValidationSummary(false, "", new { @class = "error" })
