@@ -175,12 +175,13 @@
     <Content Include="Views\Shared\RegisterLogin.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Event\Event.cshtml" />
+    <Content Include="Views\Event\Show.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Account\AdamProfile.cshtml" />
     <Content Include="Views\Account\Help.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
     <Content Include="Views\Account\AdamInfo.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

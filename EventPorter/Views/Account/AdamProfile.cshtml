@@ -95,7 +95,7 @@
             });
         });
         $('#Events').on("click", function () {
-            $.get('@Url.Action("Event", "Event")', function (data) {
+            $.get('@Url.Action("Show", "Event")', function (data) {
                 $("#infoDiv").html(data);
             });
         });
