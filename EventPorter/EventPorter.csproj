@@ -113,7 +113,7 @@
     <Content Include="Content\Event.css" />
     <Content Include="Content\Homepage.css" />
     <Content Include="Content\images\home_banner\cinema_banner-min.jpg" />
-    <Content Include="Content\images\home_banner\music_banner-min.jpg" />
+    <Content Include="Content\images\home_banner\concert_banner-min.jpg" />
     <Content Include="Content\images\home_banner\person_running_banner-min.jpg" />
     <Content Include="Content\images\home_banner\swimming_banner-min.jpg" />
     <Content Include="Content\images\lil_porter.png" />
@@ -162,6 +162,7 @@
       <DependentUpon>LoginCallback.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\Adam.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

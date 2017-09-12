@@ -13,6 +13,7 @@
     opacity: 0; /* hide all slides */
     top: 0;
     position: absolute;
+    height: 100%;
     width: 100%;
     display: block;
 }
@@ -32,13 +33,19 @@
 }
 
 .carousel-inner > .item > img {
+    height: 100%;
     width: 100%;
     margin: 0 auto;
 }
 
+#search_input{
+    width: 100%;
+    max-width: 356px;
+}
+
 .input-group{
-    width: 40%;
-    max-width:370px;
+    width: 36%;
+    max-width:450px;
     z-index: 2000;
 }
 

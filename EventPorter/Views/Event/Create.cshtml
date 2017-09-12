@@ -1,7 +1,29 @@
-﻿
+﻿@model EventPorter.Models.Event
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Event";
 }
 
 <h2>Create</h2>
+@using (Html.BeginForm("Login", "Event", FormMethod.Post))
+{
+    @*@Html.ValidationSummary(false, "", new { @class = "error" })
+    <p>
+        @Html.LabelFor(u => u.Email)
+        @Html.TextBoxFor(u => u.Email, new { style = "width:160px" })
+    </p>
+    <p>
+        @Html.LabelFor(u => u.Password)
+        @Html.PasswordFor(u => u.Password, new { style = "width:160px" })
+    </p>
+    <p>
+        @Html.LabelFor(u => u.UserRole)
+        @Html.EnumDropDownListFor(u => u.UserRole, new { style = "width:160px" })
+    </p>
+    <p>
+        <br />
+        <input id="Submit1" type="submit" value="Submit" />
+        <input id="Reset1" type="reset" value="Clear" />
+    </p>*@
+}
+
 
