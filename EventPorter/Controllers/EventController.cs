@@ -14,7 +14,12 @@ namespace EventPorter.Controllers
             return View();
         }
 
-        public ActionResult Event()
+        public ActionResult Show()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
