@@ -8,9 +8,13 @@
     });
 
     $('#search_button').click(function (e) {
-        var search_filter = $('#search_param').val();
-        var search_text = $('#search_input').val();
-        alert("Filter: " + search_filter + " User input: " + search_text);
+        search();
+    });
+
+    $('#search_input').keypress(function (e) {
+        if (e.keyCode == 13) {
+            search();
+        }
     });
 
     $(window).scroll(function () {
@@ -25,4 +29,10 @@
             $('#search-bar').addClass('relative-searchbar');
         }
     });
+
+    function search() {
+        var search_filter = $('#search_param').val();
+        var search_text = $('#search_input').val();
+        alert("Filter: " + search_filter + " User input: " + search_text);
+    }
 });
