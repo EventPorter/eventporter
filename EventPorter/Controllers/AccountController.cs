@@ -35,8 +35,6 @@ namespace EventPorter.Controllers
                 }
                 return View("Status");
 
-                //insert user into database here
-
             }
             return View("Login");
 
@@ -109,9 +107,11 @@ namespace EventPorter.Controllers
         //}
        
 
-        public ActionResult AdamInfo()
+        public ActionResult AdamInfo(int userID)
         {
-            return View();
+            Adam currentAdam = dao.getInfo(userID);
+
+            return View(currentAdam);
         }
 
         

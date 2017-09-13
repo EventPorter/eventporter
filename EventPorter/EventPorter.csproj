@@ -190,6 +190,7 @@
     <Content Include="Views\Account\Settings.cshtml" />
     <Content Include="Views\Account\AdamInfo.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\EventCardDisplay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
