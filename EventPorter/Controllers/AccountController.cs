@@ -63,12 +63,43 @@ namespace EventPorter.Controllers
             ModelState.Remove("EventOwner");
             if (ModelState.IsValid)
             {
-                //insert into database here
-                return View("Status");
+                user.Username = dao.CheckLogin(user);
+                if (user.Username != null)
+                {
+                    if (user.UserType == Role.Staff)
+                    {
+                        Session["name"] = "Staff";
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else if (user.UserType == Role.User)
+                    {
+                        Session["name"] = user.UserId;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Status = "Error! " + dao.message;
+                        return View("Status");
+                    }
+
+                }
+                else
+                {
+                    ViewBag.Status = "Error! " + dao.message;
+                    return View("Status");
+                    
+                }
             }
             else return View(user);
 
 
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return View("../Home/Index");
         }
         //[HttpPost]
         //[AllowAnonymous]
@@ -76,13 +107,7 @@ namespace EventPorter.Controllers
         //{
         //    return View();
         //}
-        
-
-        public ActionResult LogOut()
-        {
-            Session.Clear();
-            return View("../Home/Index");
-        }
+       
 
         public ActionResult AdamInfo()
         {

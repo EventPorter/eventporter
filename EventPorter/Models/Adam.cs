@@ -19,6 +19,7 @@ namespace EventPorter.Models
         public string Lastname { get; set; }
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Username")]
         [Required]

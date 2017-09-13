@@ -40,9 +40,63 @@ namespace EventPorter.Models
             password = Crypto.HashPassword(adam.Password);
             message = password;
             cmd.Parameters.AddWithValue("@pass", password);
-            return 0;
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
         }
 
+        public string CheckLogin(Adam user)
+        {
+            string username = null;
+            SqlCommand cmd;
+            SqlDataReader reader;
+            string password;
+            Connection();
+            cmd = new SqlCommand("uspCheckLogin", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UserId", user.UserId);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    password = reader["Password"].ToString();
+                    if (Crypto.VerifyHashedPassword(password, user.Password))
+                    {
+                        username = reader["Username"].ToString();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return username;
+
+        }
+        #endregion
 
 
     }
