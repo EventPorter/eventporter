@@ -111,6 +111,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Event.css" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\Homepage.css" />
     <Content Include="Content\images\home_banner\cinema_banner-min.jpg" />
     <Content Include="Content\images\home_banner\concert_banner-min.jpg" />
