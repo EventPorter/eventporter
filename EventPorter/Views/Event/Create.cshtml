@@ -1,7 +1,51 @@
-﻿
+﻿@model EventPorter.Models.Event
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Event";
 }
 
-<h2>Create</h2>
+@section Styles {
+    <link href="~/Content/Event.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    @*<script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $('.datepicker').datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: '-3d'
+            });
+        });
+    </script>*@
+}
+
+<div class="container-fluid">
+    <div id="create-form" class="container">
+        @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <h2>Create</h2>
+            @*@Html.ValidationSummary(false, "", new { @class = "error" })*@
+            <p>
+                @Html.LabelFor(e => e.Title)<br />
+                @Html.TextBoxFor(e => e.Title, new { @class="form-control create-title", placeholder = "Enter title for event here..." })
+            </p>
+            <p>
+                @Html.LabelFor(e => e.Description)<br />
+                @Html.TextAreaFor(e => e.Description, new { @class="form-control create-description", placeholder = "Enter event description here..." })
+            </p>
+            <p>
+                @Html.LabelFor(e => e.DateAndTime)<br />
+                @Html.EditorFor(e => e.DateAndTime, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter event date here..." } })
+                @Html.ValidationMessageFor(e => e.DateAndTime, "", new { @class = "text-danger" })
+            </p>
+        
+            <input type="file" name="images" multiple />
+            <p>
+                <br />
+                <input id="Submit1" type="submit" value="Submit" />
+                <input id="Reset1" type="reset" value="Clear" />
+            </p>
+        }
+    </div>
+</div>
 

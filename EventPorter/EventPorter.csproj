@@ -113,7 +113,7 @@
     <Content Include="Content\Event.css" />
     <Content Include="Content\Homepage.css" />
     <Content Include="Content\images\home_banner\cinema_banner-min.jpg" />
-    <Content Include="Content\images\home_banner\music_banner-min.jpg" />
+    <Content Include="Content\images\home_banner\concert_banner-min.jpg" />
     <Content Include="Content\images\home_banner\person_running_banner-min.jpg" />
     <Content Include="Content\images\home_banner\swimming_banner-min.jpg" />
     <Content Include="Content\images\lil_porter.png" />
@@ -144,6 +144,11 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\SiteScripts\SearchScript.js" />
     <Content Include="Web.config" />
@@ -162,6 +167,7 @@
       <DependentUpon>LoginCallback.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\Adam.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -115,23 +115,21 @@
 *@
 <hr />
 
-<div class="container">
+<div id="event-content" class="container">
     <div class="row col-lg-12">
         <div class="col-lg-2">
             <div id="event_left_col">
-                <div id="event_icon">
-                    <div class="row col-xs-12">
-                        <div class="row">
-                            <h5>
-                                Creator Nickname
-                            </h5>
-                            </div>
-                        <div class="row">                               
-                            @*
-                                Model.Creator.Picture in here Model.Nickname for alt tag
-                            *@
-                            <img class="img-thumbnail" src="~/Content/images/lil_porter.png" alt="icon_image" />
-                        </div>
+                <div id="event-owner" class="row col-xs-12">
+                    <div class="row text-center">
+                        <h5>
+                            Creator Nickname
+                        </h5>
+                    </div>
+                    <div class="row text-center">                               
+                        @*
+                            Model.Creator.Picture in here Model.Nickname for alt tag
+                        *@
+                        <img class="img-thumbnail" src="~/Content/images/lil_porter.png" alt="icon_image" />
                     </div>
                 </div>
                 @*<div class="row col-lg-12">
@@ -268,7 +266,7 @@
                     <div class="btn-primary text-center">Buy Ticket</div>
                 }
                                     *@
-                <div class="btn btn-primary text-center" style="background-color:yellow;color:black;width:100%;">Buy Ticket</div>
+                <div id="buy-button" class="btn btn-primary text-center">Buy Ticket</div>
             </div>
         </div>
     </div>

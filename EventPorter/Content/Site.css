@@ -31,22 +31,22 @@ html {
     height: 60px;
     color: white;
     text-align: center;
-    background-color: #8b9dc3;
-    font-size: 90%;
+    background-color: #7532e5;
     padding-top: 20px;
     /*box-shadow: 0 -10px 50px #262626;*/
-    box-shadow: 0 -10px 25px darkgrey;
+    box-shadow: 0 -10px 30px darkgrey;
 }
 
 .footer a {
+    display:inline;
     color: white;
     padding: 10px;
     text-shadow: 2px 1px 1px black;
 }
 
 .footer a:hover {
+    font-weight: bold;
     color: black;
-    background-color: white;
     text-decoration: none;
     text-shadow: none;
 }
@@ -72,28 +72,31 @@ textarea {
 }
 
 .navbar-inverse {
-    background-color: #3b5998;
+    border-bottom: 3px solid #8c69e2;
+    background-color: #ffffff;
 }
 
 .container > .navbar-header > a {
-    color: yellow;
+    color: black;
+    font-weight: bold;
 }
 
 /*.navbar-inverse .navbar-brand{
     color: yellow;
 }*/
 
+/*Title in navbar*/
 .navbar-inverse .navbar-brand:hover {
-    color: white;
+    color: red;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: white;
+    color: #2b2b2b;
+    font-size: 120%;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
-    background-color: white;
-    color: black;
+    color: red;
 }
 
 /*footer link text colour*/
