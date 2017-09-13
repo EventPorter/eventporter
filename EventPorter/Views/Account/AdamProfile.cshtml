@@ -72,17 +72,14 @@
 @section scripts{
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script>
-    @*$(function () {
-        $('#Overview').on("click", function () {
-            $.get('@Url.Action("AdamInfo","Account")', function (data) {
-                $("#infoDiv").html(data);
+    //Jquery for chanignf the active class on links
+        $(function () {
+            $('ul.nav li').on('click', function () {
+                $(this).parent().find('li.active').removeClass('active');
+                $(this).addClass('active');
             });
-            $('#Settings').on("click"), function () {
-                $.get('@Url.Action("Settings","Account")', function (data) {
-                    $("#infoDiv").html(data);
-                });
-            });
-    });*@
+        });
+    //Ajax links below
     $(function () {
         $('#Overview').on("click", function () {
             $.get('@Url.Action("AdamInfo", "Account")', function (data) {
