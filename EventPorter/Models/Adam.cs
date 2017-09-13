@@ -17,6 +17,9 @@ namespace EventPorter.Models
         [Required]
         [RegularExpression("[a-zA-Z]+")]
         public string Lastname { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DateOfBirth { get; set; }
         [Display(Name = "Username")]
         [Required]
         [RegularExpression("[a-zA-Z]+")]

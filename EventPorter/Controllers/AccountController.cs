@@ -10,6 +10,7 @@ namespace EventPorter.Controllers
 {
     public class AccountController : Controller
     {
+        DAO dao = new DAO();
         // GET: Account
         public ActionResult Index()
         {
@@ -22,8 +23,20 @@ namespace EventPorter.Controllers
             int count = 0;
             if (ModelState.IsValid)
             {
+                count = dao.Insert(user);
+                if (count == 1)
+                {
+                    ViewBag.Status = "User created";   
+                }
+                
+                else
+                {
+                    ViewBag.Status = "Error! " + dao.message;
+                }
+                return View("Status");
+
                 //insert user into database here
-                return View("Login");
+
             }
             return View("Login");
 
@@ -39,6 +52,8 @@ namespace EventPorter.Controllers
         [HttpPost]
         public ActionResult Login (Adam user)
         {
+            ModelState.Remove("FirstName");
+            ModelState.Remove("LastName");
             ModelState.Remove("Email");
             ModelState.Remove("PassConf");
             ModelState.Remove("Location");

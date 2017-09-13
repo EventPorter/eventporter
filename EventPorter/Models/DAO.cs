@@ -40,6 +40,7 @@ namespace EventPorter.Models
             password = Crypto.HashPassword(adam.Password);
             message = password;
             cmd.Parameters.AddWithValue("@pass", password);
+            return 0;
         }
 
 

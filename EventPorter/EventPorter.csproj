@@ -168,6 +168,7 @@
       <DependentUpon>LoginCallback.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\Adam.cs" />
+    <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
