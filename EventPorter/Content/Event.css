@@ -113,3 +113,22 @@
     box-shadow: 0 0 15px black;
     background-color: #f85555;
 }
+
+/*      Event Create       */
+#create-form{
+    padding-left: 20%;
+}
+
+#create-form h2{
+    margin-left: 11%;
+}
+
+.create-title{
+}
+
+.create-description{
+    width: 400px;
+    height: 500px;
+    max-width: none;
+    min-height: 200px;
+}

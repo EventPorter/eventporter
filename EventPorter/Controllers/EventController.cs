@@ -26,14 +26,19 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Event newEvent)
+        public ActionResult Create(Event newEvent, HttpPostedFileBase[] images)
         {
             if (ModelState.IsValid)
             {
-                //  Record event
-                return View();
+                string result = string.Empty;
+                foreach (HttpPostedFileBase image in images)
+                {
+                    result += image != null ? image.FileName : "null";
+                    //image.SaveAs((Server.MapPath("~/Event/id/Images/" + image.FileName)));
+                }
+                return Content(result);
             }
-            return View();
+            return View("Create");
         }
     }
 }
