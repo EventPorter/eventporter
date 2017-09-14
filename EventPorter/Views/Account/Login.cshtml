@@ -1,11 +1,16 @@
 ﻿@model EventPorter.Models.Adam
-    @{ 
-        ViewBag.Title = "Adam Login";
-    }
+@{ 
+    ViewBag.Title = "Adam Login";
+}
+
+@section Styles {
+    <link href="~/Content/LoginRegister.css" rel="stylesheet" />
+}
+
 <br/>
 <div class="container">
     <h2 class="text-info">Login</h2>
-    @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form-group" }))
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-group" }))
     {
         @Html.ValidationSummary(false, "", new { @class = "error" })
         <p>
@@ -14,7 +19,8 @@
         </p>
         <p>
             @Html.LabelFor(a => a.Password, new { @class = "form-text" })
-            @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
+            @*@Html.TextBoxFor(a => a.Password, new { @class = "form-control" })*@
+            @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
         </p>
         <p>
             <input id="Submit1" type="submit" value="Submit" class="btn" />

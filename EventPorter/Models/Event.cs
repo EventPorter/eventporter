@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,10 +9,25 @@ namespace EventPorter.Models
     public class Event
     {
         public int ID { get; set; }
+        public string[] Gallery { get; set; }
+
+        [Required]
+        [Display(Name = "Title")]
         public string Title { get; set; }
+
+        [Required]
+        [Display(Name = "Description")]
         public string Description { get; set; }
-        public DateTime DateAndTime { get; set; }
-        public byte[] gallery { get; set; }
-        //  public Attendee[] attendees { get; set; }
+        
+        [Required]
+        [Display(Name = "Start")]
+        [DataType(DataType.DateTime)]
+        //[DisplayFormat(DataFormatString = @"{DD/MM/YYYY HH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime StartDateAndTime { get; set; }
+
+        [Required]
+        [Display(Name = "End")]
+        [DataType(DataType.DateTime)]
+        public DateTime EndDateAndTime { get; set; }
     }
 }
