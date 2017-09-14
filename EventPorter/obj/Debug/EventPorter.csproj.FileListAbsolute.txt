@@ -270,6 +270,6 @@ C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\bin\System.We
 C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\bin\System.Web.Webpages.Razor.xml
 C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\bin\System.Web.Helpers.xml
 C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\bin\System.Web.Mvc.xml
-C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\obj\Debug\EventPorter.csprojResolveAssemblyReference.cache
 C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\obj\Debug\EventPorter.dll
 C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\obj\Debug\EventPorter.pdb
+C:\Users\Cherena\Documents\DBS\WebAppDevCA\eventporter\EventPorter\obj\Debug\EventPorter.csprojResolveAssemblyReference.cache

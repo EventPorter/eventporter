@@ -41,7 +41,7 @@ namespace EventPorter.Controllers
             return View("Create");
         }
 
-        public ActionResult EventCardDisplay(int userID)
+        public ActionResult EventCardDisplay()
         {
             return PartialView();
         }

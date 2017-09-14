@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Register";
 }
+
+
 <br />
 <div class="container">
     <h2 class="text-info">Register</h2>
@@ -16,6 +18,7 @@
             @Html.LabelFor(a => a.Lastname, new { @class = "form-text" })
             @Html.TextBoxFor(a => a.Lastname, new { @class = "form-control" })
         </p>
+       
         <p>
             @Html.LabelFor(a=>a.DateOfBirth, new { @class="form-text"})
             @Html.EditorFor(a=>a.DateOfBirth, new { @clas="form-control"})
@@ -46,6 +49,5 @@
 
     }
 </div>
-
 
 

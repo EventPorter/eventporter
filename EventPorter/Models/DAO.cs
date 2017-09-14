@@ -96,6 +96,12 @@ namespace EventPorter.Models
             return username;
 
         }
+
+        public Adam getInfo(int userID)
+        {
+            Adam user = null;
+            return user;
+        }
         #endregion
 
 

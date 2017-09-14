@@ -1,7 +1,7 @@
 ﻿@model EventPorter.Models.Adam
-@{
+@*@{
     ViewBag.Title = "Profile";
-}
+}*@
 @section Styles{
     <link href="~/Content/Profile.css" rel="stylesheet" type="text/css" />
 }
@@ -37,9 +37,11 @@
                         </li>
                         <li>
                            <a class="glyphicon glyphicon-cog profile-Adammenu" id="Settings"> Settings</a>
+
                         </li>
-                        <li>
-                            <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
+                        <li>                            
+                            @Ajax.ActionLink(" Events", "EventCardDisplay", "Event", null, new AjaxOptions {UpdateTargetId="infoDiv"}, new { @class = "glyphicon glyphicon-ok profile-Adammenu" })
+                            @*<a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>*@
                         </li>
                         <li>
                             <a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>
@@ -49,8 +51,8 @@
             </div>
         </div>
         <div class="col-md-8" id="infoDiv">
-
         </div>
+        
         @*<div class="col-md-5">
                 <div class="profile-content">
                     Upcoming Event cards here
@@ -86,7 +88,7 @@
             });
         });
         $('#Events').on("click", function () {
-            $.get('@Url.Action("Show", "Event")', function (data) {
+            $.get('@Url.Action("EventCardDisplay", "Event")', function (data) {
                 $("#infoDiv").html(data);
             });
         });
