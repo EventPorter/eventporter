@@ -1,12 +1,10 @@
-﻿@if (Session["username"] != null)
+﻿@if (Session["name"] != null)
 {
-    <span>@Session["username"]</span>
-    <li>@Html.ActionLink("Logout", "LogOut", "Account", new { @class = "glyphicon glyphicon-log-out" })</li>
-    <li>@Html.ActionLink("Profile", "AdamProfile", "Account", new { @class = "glyphicon glyphicon-user" })</li>
+    <li>@Html.ActionLink(" Logout", "LogOut", "Account", new { @class = "glyphicon glyphicon-log-out" })</li>
+    <li>@Html.ActionLink(" " + @Session["name"].ToString().ToUpper(), "AdamProfile", "Account", new { @class = "glyphicon glyphicon-user" })</li>
 }
 else
 {  
     <li>@Html.ActionLink(" Register", "Index", "Account", "", new { @class = "glyphicon glyphicon-user" })</li>
     <li>@Html.ActionLink(" Login", "Login", "Account", "", new { @class = "glyphicon glyphicon-log-in" })</li>
-    
 }

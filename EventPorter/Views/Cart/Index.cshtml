@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@if(Session["username"] == null)
+{
+    Response.Redirect(Url.Action("Login", "Account"));
+}
+
+<h2>Cart</h2>
+
+
+
+

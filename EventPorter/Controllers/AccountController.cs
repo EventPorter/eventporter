@@ -18,26 +18,26 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Adam user)
+        public ActionResult Register(User user)
         {
             int count = 0;
+            user.RegDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 count = dao.Insert(user);
                 if (count == 1)
                 {
-                    ViewBag.Status = "User created";   
+                    ViewBag.Status = "User created";
+                    return View("Login");
                 }
-                
                 else
                 {
                     ViewBag.Status = "Error! " + dao.message;
                 }
-                return View("Status");
-
+                return View(user);
             }
-            return View("Login");
-
+            
+            return View(user);
         }
 
         //result for login
@@ -48,7 +48,7 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login (Adam user)
+        public ActionResult Login (User user)
         {
             ModelState.Remove("FirstName");
             ModelState.Remove("LastName");
@@ -61,31 +61,29 @@ namespace EventPorter.Controllers
             ModelState.Remove("EventOwner");
             if (ModelState.IsValid)
             {
-                user.Username = dao.CheckLogin(user);
-                if (user.Username != null)
+                User userCheck = dao.CheckLogin(user);
+                if (userCheck!= null)
                 {
-                    if (user.UserType == Role.Staff)
+                    if (userCheck.UserType == Role.Staff)
                     {
                         Session["name"] = "Staff";
                         return RedirectToAction("Index", "Home");
                     }
-                    else if (user.UserType == Role.User)
+                    else if (userCheck.UserType == Role.User)
                     {
-                        Session["name"] = user.UserId;
+                        Session["name"] = userCheck.Username;
                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {
                         ViewBag.Status = "Error! " + dao.message;
-                        return View("Status");
+                        return View(user);
                     }
-
                 }
                 else
                 {
-                    ViewBag.Status = "Error! " + dao.message;
-                    return View("Status");
-                    
+                    ViewBag.Status = "Username / Password Invalid.";
+                    return View(user);
                 }
             }
             else return View(user);
@@ -97,7 +95,7 @@ namespace EventPorter.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            return View("../Home/Index");
+            return View("Index", "Home");
         }
         //[HttpPost]
         //[AllowAnonymous]
@@ -109,7 +107,7 @@ namespace EventPorter.Controllers
 
         public ActionResult AdamInfo(int userID)
         {
-            Adam currentAdam = dao.getInfo(userID);
+            User currentAdam = dao.GetUserInfo(userID);
 
             return View(currentAdam);
         }

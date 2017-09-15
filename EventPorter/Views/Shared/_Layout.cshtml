@@ -4,12 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     @RenderSection("Styles", false)
-    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Oswald|Raleway|Shadows+Into+Light" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    
     <link rel="icon" href="@Url.Content("~/Content/favicon.ico")" />
     <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
     <script type="text/javascript">
@@ -78,53 +81,11 @@
             </div>
         </div>
     </footer>
-
-    @*<div class="navbar navbar-fixed-bottom">*@
-    @*<div id="footer" class="navbar-collapse navbar-fixed-bottom container-fluid text-center">
-        <div class="row col-xs-12">
-            <ul class="nav nav-pills col-xs-6">
-                <li><a href="#">Something</a></li>
-            </ul>
-            <ul class="nav nav-pills col-xs-6">
-                <li><a href="#">Something</a></li>
-            </ul>
-        </div>
-        <div class="row col-xs-12">
-            <ul class="nav nav-pills col-xs-6">
-                <li><a href="#">Something</a></li>
-            </ul>
-            <ul class="nav nav-pills col-xs-6">
-                <li><a href="#">Something</a></li>
-            </ul>
-        </div>
-        <div class="row col-xs-12">
-            <ul class="nav nav-pills col-xs-6">
-                <li><a href="#">Something</a></li>
-            </ul>
-            <ul class="nav nav-pills col-xs-6">
-                <li><a href="#">Something</a></li>
-            </ul>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-xs-12">
-                <ul class="nav-justified nav nav-pills">
-                    <li><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>*@
-    @*<script src="~/Scripts/SiteScripts/ResizeEventHandler.js"></script>*@
-    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
-    @*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-            crossorigin="anonymous"></script>*@
-
-    @*<script src="~/Scripts/bootstrap.min.js"></script>*@    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @RenderSection("Scripts", false)
 </body>
 </html>

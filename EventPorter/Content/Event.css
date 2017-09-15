@@ -129,6 +129,6 @@
 .create-description{
     width: 400px;
     height: 500px;
-    max-width: none;
     min-height: 200px;
+    resize: none;
 }
