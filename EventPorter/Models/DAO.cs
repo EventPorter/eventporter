@@ -152,6 +152,90 @@ namespace EventPorter.Models
         }
         #endregion
 
+        #region Event
+        public Event GetEvent(int id)
+        {
+            Event _event = null;
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetEvent", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventid", id);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    _event = new Event();
+                    _event.ID = int.Parse(reader["ID"].ToString());
+                    _event.Title = reader["Title"].ToString();
+                    _event.Description = reader["Description"].ToString();
+                    _event.Thumbnail = reader["Thumbnail"].ToString();
+                    _event.StartDateAndTime = reader.GetDateTime(4);
+                    _event.EndDateAndTime = reader.GetDateTime(5);
+                    _event.Price = decimal.Parse(reader["Price"].ToString());
+                    _event.Longitude = float.Parse(reader["Longitude"].ToString());
+                    _event.Latitude = float.Parse(reader["Latitude"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return _event;
+        }
+
+        public List<Event> SearchEvents(string searchString)
+        {
+            List<Event> events = new List<Event>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspUserEventSearch", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@searchString", searchString);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //[Event].[Title], [Event].[Thumbnail], [Event].[Description], [Event].[ID] FROM[Event] WHERE[Event].[Title]
+                    Event _event = new Event();
+                    _event.ID = int.Parse(reader["ID"].ToString());
+                    _event.Title = reader["Title"].ToString();
+                    _event.Description = reader["Description"].ToString();
+                    _event.Thumbnail = reader["Thumbnail"].ToString();
+                    events.Add(_event);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return events;
+        }
+        #endregion
 
     }
 }

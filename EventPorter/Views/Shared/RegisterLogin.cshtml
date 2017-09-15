@@ -1,7 +1,7 @@
 ﻿@if (Session["name"] != null)
 {
-    <li>@Html.ActionLink(" Logout", "LogOut", "Account", new { @class = "glyphicon glyphicon-log-out" })</li>
-    <li>@Html.ActionLink(" " + @Session["name"].ToString().ToUpper(), "AdamProfile", "Account", new { @class = "glyphicon glyphicon-user" })</li>
+    <li>@Html.ActionLink(" Logout", "LogOut", "Account", null, new { @class = "glyphicon glyphicon-log-out" })</li>
+    <li>@Html.ActionLink(" " + @Session["name"].ToString().ToUpper(), "AdamProfile", "Account", null, new { @class = "glyphicon glyphicon-user" })</li>
 }
 else
 {  

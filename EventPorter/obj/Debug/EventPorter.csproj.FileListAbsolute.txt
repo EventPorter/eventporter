@@ -272,3 +272,4 @@ C:\Users\Gary\Documents\dbs\web_app\EventPorter\eventporter\EventPorter\bin\Syst
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\eventporter\EventPorter\bin\System.Web.Mvc.xml
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\eventporter\EventPorter\obj\Debug\EventPorter.dll
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\eventporter\EventPorter\obj\Debug\EventPorter.pdb
+C:\Users\Gary\Documents\dbs\web_app\EventPorter\eventporter\EventPorter\obj\Debug\EventPorter.csprojResolveAssemblyReference.cache

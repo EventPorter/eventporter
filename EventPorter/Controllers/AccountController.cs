@@ -95,7 +95,7 @@ namespace EventPorter.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            return View("Index", "Home");
+            return View(@"~/Views/Home/Index.cshtml");
         }
         //[HttpPost]
         //[AllowAnonymous]

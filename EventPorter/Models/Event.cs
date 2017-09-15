@@ -10,6 +10,9 @@ namespace EventPorter.Models
     {
         public int ID { get; set; }
         public string[] Gallery { get; set; }
+        public string Thumbnail { get; set; }
+        public float Longitude { get; set; }
+        public float Latitude { get; set; }
 
         [Required]
         [Display(Name = "Title")]
@@ -29,5 +32,10 @@ namespace EventPorter.Models
         [Display(Name = "End")]
         [DataType(DataType.DateTime)]
         public DateTime EndDateAndTime { get; set; }
+
+        [Required]
+        [Display(Name = "Price")]
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
     }
 }
