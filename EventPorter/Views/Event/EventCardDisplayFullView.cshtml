@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "EventCardDisplayFullView";
+}
+
+<h2>EventCardDisplayFullView</h2>
+
+@section Styles{
+    <link href="~/Content/EventCardDisplay.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="container">
+    <div class="row">
+        <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+                <div class="front">
+                </div>
+                <div class="back">
+                    <h4 class="panel-heading">Event Name</h4>
+                    <p class="text-info">Event description</p>
+                    <p class="center-block">Event location</p>
+                </div>
+            </div>
+        </div>
+        <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+                <div class="front">
+                </div>
+                <div class="back">
+                    <h4 class="panel-heading">Event Name</h4>
+                    <p class="text-info">Event description</p>
+                    <p class="center-block">Event location</p>
+                </div>
+            </div>
+        </div>
+        <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+                <div class="front">
+                </div>
+                <div class="back">
+                    <h4 class="panel-heading">Event Name</h4>
+                    <p class="text-info">Event description</p>
+                    <p class="center-block">Event location</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

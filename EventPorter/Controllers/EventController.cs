@@ -43,7 +43,15 @@ namespace EventPorter.Controllers
 
         public ActionResult EventCardDisplay()
         {
-            return PartialView();
+            return PartialView("EventCardDisplay");
         }
+
+        public ActionResult EventCardDisplayFullView()
+        {
+            
+            return View();
+        }
+
+        
     }
 }

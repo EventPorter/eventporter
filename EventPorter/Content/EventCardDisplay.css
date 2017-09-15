@@ -1,6 +1,7 @@
 ﻿/* entire container, keeps perspective */
 .flip-container {
     perspective: 1000px;
+    
 }
     /* flip the pane when hovered */
     .flip-container:hover .flipper, .flip-container.hover .flipper {
@@ -8,8 +9,10 @@
     }
 
 .flip-container, .front, .back {
-    width: 320px;
-    height: 480px;
+    width: 60%;
+    height: 300px;
+    
+    
 }
 
 /* flip speed goes here */
@@ -25,6 +28,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    border:solid;
 }
 
 /* front pane, placed above back */
@@ -32,9 +36,11 @@
     z-index: 2;
     /* for firefox 31 */
     transform: rotateY(0deg);
+    background-image: url(../Content/images/lil_porter.png);
 }
 
 /* back, initially hidden pane */
 .back {
     transform: rotateY(180deg);
+    background-color:white;
 }
