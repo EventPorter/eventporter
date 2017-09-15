@@ -1,8 +1,8 @@
 ﻿@if (Session["username"] != null)
 {
     <span>@Session["username"]</span>
-    <li>@Html.ActionLink("Logout", "LogOut", "Account", null)</li>
-    <li>@Html.ActionLink("Profile", "Profile", "Account", null)</li>
+    <li>@Html.ActionLink("Logout", "LogOut", "Account", new { @class = "glyphicon glyphicon-log-out" })</li>
+    <li>@Html.ActionLink("Profile", "AdamProfile", "Account", new { @class = "glyphicon glyphicon-user" })</li>
 }
 else
 {  

@@ -10,6 +10,7 @@ namespace EventPorter.Controllers
 {
     public class AccountController : Controller
     {
+        DAO dao = new DAO();
         // GET: Account
         public ActionResult Index()
         {
@@ -22,8 +23,18 @@ namespace EventPorter.Controllers
             int count = 0;
             if (ModelState.IsValid)
             {
-                //insert user into database here
-                return View("Login");
+                count = dao.Insert(user);
+                if (count == 1)
+                {
+                    ViewBag.Status = "User created";   
+                }
+                
+                else
+                {
+                    ViewBag.Status = "Error! " + dao.message;
+                }
+                return View("Status");
+
             }
             return View("Login");
 
@@ -39,6 +50,8 @@ namespace EventPorter.Controllers
         [HttpPost]
         public ActionResult Login (Adam user)
         {
+            ModelState.Remove("FirstName");
+            ModelState.Remove("LastName");
             ModelState.Remove("Email");
             ModelState.Remove("PassConf");
             ModelState.Remove("Location");
@@ -48,12 +61,43 @@ namespace EventPorter.Controllers
             ModelState.Remove("EventOwner");
             if (ModelState.IsValid)
             {
-                //insert into database here
-                return View("Status");
+                user.Username = dao.CheckLogin(user);
+                if (user.Username != null)
+                {
+                    if (user.UserType == Role.Staff)
+                    {
+                        Session["name"] = "Staff";
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else if (user.UserType == Role.User)
+                    {
+                        Session["name"] = user.UserId;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Status = "Error! " + dao.message;
+                        return View("Status");
+                    }
+
+                }
+                else
+                {
+                    ViewBag.Status = "Error! " + dao.message;
+                    return View("Status");
+                    
+                }
             }
             else return View(user);
 
 
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return View("../Home/Index");
         }
         //[HttpPost]
         //[AllowAnonymous]
@@ -61,17 +105,13 @@ namespace EventPorter.Controllers
         //{
         //    return View();
         //}
-        
+       
 
-        public ActionResult LogOut()
+        public ActionResult AdamInfo(int userID)
         {
-            Session.Clear();
-            return View("../Home/Index");
-        }
+            Adam currentAdam = dao.getInfo(userID);
 
-        public ActionResult AdamInfo()
-        {
-            return View();
+            return View(new Adam());
         }
 
         

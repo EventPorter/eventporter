@@ -9,6 +9,18 @@ namespace EventPorter.Models
     public class Adam
     {
         Random r = new Random();
+        [Display(Name = "First Name")]
+        [Required]
+        [RegularExpression("[a-zA-Z]+")]
+        public string Firstname { get; set; }
+        [Display(Name = "Last Name")]
+        [Required]
+        [RegularExpression("[a-zA-Z]+")]
+        public string Lastname { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime DateOfBirth { get; set; }
         [Display(Name = "Username")]
         [Required]
         [RegularExpression("[a-zA-Z]+")]
@@ -33,10 +45,6 @@ namespace EventPorter.Models
         public int UserId { get { return UserId; } set { UserId = r.Next(); } }
 
         public DateTime RegDate { get { return RegDate; } set { RegDate = DateTime.Now; } }
-
-        public int EventNo { get; set; }
-
-        public bool EventOwner { get; set; }
 
         public Role UserType { get; set; }
 
