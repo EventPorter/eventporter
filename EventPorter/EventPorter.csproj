@@ -110,6 +110,7 @@
     <Content Include="App_Data\Data_log.ldf">
       <DependentUpon>Data.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\Comments.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -250,6 +251,7 @@
     <Compile Include="App_Start\SessionAuthenticationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoggedInAdamController.cs" />
@@ -261,6 +263,7 @@
     </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Role.cs" />
@@ -285,6 +288,7 @@
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Event\EventCardDisplay.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
