@@ -6,9 +6,9 @@ using System.Web;
 
 namespace EventPorter.Models
 {
-    public class Adam
+    public class User
     {
-        Random r = new Random();
+        //Random r = new Random();
         [Display(Name = "First Name")]
         [Required]
         [RegularExpression("[a-zA-Z]+")]
@@ -38,13 +38,14 @@ namespace EventPorter.Models
         [StringLength(50, ErrorMessage = "Password must be at least 7 characters in length", MinimumLength = 7)]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string PassConf { get; set; }
-        [Required]
+        
+
         public string Location { get; set; }
 
         //auto-set vairables for site logic are below
-        public int UserId { get { return UserId; } set { UserId = r.Next(); } }
+        public int UserId { get; set; }
 
-        public DateTime RegDate { get { return RegDate; } set { RegDate = DateTime.Now; } }
+        public DateTime RegDate { get; set; }
 
         public Role UserType { get; set; }
 

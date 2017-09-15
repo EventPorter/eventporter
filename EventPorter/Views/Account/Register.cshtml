@@ -1,4 +1,4 @@
-﻿@model EventPorter.Models.Adam
+﻿@model EventPorter.Models.User
 @{
     ViewBag.Title = "Register";
 }
@@ -10,40 +10,54 @@
 <br />
 <div class="container">
     <h2 class="text-info">Register</h2>
-    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-group" }))
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-group" }))
     {
-        @Html.ValidationSummary(false, "", new { @class = "error" })
+        @*@Html.ValidationSummary(false, "", new { @class = "error" })*@
         <p>
             @Html.LabelFor(a => a.Firstname, new { @class = "form-text" })
             @Html.TextBoxFor(a => a.Firstname, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Firstname, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(a => a.Lastname, new { @class = "form-text" })
             @Html.TextBoxFor(a => a.Lastname, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Lastname, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(a=>a.DateOfBirth, new { @class="form-text"})
-            @Html.EditorFor(a=>a.DateOfBirth, new { @clas="form-control"})
+            @Html.EditorFor(a => a.DateOfBirth, new { @clas = "form-control" })
+            @Html.ValidationMessageFor(a => a.DateOfBirth, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(a => a.Username, new { @class = "form-text" })
             @Html.TextBoxFor(a => a.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Username, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(a => a.Email, new { @class = "form-text" })
             <small class="form-text text-muted">We'll keep your email safe and <strong>private</strong></small>
             @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(a => a.Password, new { @class = "form-text" })
             <small class="form-text text-muted">Passwords must between 7 and 50 characters in length</small>
 
-            @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
+            @*@Html.TextBoxFor(a => a.Password, new { @class = "form-control" })*@
+            @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(a => a.PassConf, new { @class = "form-text" })
-            @Html.TextBoxFor(a => a.PassConf, new { @class = "form-control" })
+            @*@Html.TextBoxFor(a => a.PassConf, new { @class = "form-control" })*@
+            @Html.PasswordFor(a => a.PassConf, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.PassConf, "", new { @class = "text-danger" })
         </p>
+        @*<p>
+            @Html.LabelFor(a => a.UserType, new { @class="form-text" })
+            @Html.EnumDropDownListFor(a => a.UserType,
+                            new { @class = "form-control" })
+        </p>*@
         <p>
             <input id="Submit1" type="submit" value="Submit" class="btn" />
             <input id="Reset1" type="reset" value="Clear" class="btn" />

@@ -1,6 +1,6 @@
-﻿@model EventPorter.Models.Adam
+﻿@model EventPorter.Models.User
 @{ 
-    ViewBag.Title = "Adam Login";
+    ViewBag.Title = "User Login";
 }
 
 @section Styles {
@@ -9,6 +9,7 @@
 
 <br/>
 <div class="container">
+    <p class="text-danger">@ViewBag.Status</p>
     <h2 class="text-info">Login</h2>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-group" }))
     {

@@ -10,32 +10,13 @@
 @section Scripts {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#startDate').datetimepicker({
-                defaultDate: new Date(),
-                format: 'DD/MM/YYYY HH:mm'
-            });
-            $('#endDate').datetimepicker({
-                defaultDate: new Date(),
-                format: 'DD/MM/YYYY HH:mm'
-            });
-           
-            $("#startDate").on("dp.change", function (e) {
-                $('#endDate').data("DateTimePicker").minDate(e.date);
-            });
-            $("#endDate").on("dp.change", function (e) {
-                $('#startDate').data("DateTimePicker").maxDate(e.date);
-            });
-        });
-    </script>
+    <script type="text/javascript" src="~/Scripts/SiteScripts/EventDateTimePicker.js"></script>
 }
 
-@*@if (Session["username"] == null)
-    {
-        Response.Redirect(Url.Action("Login", "Account"));
-    }*@
+@if (Session["name"] == null)
+{
+    Response.Redirect(Url.Action("Login", "Account"));
+}
 
 <div class="container-fluid">
     <div id="create-form" class="container">

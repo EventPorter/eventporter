@@ -106,6 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Data.mdf" />
+    <Content Include="App_Data\Data_log.ldf">
+      <DependentUpon>Data.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -237,6 +241,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\SiteScripts\EventDateTimePicker.js" />
     <Content Include="Scripts\SiteScripts\SearchScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -254,7 +259,7 @@
     <Compile Include="LoginCallback.ashx.cs">
       <DependentUpon>LoginCallback.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Adam.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\Event.cs" />
@@ -287,9 +292,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
