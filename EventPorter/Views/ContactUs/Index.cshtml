@@ -1,0 +1,29 @@
+﻿
+@model EventPorter.Models.ContactUs
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Contact Us</h2>
+<h3>Use the form below to send us any comments or queries you may have</h3>
+@using (Html.BeginForm("Comments", "ContactUs", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "error" })
+    <p>
+        @Html.LabelFor(c => c.FirstName)
+        @Html.TextBoxFor(c => c.FirstName)<span> (Required)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(c => c.Email)
+        @Html.TextBoxFor(c => c.Email)<span> (Required)</span>
+    </p>
+    <p>
+        @Html.LabelFor(c => c.Comments)
+        @Html.TextAreaFor(c => c.Comments, new { @rows = 6, @cols = 60 })<span> (Required)</span>
+    </p>
+    <input type="submit" value="Submit" />
+
+}
+
+
