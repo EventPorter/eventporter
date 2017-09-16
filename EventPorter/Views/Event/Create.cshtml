@@ -11,6 +11,30 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="~/Scripts/SiteScripts/EventDateTimePicker.js"></script>
+
+
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAZGYfMvJydZwbZ4XgK6iibAZJBuPqP9Gw"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                var geocoder = new google.maps.Geocoder();
+                var loc = document.getElementById('location_input').value;
+                var res = document.getElementById('location_result');
+                geocoder.geocode({ 'address': loc }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                        document.getElementById('latitude').value = parseFloat(latitude);
+                        document.getElementById('longitude').value = parseFloat(longitude);
+                        res.innerHTML = "Lat: " + latitude + " Lng: " + longitude;
+                    } 
+                });
+            });
+        });
+
+    </script>
 }
 
 @if (Session["name"] == null)
@@ -35,6 +59,11 @@
                 @Html.ValidationMessageFor(e => e.Description, "", new { @class = "text-danger" })
             </p>
             <p>
+                @Html.LabelFor(e => e.Price)<br />
+                @Html.TextAreaFor(e => e.Price, new { @class = "form-control", placeholder = "Cost..." })
+                @Html.ValidationMessageFor(e => e.Price, "", new { @class = "text-danger" })
+            </p>
+            <p>
                 <div class="form-group">
                     @Html.LabelFor(e => e.StartDateAndTime)<br />
                     <div class="input-group date" id="startDate">
@@ -56,9 +85,19 @@
                     </div>
                 </div>
             </p>
+            //Location
+            <p>
+                @Html.Label("Location")
+                <input id="location_input" type="text" />
+                <input id="btn" type="button" value="Get Co-ordinates" />
+                @*<p id="location_result"></p>*@
+            </p>
             <p>
                 <input type="file" name="images" multiple />
             </p>
+
+            @Html.HiddenFor(e => e.Latitude, new { id = "latitude" })
+            @Html.HiddenFor(e => e.Longitude, new { id = "longitude" })
             <p>
                 <br />
                 <input id="Submit1" type="submit" value="Submit" />

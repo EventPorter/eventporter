@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@    
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/styles/Site.css" rel="stylesheet" type="text/css" />
     @RenderSection("Styles", false)
 
     <!-- Google Font -->
@@ -29,7 +30,7 @@
 <body>
 @*      <div class="navbar navbar-inverse navbar-static-top">*@
     <div id="site-navbar" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -38,7 +39,8 @@
                 </button>
 
                 @*PLACEHOLDER: REMOVE THIS BADASS ADAM AT SOME POINT*@
-                <img src="~/Content/images/lil_porter.png" alt="big P" class="navbar-brand" />
+                @*<img src="~/Content/images/lil_porter.png" alt="big P" class="navbar-brand" />*@
+                <img src="~/Content/logo.png" alt="Event Porter Logo" class="navbar-brand" />
                 @*-------------------------------*@
 
                 @Html.ActionLink("EVENT PORTER", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -51,10 +53,11 @@
                         <li>@Html.ActionLink("Something 3", "Index", "Home", new { area = "" })</li>
                     </ul>*@
                 <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink(" Create", "Create", "Event", null, new { @class = "glyphicon glyphicon-plus-sign" })</li>
                     @RenderPage("RegisterLogin.cshtml")
                 </ul>
             </div>
-        </div>
+        </div> 
     </div>
 
     @*<div id="renderbody_wrapper" class="container-fluid body-content">*@

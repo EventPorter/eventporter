@@ -22,6 +22,7 @@ namespace EventPorter.Controllers
         {
             int count = 0;
             user.RegDate = DateTime.Now;
+            user.UserType = Role.User;
             if (ModelState.IsValid)
             {
                 count = dao.Insert(user);
@@ -72,6 +73,7 @@ namespace EventPorter.Controllers
                     else if (userCheck.UserType == Role.User)
                     {
                         Session["name"] = userCheck.Username;
+                        Session["id"] = userCheck.UserId;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -95,7 +97,8 @@ namespace EventPorter.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            return View("Index", "Home");
+            //return View(@"~/Views/Home/Index.cshtml");
+            return RedirectToAction("Index", "Home");
         }
         //[HttpPost]
         //[AllowAnonymous]
@@ -105,9 +108,9 @@ namespace EventPorter.Controllers
         //}
        
 
-        public ActionResult AdamInfo(int userID)
+        public ActionResult AdamInfo()
         {
-            User currentAdam = dao.GetUserInfo(userID);
+            User currentAdam = dao.GetUserInfo(Session["name"].ToString());
 
             return View(currentAdam);
         }
@@ -133,7 +136,15 @@ namespace EventPorter.Controllers
 
         public ActionResult AdamProfile()
         {
-            return View();
+            //  Should only see this page if logged in
+            if(Session["id"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            //  Get the details of the currently logged in user using their username from the Session
+            User currentUser = dao.GetUserInfo(Session["name"].ToString());
+            return View(currentUser);
         }
 
         public ActionResult Help()

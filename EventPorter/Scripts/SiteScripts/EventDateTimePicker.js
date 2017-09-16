@@ -4,6 +4,7 @@
         format: 'DD/MM/YYYY HH:mm'
     });
     $('#endDate').datetimepicker({
+        defaultDate: new Date(),
         format: 'DD/MM/YYYY HH:mm'
     });
            

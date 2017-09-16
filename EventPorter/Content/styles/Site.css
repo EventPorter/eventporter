@@ -1,0 +1,132 @@
+﻿body {
+    margin-top: 51px;
+    margin-bottom: 80px;
+    background-color: #f7f7f7;
+    font-family: 'Raleway', sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/*#renderbody_wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 200px; /*stop footer overlapping/
+}*/
+
+/*#footer {
+    position: absolute;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-top: 1px solid black;
+    background-color: #8b9dc3;
+}*/
+
+.footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    color: white;
+    text-align: center;
+    background-color: #7532e5;
+    padding-top: 20px;
+    /*box-shadow: 0 -10px 50px #262626;*/
+    box-shadow: 0 -10px 30px darkgrey;
+}
+
+.footer a {
+    display:inline;
+    color: white;
+    padding: 10px;
+    text-shadow: 2px 1px 1px black;
+}
+
+.footer a:hover {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 200px; /*stop overlapping footer
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+/*The top navbar*/
+.navbar.navbar-inverse.navbar-static-top.navbar-inverse {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: 0 10px 25px darkgrey;
+}
+
+.navbar-inverse {
+    border-bottom: 3px solid #8c69e2;
+    background-color: #ffffff;
+}
+
+.container > .navbar-header > a {
+    color: black;
+    font-weight: bold;
+}
+
+/*.navbar-inverse .navbar-brand{
+    color: yellow;
+}*/
+
+/*Title in navbar*/
+.navbar-inverse .navbar-brand:hover {
+    color: red;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #2b2b2b;
+    font-size: 120%;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: red;
+}
+
+/*make menu collapse sooner*/
+/*@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+        .navbar-collapse.collapse.in {
+            display: block !important;
+        }
+
+    .navbar-header .collapse, .navbar-toggle {
+        display: block !important;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+}*/
+
+/*footer link text colour*/
+/*.nav-pills li a {
+    color: white;
+}*/
+
+/*footer link on hover*/
+/*.nav-pills li a:hover {
+    background-color: #dfe3ee;
+    color: black;
+}*/

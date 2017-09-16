@@ -1,0 +1,144 @@
+﻿/***************CSS for Event Page***************/
+.event_attendee_pic {
+    width: 50px;
+    height: 50px;
+}
+
+.remove-padding-left-right {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*#event_icon {
+    padding: 5px;
+    width: 130px;
+    height: 130px;
+    border: 1px solid #808080;
+}*/
+
+#event-title{
+    text-align: center;
+}
+
+#event-owner{
+    margin-bottom: 30px;
+    /*box-shadow: 0 0 15px darkgrey;*/
+    padding-bottom: 10px;
+}
+
+.details_block {
+    padding: 10px;
+}
+
+.details_block .row {
+    margin-bottom: 20px;
+}
+
+.details_block p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+
+.details_block img {
+    width: 300px;
+    height: 200px;
+}
+
+.details_block_img_left {
+    float: left;
+    margin-right: 10px;
+}
+
+.details_block_img_right {
+    float: right;
+    margin-left: 10px;
+}
+
+/*.details_block_img_full {
+    padding: 0 30px 0 30px;
+}*/
+
+.details_block_img_full img {
+    height: auto;
+    width: 100%;
+}
+
+.carousel-inner{
+    max-height: 5%;
+}
+
+.carousel-inner > .item > img {
+    height: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-caption h3 {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.carousel-caption p {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.jumbotron {
+    background-color: #f7f7f7;
+    position: relative;
+    top: -50px;
+    border-radius: 20px;
+    margin-bottom: -60px;
+    box-shadow: 0 0 80px #272727;
+}
+
+.jumbotron h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.jumbotron p {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.gallery-shadow {
+    box-shadow: 0 10px 50px #262626;
+}
+
+#event-content{
+    margin-top: 80px;
+    margin-bottom: 120px;]
+}
+
+#buy-button {
+    background-color: #e12d2d;
+    box-shadow: 0 0 15px pink;
+    border: 1px solid darkgrey;
+}
+
+#buy-button:hover {
+    box-shadow: 0 0 15px black;
+    background-color: #f85555;
+}
+
+#description{
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 20px purple;
+    min-height: 300px;
+}
+/*      Event Create       */
+#create-form {
+    padding-left: 20%;
+}
+
+#create-form h2{
+    margin-left: 11%;
+}
+
+.create-title{
+}
+
+.create-description{
+    width: 400px;
+    height: 500px;
+    min-height: 200px;
+    resize: none;
+}
