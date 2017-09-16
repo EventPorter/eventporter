@@ -16,9 +16,13 @@
     border: 1px solid #808080;
 }*/
 
+#event-title{
+    text-align: center;
+}
+
 #event-owner{
     margin-bottom: 30px;
-    box-shadow: 0 0 15px darkgrey;
+    /*box-shadow: 0 0 15px darkgrey;*/
     padding-bottom: 10px;
 }
 
@@ -117,7 +121,7 @@
 #description{
     background-color: white;
     padding: 20px;
-    box-shadow: 0 0 20px darkgrey;
+    box-shadow: 0 0 20px purple;
     min-height: 300px;
 }
 /*      Event Create       */
