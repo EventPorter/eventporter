@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [uspInsertEvent]
-	@creator int,
+	@creatorName nvarchar(20),
 	@title nvarchar(255),
 	@description nvarchar(1500),
 	@startdateandtime datetime,
@@ -9,5 +9,5 @@
 	@longitude float,
 	@latitude float
 AS
-	INSERT INTO [Event] ([CreatorID], [Title], [Description], [StartDateAndTime], [EndDateAndTime], [Price], [Thumbnail], [Longitude], [Latitude])
-				VALUES (@creator, @title, @description, @startdateandtime, @enddateandtime, @price, @thumbnail, @longitude, @latitude);
+	INSERT INTO [Event] ([CreatorUserName], [Title], [Description], [StartDateAndTime], [EndDateAndTime], [Price], [Thumbnail], [Longitude], [Latitude])
+				VALUES (@creatorName, @title, @description, @startdateandtime, @enddateandtime, @price, @thumbnail, @longitude, @latitude);

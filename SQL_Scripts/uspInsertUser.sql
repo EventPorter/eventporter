@@ -2,7 +2,7 @@
 	@firstname nvarchar(55),
 	@lastname nvarchar(55),
 	@username nvarchar(20),
-	@email nvarchar(55),
+	@email nvarchar(65),
 	@dob datetime,
 	@regDate datetime,
 	@userType int,
