@@ -108,7 +108,7 @@ namespace EventPorter.Models
             return result;
         }
 
-        public User GetUserInfo(int userID)
+        public User GetUserInfo(string username)
         {
             User user = null;
             SqlCommand cmd;
@@ -117,7 +117,7 @@ namespace EventPorter.Models
             cmd = new SqlCommand("uspGetUserInfo", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@id", user.UserId);
+            cmd.Parameters.AddWithValue("@username", username);
             try
             {
                 conn.Open();
@@ -125,16 +125,15 @@ namespace EventPorter.Models
                 while (reader.Read())
                 {
                     user = new User();
-                    user.UserId = userID;
+                    user.Username = username;
+                    user.UserId = int.Parse(reader["ID"].ToString());
                     user.Firstname = reader["FirstName"].ToString();
                     user.Lastname = reader["LastName"].ToString();
-                    user.Username = reader["UserName"].ToString();
                     user.Email = reader["Email"].ToString();
                     user.DateOfBirth = reader.GetDateTime(4);
                     user.RegDate = reader.GetDateTime(5);
                     user.Location = reader["Location"].ToString();
-                    int type = int.Parse(reader["UserType"].ToString());
-                    user.UserType = (Role)type;
+                    user.UserType = (Role)int.Parse(reader["UserType"].ToString());
                 }
             }
             catch (SqlException ex)

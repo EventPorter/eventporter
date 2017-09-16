@@ -4,7 +4,7 @@
     [LastName]         NVARCHAR (55)  NOT NULL,
     [DOB]              DATETIME       NOT NULL,
     [Email]            NVARCHAR (55)  NOT NULL,
-    [UserName]         NVARCHAR (20)  NOT NULL,
+    [UserName]         NVARCHAR (20)  NOT NULL UNIQUE,
     [Password]         NVARCHAR (255) NOT NULL,
     [UserType]         INT            NOT NULL,
     [RegistrationDate] DATETIME       NOT NULL,
