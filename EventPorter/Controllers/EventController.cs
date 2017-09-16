@@ -10,15 +10,30 @@ namespace EventPorter.Controllers
 {
     public class EventController : Controller
     {
+        DAO dao = new DAO();
+
         // List of all events
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("BrowseEvents");
         }
 
-        public ActionResult Show()
+        public ActionResult BrowseEvents()
         {
             return View();
+        }
+        
+        public ActionResult Browse(int id)
+        {
+            Event requestedEvent = dao.GetEvent(id);
+            if(requestedEvent == null)
+                return View(@"~/Views/Home/Index.cshtml");
+            return View("Details", requestedEvent);
+        }
+        
+        public ActionResult Details(Event e)
+        {
+            return View(e);
         }
 
         public ActionResult Create()
@@ -31,23 +46,39 @@ namespace EventPorter.Controllers
         {
             if (ModelState.IsValid)
             {
-                Dictionary<string, string> bet = new Dictionary<string, string>();
-                bet["title"] = newEvent.Title;
-                bet["description"] = newEvent.Description;
-                bet["startdatetime"] = newEvent.StartDateAndTime.ToString();
-                bet["enddatetime"] = newEvent.EndDateAndTime.ToString();
-                string result = string.Empty;
-                foreach (HttpPostedFileBase image in images)
+                if(Session["id"] != null)
                 {
-                    //return new FileStreamResult(image.InputStream, image.ContentType);
-
-                    result += image != null ? image.FileName : "null";
-                    //image.SaveAs((Server.MapPath("~/Event/id/Images/" + image.FileName)));
+                    newEvent.CreatorUserName = Session["name"].ToString();
+                    //newEvent.Latitude = 53.341753f;
+                    //newEvent.Longitude = -6.2672377f;
+                    //newEvent.Price = 0;
+                    newEvent.Thumbnail = "";
+                    int count = dao.Insert(newEvent);
+                    if (count > 0)
+                        return View("Details", newEvent);
+                    else
+                    {
+                        ViewBag.Message = dao.message;
+                        return View(newEvent);
+                    }
                 }
-                bet["images"] = result;
-                return Json(bet);
+                //Dictionary<string, string> bet = new Dictionary<string, string>();
+                //bet["title"] = newEvent.Title;
+                //bet["description"] = newEvent.Description;
+                //bet["startdatetime"] = newEvent.StartDateAndTime.ToString();
+                //bet["enddatetime"] = newEvent.EndDateAndTime.ToString();
+                //string result = string.Empty;
+                //foreach (HttpPostedFileBase image in images)
+                //{
+                //    //return new FileStreamResult(image.InputStream, image.ContentType);
+
+                //    result += image != null ? image.FileName : "null";
+                //    //image.SaveAs((Server.MapPath("~/Event/id/Images/" + image.FileName)));
+                //}
+                //bet["images"] = result;
+                //return Json(bet);
             }
-            return View("Create");
+            return View(newEvent);
         }
 
         public ActionResult EventCardDisplay(int userID)

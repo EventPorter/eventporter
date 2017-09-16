@@ -29,7 +29,7 @@
 <body>
 @*      <div class="navbar navbar-inverse navbar-static-top">*@
     <div id="site-navbar" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -51,6 +51,7 @@
                         <li>@Html.ActionLink("Something 3", "Index", "Home", new { area = "" })</li>
                     </ul>*@
                 <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink(" Create", "Create", "Event", null, new { @class = "glyphicon glyphicon-plus-sign" })</li>
                     @RenderPage("RegisterLogin.cshtml")
                 </ul>
             </div>

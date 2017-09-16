@@ -43,21 +43,40 @@
     max-width: 356px;
 }
 
-.input-group{
+#search-bar{
     width: 36%;
-    max-width:450px;
+    max-width:400px;
     z-index: 2000;
 }
 
 .relative-searchbar {
     position: relative;
     top: -40px;
-    left: 35%;
+    left: 33%;
 }
 
 .fix-searchbar {
     position: fixed;
     top: 8px;
-    left: 35.4%;
+    left: 33%;
     /*box-shadow: 0 0 10px black;*/
+}
+
+/*make menu collapse sooner*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+        .navbar-collapse.collapse.in {
+            display: block !important;
+        }
+
+    .navbar-header .collapse, .navbar-toggle {
+        display: block !important;
+    }
+
+    .navbar-header {
+        float: none;
+    }
 }

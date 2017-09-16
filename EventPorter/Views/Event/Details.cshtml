@@ -1,4 +1,4 @@
-﻿
+﻿@model EventPorter.Models.Event
 @{
     ViewBag.Title = "Event";
 }
@@ -15,7 +15,7 @@
 
     START OF IMAGE CAROUSEL
 *@
-@if (true)
+@if (Model.Gallery != null)
 {
     <div class="container-fluid remove-padding-left-right gallery-shadow">
         <div id="event_gallery" class="carousel slide" data-ride="carousel">
@@ -104,11 +104,11 @@
         @*
             <h1>@Model.Title</h1>
         *@
-        <h1>Great Title! Superb 5/5 Would Read Again! (Event Title)</h1>
+        <h1>@Model.Title</h1>
         @*
             <p>@Model.Description</p>
         *@
-        <p>What an event! Must see! Wow! Should go! Much entertain! (Event Description)</p>
+        @*<p>@Model.Description</p>*@
     </div>
 </div>
 @*
@@ -123,7 +123,7 @@
                 <div id="event-owner" class="row col-xs-12">
                     <div class="row text-center">
                         <h5>
-                            Creator Nickname
+                            @Model.CreatorUserName
                         </h5>
                     </div>
                     <div class="row text-center">                               
@@ -182,16 +182,9 @@
                     Pure Text Block
                 *@
                 <div class="row">
-                    <div class="col-md-12">
+                    <div id="description" class="col-md-12">
                         <p>
-                            Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu erstellen. Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in Spruch in die elektronische Schriftbearbeitung geschafft (bemerke, nahezu unverändert). Bekannt wurde es 1960, mit dem erscheinen von "Letraset", welches Passagen von Lorem Ipsum enhielt, so wie Desktop Software wie "Aldus PageMaker" - ebenfalls mit Lorem Ipsum.
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu erstellen. Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in Spruch in die elektronische Schriftbearbeitung geschafft (bemerke, nahezu unverändert). Bekannt wurde es 1960, mit dem erscheinen von "Letraset", welches Passagen von Lorem Ipsum enhielt, so wie Desktop Software wie "Aldus PageMaker" - ebenfalls mit Lorem Ipsum.
+                            @Model.Description
                         </p>
                     </div>
                 </div>
@@ -245,11 +238,12 @@
                 @*
                     @Model.DateAndTime.GetTime()
                 *@
-                <p>Time: 00:00</p>
                 @*
                     @Model.DateAndTime.GetSimpleDate()
                 *@
-                <p>Date: 25/12/2017</p>
+                <p>Starting: @Model.StartDateAndTime.ToShortDateString()  @Model.StartDateAndTime.ToShortTimeString()</p>
+                <p>Ending: @Model.EndDateAndTime.ToShortDateString()  @Model.EndDateAndTime.ToShortTimeString()</p>
+                <p></p>
                 @*
                     @Model.Cost
                     @if(Model.Cost == 0){
@@ -259,7 +253,14 @@
                     }
 
                 *@
-                <p>Ticket Price: &euro;100</p>
+                @{ 
+                    string price = "Free!";
+                }
+                @if (Model.Price != 0)
+                {
+                    price = "&euro; " + Model.Price.ToString();
+                }
+                <p>Ticket Price: @Html.Raw(price)</p>
                                     @*
                 @if(Model.Cost == 0){
                     <div class="btn-primary text-center">Attend</div>
@@ -267,7 +268,7 @@
                     <div class="btn-primary text-center">Buy Ticket</div>
                 }
                                     *@
-                <div id="buy-button" class="btn btn-primary text-center">Buy Ticket</div>
+                <div id="buy-button" class="btn btn-primary text-center">Add To Cart</div>
             </div>
         </div>
     </div>

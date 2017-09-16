@@ -279,7 +279,7 @@
     <Content Include="Views\Shared\RegisterLogin.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Event\Show.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Account\AdamProfile.cshtml" />
     <Content Include="Views\Account\Help.cshtml" />
@@ -289,6 +289,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Event\EventCardDisplay.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\Event\BrowseEvents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -9,6 +9,7 @@ namespace EventPorter.Models
     public class Event
     {
         public int ID { get; set; }
+        public string CreatorUserName { get; set; }
         public string[] Gallery { get; set; }
         public string Thumbnail { get; set; }
         public float Longitude { get; set; }

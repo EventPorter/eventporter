@@ -22,6 +22,7 @@ namespace EventPorter.Controllers
         {
             int count = 0;
             user.RegDate = DateTime.Now;
+            user.UserType = Role.User;
             if (ModelState.IsValid)
             {
                 count = dao.Insert(user);
@@ -72,6 +73,7 @@ namespace EventPorter.Controllers
                     else if (userCheck.UserType == Role.User)
                     {
                         Session["name"] = userCheck.Username;
+                        Session["id"] = userCheck.UserId;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -95,7 +97,8 @@ namespace EventPorter.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            return View(@"~/Views/Home/Index.cshtml");
+            //return View(@"~/Views/Home/Index.cshtml");
+            return RedirectToAction("Index", "Home");
         }
         //[HttpPost]
         //[AllowAnonymous]

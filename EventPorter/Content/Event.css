@@ -114,8 +114,14 @@
     background-color: #f85555;
 }
 
+#description{
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 20px darkgrey;
+    min-height: 300px;
+}
 /*      Event Create       */
-#create-form{
+#create-form {
     padding-left: 20%;
 }
 
