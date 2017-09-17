@@ -27,7 +27,7 @@ namespace EventPorter.Controllers
         {
             Event requestedEvent = dao.GetEvent(id);
             if(requestedEvent == null)
-                return View(@"~/Views/Home/Index.cshtml");
+                return RedirectToAction("Index", "Home");
             return View("Details", requestedEvent);
         }
         
