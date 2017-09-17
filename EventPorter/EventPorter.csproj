@@ -120,6 +120,7 @@
     <Content Include="Content\styles\Event.css" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\styles\EventCardDisplay.css" />
     <Content Include="Content\styles\Homepage.css" />
     <Content Include="Content\images\home_banner\cinema_banner-min.jpg" />
     <Content Include="Content\images\home_banner\concert_banner-min.jpg" />
