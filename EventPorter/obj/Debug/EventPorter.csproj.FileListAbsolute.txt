@@ -275,6 +275,5 @@ C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\b
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\bin\System.Web.Webpages.Razor.xml
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\bin\System.Web.Helpers.xml
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\bin\System.Web.Mvc.xml
-C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\obj\Debug\EventPorter.csprojResolveAssemblyReference.cache
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\obj\Debug\EventPorter.dll
 C:\Users\Gary\Documents\dbs\web_app\EventPorter\branch\eventporter\EventPorter\obj\Debug\EventPorter.pdb

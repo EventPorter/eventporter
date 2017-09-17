@@ -86,7 +86,7 @@
             });
         });
         $('#Events').on("click", function () {
-            $.get('@Url.Action("Show", "Event")', function (data) {
+            $.get('@Url.Action("Details", "Event")', function (data) {
                 $("#infoDiv").html(data);
             });
         });
