@@ -6,43 +6,41 @@
 <h2>EventCardDisplayFullView</h2>
 
 @section Styles{
-    <link href="~/Content/EventCardDisplay.css" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
+    <link href="~/Content/styles/EventCardDisplay.css" rel="stylesheet" type="text/css" />
 }
 
-<div class="container">
-    <div class="row">
-        <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-                <div class="front">
-                </div>
-                <div class="back">
-                    <h4 class="panel-heading">Event Name</h4>
-                    <p class="text-info">Event description</p>
-                    <p class="center-block">Event location</p>
-                </div>
-            </div>
-        </div>
-        <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-                <div class="front">
-                </div>
-                <div class="back">
-                    <h4 class="panel-heading">Event Name</h4>
-                    <p class="text-info">Event description</p>
-                    <p class="center-block">Event location</p>
-                </div>
-            </div>
-        </div>
-        <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-                <div class="front">
-                </div>
-                <div class="back">
-                    <h4 class="panel-heading">Event Name</h4>
-                    <p class="text-info">Event description</p>
-                    <p class="center-block">Event location</p>
+<div class="card-contain">
+    <div class="container">
+        <div class="row">
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="card front card-inverse" style="width: 20rem;">
+                        <img class="card-img-top img-responsive" src="~/Content/images/test_img2.jpg" alt="Card image cap">
+                        <div class="card-img-overlay">
+                            <h4 class="card-title text-center">Card title</h4>
+                            @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+                            @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card back" style="width: 20rem;">
+                        <div class="card-block">
+                            <h4 class="card-title">Card title</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+

@@ -120,6 +120,7 @@
     <Content Include="Content\styles\Event.css" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\styles\EventCardDisplay.css" />
     <Content Include="Content\styles\Homepage.css" />
     <Content Include="Content\images\home_banner\cinema_banner-min.jpg" />
     <Content Include="Content\images\home_banner\concert_banner-min.jpg" />
@@ -294,6 +295,7 @@
     <Content Include="Views\Event\BrowseEvents.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Event\EventCardDisplayFullView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

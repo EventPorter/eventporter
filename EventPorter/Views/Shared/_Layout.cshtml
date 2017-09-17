@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     
     <link rel="icon" href="@Url.Content("~/Content/favicon.ico")" />
+
     <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
     <script type="text/javascript">
         var webAuth = new auth0.WebAuth({
@@ -54,6 +55,7 @@
                     </ul>*@
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink(" Create", "Create", "Event", null, new { @class = "glyphicon glyphicon-plus-sign" })</li>
+                    @*renders the login/register/logout partial view*@ 
                     @RenderPage("RegisterLogin.cshtml")
                 </ul>
             </div>
