@@ -6,10 +6,18 @@
     .flip-container:hover .flipper, .flip-container.hover .flipper {
         transform: rotateY(180deg);
     }
+.card-contain {
+    margin-top: 10%;
+    margin-bottom:10%;
+    width: 100%;
 
+}
 .flip-container{
     width: 320px;
-    height: 480px;
+    min-height: 300px;
+    height: auto;
+    margin: 1%;
+   
 }
 
 /* flip speed goes here */
@@ -26,6 +34,8 @@
     top: 0;
     left: 0;
     box-shadow: 10px 10px 5px #da9cff;
+    display: inline-block;
+    width: 320px;
 }
 
 /* front pane, placed above back */
@@ -48,6 +58,9 @@
     border:solid;
 }*/
 
-.card-contain{
-    margin-top:5%;
+
+
+.description{
+    overflow: auto;
+    text-overflow: ellipsis;
 }
