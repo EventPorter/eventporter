@@ -57,7 +57,7 @@ body {
 .profile-Adammenu {
     margin-top: 30px;
     color: #93a3b5;
-    font-size: 14px;
+    
     font-weight: 400;
 }
 
@@ -71,7 +71,7 @@ body {
 
     .profile-Adammenu ul li a {
         color: #93a3b5;
-        font-size: 14px;
+        font-size: 24px;
         font-weight: 400;
         user-select: none;
         cursor: pointer;
