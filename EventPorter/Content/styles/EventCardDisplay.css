@@ -48,6 +48,7 @@
 /* back, initially hidden pane */
 .back {
     transform: rotateY(180deg);
+    margin-left:-30px
 }
 
 /*.eventcard {
