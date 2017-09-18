@@ -162,7 +162,7 @@ namespace EventPorter.Models
         public int Insert(Event newEvent)
         {
             //no of rows affected by insertion
-            int count = 0;
+            int id = -1;
             SqlCommand cmd;
             Connection();
             cmd = new SqlCommand("uspInsertEvent", conn);
@@ -183,7 +183,7 @@ namespace EventPorter.Models
             try
             {
                 conn.Open();
-                count = cmd.ExecuteNonQuery();
+                id = (int)cmd.ExecuteScalar();
             }
             catch (SqlException ex)
             {
@@ -193,7 +193,7 @@ namespace EventPorter.Models
             {
                 conn.Close();
             }
-            return count;
+            return id;
         }
 
         public Event GetEvent(int id)
@@ -318,6 +318,95 @@ namespace EventPorter.Models
                 conn.Close();
             }
             return events;
+        }
+        #endregion
+
+        #region Image
+        public int Insert(Image img)
+        {
+            int id = -1;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspInsertImage", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.AddWithValue("@filepath", img.FilePath);
+            try
+            {
+                conn.Open();
+                id = (int) cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return id;
+        }
+
+        public int Insert(EventImage eventImg)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspInsertEventImage", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventID", eventImg.EventID);
+            cmd.Parameters.AddWithValue("@imageID", eventImg.ImageID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public Image GetImage(int id)
+        {
+            Image img = null;
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetImage", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@imageID", id);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    img = new Image();
+                    img.FilePath = reader["FilePath"].ToString();
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return img;
         }
         #endregion
 

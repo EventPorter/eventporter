@@ -52,10 +52,37 @@ namespace EventPorter.Controllers
                     //newEvent.Latitude = 53.341753f;
                     //newEvent.Longitude = -6.2672377f;
                     //newEvent.Price = 0;
-                    newEvent.ThumbnailID = 1;
-                    int count = dao.Insert(newEvent);
-                    if (count > 0)
+                    newEvent.ThumbnailID = 0;
+                    newEvent.ID = dao.Insert(newEvent);
+                    if (newEvent.ID > -1)
+                    {
+                        int numImages = 1;
+                        foreach (HttpPostedFileBase image in images)
+                        {
+                            if(image != null && image.ContentType.Contains("image"))
+                            {
+                                string path = Server.MapPath(
+                                    string.Format("~/Content/images/event/" + newEvent.ID + "_" + numImages + Path.GetExtension(image.FileName)));
+                                image.SaveAs(path);
+
+                                int imgID = dao.Insert(new Image() { FilePath = path });
+                                if(imgID != -1)
+                                {
+                                    int count = dao.Insert(new EventImage() { EventID = newEvent.ID, ImageID = imgID });
+                                    if(count == 0)
+                                    {
+                                        //  do something?
+                                    }
+                                }
+                                else
+                                {
+                                    //  do something?
+                                }
+                                numImages++;
+                            }
+                        }
                         return View("Details", newEvent);
+                    }
                     else
                     {
                         ViewBag.Message = dao.message = "Error";
