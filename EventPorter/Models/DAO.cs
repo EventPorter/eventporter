@@ -319,6 +319,38 @@ namespace EventPorter.Models
             }
             return events;
         }
+
+        public int GetNoOfUserEvents(string username)
+        {
+            SqlCommand cmd;
+            SqlDataReader reader;
+            int count = -1;
+            Connection();
+            cmd = new SqlCommand("uspGetNoOfUserEvents", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@username", username);
+            try
+            {
+                conn.Open();
+                count = (int)cmd.ExecuteScalar();
+                
+
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
         #endregion
 
     }
