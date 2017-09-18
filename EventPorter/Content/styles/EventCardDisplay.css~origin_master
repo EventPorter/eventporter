@@ -1,18 +1,23 @@
 ﻿/* entire container, keeps perspective */
 .flip-container {
     perspective: 1000px;
-    
 }
     /* flip the pane when hovered */
     .flip-container:hover .flipper, .flip-container.hover .flipper {
         transform: rotateY(180deg);
     }
+.card-contain {
+    margin-top: 10%;
+    margin-bottom:10%;
+    width: 100%;
 
-.flip-container, .front, .back {
-    width: 60%;
-    height: 300px;
-    
-    
+}
+.flip-container{
+    width: 320px;
+    min-height: 300px;
+    height: auto;
+    margin: 1%;
+   
 }
 
 /* flip speed goes here */
@@ -28,7 +33,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    border:solid;
+    box-shadow: 10px 10px 5px #da9cff;
+    display: inline-block;
+    width: 320px;
 }
 
 /* front pane, placed above back */
@@ -36,11 +43,24 @@
     z-index: 2;
     /* for firefox 31 */
     transform: rotateY(0deg);
-    background-image: url(../Content/images/lil_porter.png);
 }
 
 /* back, initially hidden pane */
 .back {
     transform: rotateY(180deg);
-    background-color:white;
+}
+
+/*.eventcard {
+    box-shadow: 10px 10px 5px #da9cff;
+    margin-right: 5%;
+    max-height: 300px;
+    border-radius: 5%;
+    border:solid;
+}*/
+
+
+
+.description{
+    overflow: auto;
+    text-overflow: ellipsis;
 }

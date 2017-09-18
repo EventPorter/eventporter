@@ -43,22 +43,21 @@
     max-width: 356px;
 }
 
-#search-bar{
+#search-bar {
     width: 36%;
-    max-width:400px;
+    max-width: 400px;
     z-index: 2000;
+    left: 38%;
 }
 
 .relative-searchbar {
     position: relative;
     top: -40px;
-    left: 33%;
 }
 
 .fix-searchbar {
     position: fixed;
     top: 8px;
-    left: 33%;
     /*box-shadow: 0 0 10px black;*/
 }
 

@@ -4,12 +4,9 @@
 }
 @section Styles{
     <link href="~/Content/styles/Profile.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
-    <link href="~/Content/styles/EventCardDisplay.css" rel="stylesheet" type="text/css" />
 }
 
-
-<div class="container" id="profile-div">
+<div class="container">
     <div class="row">
     <h2 class="col-md-3">Profile</h2>
     </div>
@@ -42,7 +39,7 @@
                            <a class="glyphicon glyphicon-cog profile-Adammenu" id="Settings"> Settings</a>
                         </li>
                         <li>
-                           <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
+                            <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
                         </li>
                         <li>
                             <a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>
@@ -51,7 +48,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9" id="infoDiv">
+        <div class="col-md-8" id="infoDiv">
+
         </div>
         @*<div class="col-md-5">
                 <div class="profile-content">
@@ -83,14 +81,12 @@
             });
         });
         $('#Settings').on("click", function () {
-            var div = document.getElementById("profile-div")
             $.get('@Url.Action("Settings", "Account")', function (data) {
                 $("#infoDiv").html(data);
             });
-            
         });
         $('#Events').on("click", function () {
-            $.get('@Url.Action("UserEvents", "Event")', function (data) {
+            $.get('@Url.Action("Details", "Event")', function (data) {
                 $("#infoDiv").html(data);
             });
         });

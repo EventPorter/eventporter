@@ -27,7 +27,7 @@ namespace EventPorter.Controllers
         {
             Event requestedEvent = dao.GetEvent(id);
             if(requestedEvent == null)
-                return View(@"~/Views/Home/Index.cshtml");
+                return RedirectToAction("Index", "Home");
             return View("Details", requestedEvent);
         }
         
@@ -52,7 +52,7 @@ namespace EventPorter.Controllers
                     //newEvent.Latitude = 53.341753f;
                     //newEvent.Longitude = -6.2672377f;
                     //newEvent.Price = 0;
-                    newEvent.Thumbnail = "";
+                    newEvent.ThumbnailID = 1;
                     int count = dao.Insert(newEvent);
                     if (count > 0)
                         return View("Details", newEvent);
