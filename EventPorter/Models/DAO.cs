@@ -38,8 +38,8 @@ namespace EventPorter.Models
             cmd.Parameters.AddWithValue("@username", adam.Username.ToLower());
             cmd.Parameters.AddWithValue("@email", adam.Email.ToLower());
             cmd.Parameters.AddWithValue("@dob", adam.DateOfBirth);
-            //cmd.Parameters.AddWithValue("@userid", adam.UserId);
             cmd.Parameters.AddWithValue("@regDate", adam.RegDate);
+            cmd.Parameters.AddWithValue("@thumbnailID", 1);
             //cmd.Parameters.AddWithValue("@userType", adam.UserType);
             cmd.Parameters.AddWithValue("@userType", (int) adam.UserType);
             password = Crypto.HashPassword(adam.Password);
@@ -132,7 +132,7 @@ namespace EventPorter.Models
                     user.Email = reader["Email"].ToString();
                     user.DateOfBirth = reader.GetDateTime(4);
                     user.RegDate = reader.GetDateTime(5);
-                    user.Location = reader["Location"].ToString();
+                    //user.Location = reader["Location"].ToString();
                     user.UserType = (Role)int.Parse(reader["UserType"].ToString());
                 }
             }
@@ -174,8 +174,9 @@ namespace EventPorter.Models
             cmd.Parameters.AddWithValue("@description", newEvent.Description);
             cmd.Parameters.AddWithValue("@startdateandtime", newEvent.StartDateAndTime);
             cmd.Parameters.AddWithValue("@enddateandtime", newEvent.EndDateAndTime);
+            cmd.Parameters.AddWithValue("@thumbnailID", newEvent.ThumbnailID);
             cmd.Parameters.AddWithValue("@price", newEvent.Price);
-            cmd.Parameters.AddWithValue("@thumbnail", newEvent.Thumbnail);
+            cmd.Parameters.AddWithValue("@locationDesc", newEvent.LocationDesc);
             cmd.Parameters.AddWithValue("@longitude", newEvent.Longitude);
             cmd.Parameters.AddWithValue("@latitude", newEvent.Latitude);
 
@@ -216,7 +217,7 @@ namespace EventPorter.Models
                     _event.CreatorUserName = reader["CreatorUserName"].ToString();
                     _event.Title = reader["Title"].ToString();
                     _event.Description = reader["Description"].ToString();
-                    _event.Thumbnail = reader["Thumbnail"].ToString();
+                    _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
                     _event.StartDateAndTime = reader.GetDateTime(4);
                     _event.EndDateAndTime = reader.GetDateTime(5);
                     _event.Price = decimal.Parse(reader["Price"].ToString());
@@ -260,7 +261,7 @@ namespace EventPorter.Models
                     _event.ID = int.Parse(reader["ID"].ToString());
                     _event.Title = reader["Title"].ToString();
                     _event.Description = reader["Description"].ToString();
-                    _event.Thumbnail = reader["Thumbnail"].ToString();
+                    _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
                     events.Add(_event);
                 }
             }
@@ -300,7 +301,7 @@ namespace EventPorter.Models
                     _event.ID = int.Parse(reader["ID"].ToString());
                     _event.Title = reader["Title"].ToString();
                     _event.Description = reader["Description"].ToString();
-                    _event.Thumbnail = reader["Thumbnail"].ToString();
+                    _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
                     events.Add(_event);
                 }
             }

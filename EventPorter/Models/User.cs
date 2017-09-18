@@ -45,11 +45,10 @@ namespace EventPorter.Models
         //auto-set vairables for site logic are below
         public int UserId { get; set; }
 
+        public int ThumbnailID { get; set; }
+
         public DateTime RegDate { get; set; }
 
         public Role UserType { get; set; }
-
-
-
     }
 }

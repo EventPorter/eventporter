@@ -11,7 +11,8 @@ namespace EventPorter.Models
         public int ID { get; set; }
         public string CreatorUserName { get; set; }
         public string[] Gallery { get; set; }
-        public string Thumbnail { get; set; }
+        public int ThumbnailID { get; set; }
+        public string LocationDesc { get; set; }
         public float Longitude { get; set; }
         public float Latitude { get; set; }
 

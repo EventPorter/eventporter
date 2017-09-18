@@ -87,10 +87,11 @@
             </p>
             //Location
             <p>
-                @Html.Label("Location")
-                <input id="location_input" type="text" />
+                @Html.LabelFor(e => e.LocationDesc)
+                @Html.TextBoxFor(e => e.LocationDesc, new { @id = "location_input", @class = "form-control" })
+                @*<input id="location_input" type="text" />*@
                 <input id="btn" type="button" value="Get Co-ordinates" />
-                @*<p id="location_result"></p>*@
+                <p id="location_result"></p>
             </p>
             <p>
                 <input type="file" name="images" multiple />
