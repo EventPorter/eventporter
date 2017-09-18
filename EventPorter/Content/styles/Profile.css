@@ -61,6 +61,10 @@ body {
     font-weight: 400;
 }
 
+.profile-Adammenu nav {
+    display: block;
+}
+
 .profile-Adammenu ul li:last-child {
     border-bottom: none;
 }
@@ -104,4 +108,8 @@ body {
     padding: 20px;
     background: #fff;
     min-height: 460px;
+}
+
+.profile-container{
+    min-height:800px;
 }
