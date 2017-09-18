@@ -301,7 +301,7 @@ namespace EventPorter.Models
                     _event.ID = int.Parse(reader["ID"].ToString());
                     _event.Title = reader["Title"].ToString();
                     _event.Description = reader["Description"].ToString();
-                    _event.Thumbnail = reader["Thumbnail"].ToString();
+                    _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
                     events.Add(_event);
                 }
             }
