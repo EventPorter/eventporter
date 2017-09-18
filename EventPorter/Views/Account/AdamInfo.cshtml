@@ -4,14 +4,14 @@
 }
 
 <div class="container">
-    <div class="row">
+    <div class="row col-md-8">
         <h2 class="page-header">Your Information</h2>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h3 class="panel-heading">On public display</h3>
             <p class="text-left">@Html.LabelFor(u => u.Username) @Model.Username</p>
             <p class="text-left">@Html.LabelFor(u => u.Email) @Model.Email</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h3 class="panel-heading">Just for you</h3>
             <p class="text-left">@Html.LabelFor(u => u.Firstname) @Model.Firstname</p>
             <p class="text-left">@Html.LabelFor(u => u.Lastname) @Model.Lastname</p>
@@ -19,12 +19,13 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row col-md-8">
         <h2 class="page-header">Your Stats</h2>
-        <div class="col-md-12">
+        <div class="col-md-8">
             <h3 class="panel-heading">Event stats</h3>
-            <p class="text-left">Number of Events created: @ViewBag.Count</p>
-            <p class="text-left">Number of Events attending: </p>
+            
+            <p class="text-left text-info">Number of Events created: @ViewBag.Count</p>
+            <p class="text-left text-info">Number of Events attending: </p>
         </div>
         
     </div>
