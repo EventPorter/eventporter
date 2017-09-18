@@ -12,7 +12,7 @@ namespace EventPorter.Models
     public class DAO
     {
         SqlConnection conn;
-        public string message;
+        public string message { get; set; }
         
         
         //MAKE SURE THERE IS A VALID CONNECTION STRING IN THE WEBCONFIG FILE POINTING TO THE LOCAL DB
@@ -262,6 +262,46 @@ namespace EventPorter.Models
                     _event.Title = reader["Title"].ToString();
                     _event.Description = reader["Description"].ToString();
                     _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
+                    events.Add(_event);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return events;
+        }
+
+        public List<Event> SearchUserEvents(string userID)
+        {
+            List<Event> events = new List<Event>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetUserCreatedEvents", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@username", userID);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //[Event].[Title], [Event].[Thumbnail], [Event].[Description], [Event].[ID] FROM[Event] WHERE[Event].[Title]
+                    Event _event = new Event();
+                    _event.ID = int.Parse(reader["ID"].ToString());
+                    _event.Title = reader["Title"].ToString();
+                    _event.Description = reader["Description"].ToString();
+                    _event.Thumbnail = reader["Thumbnail"].ToString();
                     events.Add(_event);
                 }
             }

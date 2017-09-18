@@ -58,7 +58,7 @@ namespace EventPorter.Controllers
                         return View("Details", newEvent);
                     else
                     {
-                        ViewBag.Message = dao.message;
+                        ViewBag.Message = dao.message = "Error";
                         return View(newEvent);
                     }
                 }
@@ -80,16 +80,67 @@ namespace EventPorter.Controllers
             }
             return View(newEvent);
         }
+        public ActionResult UserEvents()
+        {
+            List<Event> userEvents = new List<Event>();
+            userEvents = dao.SearchUserEvents(Session["name"].ToString());
+            return PartialView(userEvents);
 
+        }
         public ActionResult EventCardDisplay()
         {
-            return PartialView("EventCardDisplay");
+            List<Event> events = new List<Event>();
+            Event e = dao.GetEvent(1);
+            Event e1 = dao.GetEvent(2);
+            Event e2 = dao.GetEvent(3);
+
+            events.Add(e);
+            events.Add(e1);
+            events.Add(e2);
+            events.Add(e);
+            events.Add(e1);
+            events.Add(e2);
+
+            List<Event> UserEventList = new List<Event>();
+            UserEventList.Add(e);
+            UserEventList = dao.SearchEvents("low");
+
+            if (Session["id"] == null)
+            {
+                return View(events);
+            }
+            else
+            {
+                return View(events);
+            }
         }
 
         public ActionResult EventCardDisplayFullView()
         {
-            
-            return View();
+            List<Event> events = new List<Event>();
+            Event e = dao.GetEvent(1);
+            Event e1 = dao.GetEvent(2);
+            Event e2 = dao.GetEvent(3);
+
+            events.Add(e);
+            events.Add(e1);
+            events.Add(e2);
+            events.Add(e);
+            events.Add(e1);
+            events.Add(e2);
+
+            List<Event> UserEventList = new List<Event>();
+            UserEventList.Add(e);
+            UserEventList = dao.SearchEvents("low");
+
+            if (Session["id"] == null)
+            {
+                return View(events);
+            }
+            else
+            {
+                return View(events);
+            }
         }
 
         
