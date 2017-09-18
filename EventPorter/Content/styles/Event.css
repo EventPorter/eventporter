@@ -123,6 +123,8 @@
     padding: 20px;
     box-shadow: 0 0 20px purple;
     min-height: 300px;
+    text-wrap: normal;
+    word-break: break-word;
 }
 /*      Event Create       */
 #create-form {
