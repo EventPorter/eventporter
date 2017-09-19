@@ -246,7 +246,7 @@ namespace EventPorter.Models
             SqlCommand cmd;
             SqlDataReader reader;
             Connection();
-            cmd = new SqlCommand("uspUserEventSearch", conn);
+            cmd = new SqlCommand("uspEventSearch", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@searchString", searchString);
