@@ -46,7 +46,7 @@
                 <img src="~/Content/logo.png" alt="Event Porter Logo" class="navbar-brand" />
                 @*-------------------------------*@
 
-                @Html.ActionLink("EVENT PORTER", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("EventPorter", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-collapse collapse">
@@ -76,13 +76,13 @@
             <div class="col-xs-12">
                 <row>
                     <div class="col-xs-4">
-                        <span><a href="/">&copy;@DateTime.Now.Year Event Yoke</a></span>
+                        <span><a href="/">&copy;@DateTime.Now.Year EventPorter</a></span>
                     </div>
                     <div class="col-xs-4">
-                        <span><a href="#">Terms of Service</a></span>
+                        @Html.ActionLink("Terms and Conditions", "Index","Terms And Conditions")@
                     </div>
                     <div class="col-xs-4">
-                        <span><a href="#">Privacy</a></span>
+                       @Html.ActionLink("Privacy Policy", "Index", "Privacy Policy")@
                     </div>
                 </row>
             </div>
