@@ -11,10 +11,21 @@ namespace EventPorter.Models
 {
     public class DAO
     {
+        private static DAO dao;
         SqlConnection conn;
         public string message { get; set; }
         
-        
+        private DAO()
+        {
+        }
+
+        public static DAO GetInstance()
+        {
+            if (dao == null)
+                dao = new DAO();
+            return dao;
+        }
+
         //MAKE SURE THERE IS A VALID CONNECTION STRING IN THE WEBCONFIG FILE POINTING TO THE LOCAL DB
         //Create a connection object
         public void Connection()
@@ -223,6 +234,7 @@ namespace EventPorter.Models
                     _event.Price = decimal.Parse(reader["Price"].ToString());
                     _event.Longitude = float.Parse(reader["Longitude"].ToString());
                     _event.Latitude = float.Parse(reader["Latitude"].ToString());
+                    _event.LocationDesc = reader["LocationDesc"].ToString();
                 }
             }
             catch (SqlException ex)
@@ -238,6 +250,33 @@ namespace EventPorter.Models
                 conn.Close();
             }
             return _event;
+        }
+
+        public int RemoveEvent(int eventID)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspRemoveEvent", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //cmd.Parameters.AddWithValue("@userID", userID);
+            cmd.Parameters.AddWithValue("@eventID", eventID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
         }
 
         public List<Event> SearchEvents(string searchString)
@@ -447,5 +486,153 @@ namespace EventPorter.Models
         }
         #endregion
 
+        #region Cart
+        public int Insert(CartItem item)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspAddToCart", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventID", item.EventID);
+            cmd.Parameters.AddWithValue("@imageID", item.UserID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public int Remove(CartItem item)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspRemoveItemFromCart", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", item.UserID);
+            cmd.Parameters.AddWithValue("@eventID", item.EventID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public int GetNumberOfItemsInCart(int userID)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspGetNumItemsInCart", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", userID);
+            try
+            {
+                conn.Open();
+                count = (int) cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public List<CartEvent> GetCartItemsUnconfirmed(int userID)
+        {
+            List<CartEvent> itemsInCart = new List<CartEvent>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetCartItems", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", userID);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //[Event].[Title], [Event].[Thumbnail], [Event].[Description], [Event].[ID] FROM[Event] WHERE[Event].[Title]
+                    CartEvent _event = new CartEvent();
+                    _event.ID = int.Parse(reader["ID"].ToString());
+                    _event.Title = reader["Title"].ToString();
+                    _event.Price = decimal.Parse(reader["Price"].ToString());
+                    itemsInCart.Add(_event);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return itemsInCart;
+        }
+
+        public int ConfirmCartItem(CartItem item)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspSetItemConfirmedStatus", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", item.UserID);
+            cmd.Parameters.AddWithValue("@eventID", item.EventID);
+            cmd.Parameters.AddWithValue("@confirmedStatus", (int) item.Confirmed);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+        #endregion
     }
 }
