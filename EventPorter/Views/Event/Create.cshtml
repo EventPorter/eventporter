@@ -119,10 +119,14 @@
                 <input type="file" name="images" accept="image/*" multiple/>
             </p>
 
-            @Html.HiddenFor(e => e.Latitude, new { id = "latitude" })
-            @Html.ValidationMessageFor(e => e.Latitude, "", new { @class = "text-danger" })
-            @Html.HiddenFor(e => e.Longitude, new { id = "longitude" })
-            @Html.ValidationMessageFor(e => e.Longitude, "", new { @class = "text-danger" })
+            <p>
+                @Html.HiddenFor(e => e.Latitude, new { id = "latitude" })
+                @Html.ValidationMessageFor(e => e.Latitude, "", new { @class = "text-danger" })
+            </p>
+            <p>
+                @Html.HiddenFor(e => e.Longitude, new { id = "longitude" })
+                @Html.ValidationMessageFor(e => e.Longitude, "", new { @class = "text-danger" })
+            </p>
             <p>
                 <br />
                 <input id="Submit1" type="button" value="Submit" />

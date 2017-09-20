@@ -120,7 +120,8 @@
 }
 
 #description {
-    background-color: white;
+    border: solid 1px black;
+    /*background-color: white;*/
     color: #202020;
     padding: 20px;
     border-radius: 25px;
