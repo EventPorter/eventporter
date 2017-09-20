@@ -10,12 +10,14 @@ html {
     min-height: 100%;
 }
 
+#eventporter_name{
+    font-variant: small-caps;
+}
 /*#renderbody_wrapper {
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 200px; /*stop footer overlapping/
 }*/
-
 /*#footer {
     position: absolute;
     padding-top: 10px;
@@ -23,7 +25,6 @@ html {
     border-top: 1px solid black;
     background-color: #8b9dc3;
 }*/
-
 .footer {
     bottom: 0;
     position: absolute;
@@ -31,7 +32,7 @@ html {
     height: 60px;
     color: white;
     text-align: center;
-    background-color: #7532e5;
+    background-color: #8c69e2;
     padding-top: 20px;
     /*box-shadow: 0 -10px 50px #262626;*/
     box-shadow: 0 -10px 30px darkgrey;
@@ -71,6 +72,11 @@ textarea {
     padding-left: 0;
     padding-right: 0;
     box-shadow: 0 10px 25px darkgrey;
+}
+
+#navbar_logo {
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .navbar-inverse {

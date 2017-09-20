@@ -115,6 +115,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\porter_female.JPG" />
+    <Content Include="Content\images\porter_male.JPG" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\styles\Cart.css" />
     <Content Include="Content\styles\Event.css" />
@@ -265,6 +267,8 @@
     <Compile Include="LoginCallback.ashx.cs">
       <DependentUpon>LoginCallback.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EventImage.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ContactUs.cs" />
@@ -306,7 +310,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\images\event\" />
+    <Folder Include="Content\images\user\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

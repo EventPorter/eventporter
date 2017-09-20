@@ -65,3 +65,29 @@
     overflow: auto;
     text-overflow: ellipsis;
 }
+
+#navbar_logo {
+    max-height: 40px;
+    max-width: 50px;
+}
+
+
+
+#site-navbar {
+    padding: 0;
+}
+
+    #site-navbar a {
+        font-size: 105%;
+    }
+
+    #site-navbar img {
+        margin-top: 10px;
+        max-height: 29px;
+        margin-right: 0;
+    }
+
+#eventporter_name {
+    padding-top: 15px;
+    font-size: 112%;
+}

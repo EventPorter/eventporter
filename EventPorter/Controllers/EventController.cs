@@ -26,8 +26,16 @@ namespace EventPorter.Controllers
         public ActionResult Browse(int id)
         {
             Event requestedEvent = dao.GetEvent(id);
+            //  Event not found in the database if null is returned
             if(requestedEvent == null)
+            {
+                //  Redirect back to home page
                 return RedirectToAction("Index", "Home");
+            }
+
+            //  Get event gallery images ( potentially be none, as optional )
+            requestedEvent.Gallery = dao.GetEventGalleryImages(id);
+
             return View("Details", requestedEvent);
         }
         
@@ -52,10 +60,38 @@ namespace EventPorter.Controllers
                     //newEvent.Latitude = 53.341753f;
                     //newEvent.Longitude = -6.2672377f;
                     //newEvent.Price = 0;
-                    newEvent.ThumbnailID = 1;
-                    int count = dao.Insert(newEvent);
-                    if (count > 0)
+                    newEvent.ThumbnailID = 0;
+                    newEvent.ID = dao.Insert(newEvent);
+                    if (newEvent.ID > -1)
+                    {
+                        int numImages = 1;
+                        foreach (HttpPostedFileBase image in images)
+                        {
+                            if(image != null && image.ContentType.Contains("image"))
+                            {
+                                string path = "~/Content/images/event/" + newEvent.ID + "_" + numImages + Path.GetExtension(image.FileName).ToLower();
+                                image.SaveAs(Server.MapPath(path));
+                                Image tmpImg = new Image() { FilePath = path };
+                                int imgID = dao.Insert(tmpImg);
+                                if(imgID != -1)
+                                {
+                                    tmpImg.ID = imgID;
+                                    int count = dao.Insert(new EventImage() { EventID = newEvent.ID, ImageID = imgID });
+                                    if(count != 0)
+                                    {
+                                        //  do something?
+                                        newEvent.Gallery.Add(tmpImg);
+                                    }
+                                }
+                                else
+                                {
+                                    //  do something?
+                                }
+                                numImages++;
+                            }
+                        }
                         return View("Details", newEvent);
+                    }
                     else
                     {
                         ViewBag.Message = dao.message = "Error";
