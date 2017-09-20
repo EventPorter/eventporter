@@ -26,8 +26,16 @@ namespace EventPorter.Controllers
         public ActionResult Browse(int id)
         {
             Event requestedEvent = dao.GetEvent(id);
+            //  Event not found in the database if null is returned
             if(requestedEvent == null)
+            {
+                //  Redirect back to home page
                 return RedirectToAction("Index", "Home");
+            }
+
+            //  Get event gallery images ( potentially be none, as optional )
+            requestedEvent.Gallery = dao.GetEventGalleryImages(id);
+
             return View("Details", requestedEvent);
         }
         
@@ -61,17 +69,18 @@ namespace EventPorter.Controllers
                         {
                             if(image != null && image.ContentType.Contains("image"))
                             {
-                                string path = Server.MapPath(
-                                    string.Format("~/Content/images/event/" + newEvent.ID + "_" + numImages + Path.GetExtension(image.FileName)));
-                                image.SaveAs(path);
-
-                                int imgID = dao.Insert(new Image() { FilePath = path });
+                                string path = "~/Content/images/event/" + newEvent.ID + "_" + numImages + Path.GetExtension(image.FileName).ToLower();
+                                image.SaveAs(Server.MapPath(path));
+                                Image tmpImg = new Image() { FilePath = path };
+                                int imgID = dao.Insert(tmpImg);
                                 if(imgID != -1)
                                 {
+                                    tmpImg.ID = imgID;
                                     int count = dao.Insert(new EventImage() { EventID = newEvent.ID, ImageID = imgID });
-                                    if(count == 0)
+                                    if(count != 0)
                                     {
                                         //  do something?
+                                        newEvent.Gallery.Add(tmpImg);
                                     }
                                 }
                                 else

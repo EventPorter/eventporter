@@ -118,13 +118,21 @@
     background-color: #f85555;
 }
 
-#description{
-    background-color: white;
+#description {
+    background-color: darkgray;
+    color: white;
     padding: 20px;
-    box-shadow: 0 0 20px purple;
+    border-radius: 25px;
+    /*box-shadow: 0 0 20px darkgrey;*/
     min-height: 300px;
+    min-width: 200px;
     text-wrap: normal;
     word-break: break-word;
+}
+
+.rightside-info{
+    font-weight: bold;
+    padding:20px;
 }
 /*      Event Create       */
 #create-form {

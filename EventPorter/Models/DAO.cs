@@ -374,6 +374,43 @@ namespace EventPorter.Models
             return count;
         }
 
+        public List<Image> GetEventGalleryImages(int eventID)
+        {
+            List<Image> images = new List<Image>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetEventGalleryImages", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventID", eventID);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Image img = new Image();
+                    img.ID = int.Parse(reader["ID"].ToString());
+                    img.FilePath = reader["FilePath"].ToString();
+                    images.Add(img);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return images;
+        }
+
         public Image GetImage(int id)
         {
             Image img = null;
