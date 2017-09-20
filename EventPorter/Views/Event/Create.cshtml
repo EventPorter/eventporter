@@ -17,23 +17,44 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAZGYfMvJydZwbZ4XgK6iibAZJBuPqP9Gw"></script>
 
     <script type="text/javascript">
+        function updateLocation() {
+            var geocoder = new google.maps.Geocoder();
+            var loc = document.getElementById('location_input').value;
+            //var res = document.getElementById('location_result');
+            geocoder.geocode({ 'address': loc }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    document.getElementById('latitude').value = parseFloat(latitude);
+                    document.getElementById('longitude').value = parseFloat(longitude);
+                    //alert("lng: " + longitude + " lat: " + latitude);
+                    //res.innerHTML = "Lat: " + latitude + " Lng: " + longitude;
+                }
+            });
+        }
+
         $(document).ready(function () {
-            $("#btn").click(function () {
-                var geocoder = new google.maps.Geocoder();
-                var loc = document.getElementById('location_input').value;
-                var res = document.getElementById('location_result');
-                geocoder.geocode({ 'address': loc }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        var latitude = results[0].geometry.location.lat();
-                        var longitude = results[0].geometry.location.lng();
-                        document.getElementById('latitude').value = parseFloat(latitude);
-                        document.getElementById('longitude').value = parseFloat(longitude);
-                        res.innerHTML = "Lat: " + latitude + " Lng: " + longitude;
-                    } 
-                });
+            //$("#btn").click(function () {
+            //    updateLocation();
+            //});
+            
+            $('#Submit1').click(function () {
+                if ($.trim($('#location_input').val()).length != 0) {
+                    updateLocation();
+
+                    //  a small paused sorted an issue requiring user to press submit twice
+                    setTimeout(function () {
+                        if (document.getElementById('latitude').value.length != 0) {
+                            //alert("hellO");
+                            $('#form_create').submit();
+                        }
+                    }, 1500);
+                }
+                else {
+                    alert("location required");
+                }
             });
         });
-
     </script>
 }
 
@@ -44,23 +65,23 @@
 
 <div class="container-fluid">
     <div id="create-form" class="container">
-        @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { enctype = "multipart/form-data", @id="form_create" }))
         {
             <h2>Create</h2>
             @*@Html.ValidationSummary(false, "", new { @class = "error" })*@
             <p>
                 @Html.LabelFor(e => e.Title)<br />
-                @Html.TextBoxFor(e => e.Title, new { @class = "form-control create-title", placeholder = "Enter title for event here..." })
+                @Html.TextBoxFor(e => e.Title, new { @class = "form-control create-title", placeholder = "Enter title for event here...", maxlength = "70" })
                 @Html.ValidationMessageFor(e => e.Title, "", new { @class = "text-danger" })
             </p>
             <p>
                 @Html.LabelFor(e => e.Description)<br />
-                @Html.TextAreaFor(e => e.Description, new { @class = "form-control create-description", placeholder = "Enter event description here..." })
+                @Html.TextAreaFor(e => e.Description, new { @class = "form-control create-description", placeholder = "Enter event description here...", maxlength = "1500" })
                 @Html.ValidationMessageFor(e => e.Description, "", new { @class = "text-danger" })
             </p>
             <p>
                 @Html.LabelFor(e => e.Price)<br />
-                @Html.TextAreaFor(e => e.Price, new { @class = "form-control", placeholder = "Cost..." })
+                @Html.TextBoxFor(e => e.Price, new { @class = "form-control", placeholder = "Cost...", @id="price_input" })
                 @Html.ValidationMessageFor(e => e.Price, "", new { @class = "text-danger" })
             </p>
             <p>
@@ -88,20 +109,23 @@
             //Location
             <p>
                 @Html.LabelFor(e => e.LocationDesc)
-                @Html.TextBoxFor(e => e.LocationDesc, new { @id = "location_input", @class = "form-control" })
+                @Html.TextBoxFor(e => e.LocationDesc, new { @id = "location_input", @class = "form-control", maxlength = "70" })
+                @Html.ValidationMessageFor(e => e.LocationDesc, "", new { @class = "text-danger" })
                 @*<input id="location_input" type="text" />*@
-                <input id="btn" type="button" value="Get Co-ordinates" />
-                <p id="location_result"></p>
+                @*<input id="btn" type="button" value="Get Co-ordinates" />*@
+                <!--<p id="location_result"></p>-->
             </p>
             <p>
-                <input type="file" name="images" multiple />
+                <input type="file" name="images" accept="image/*" multiple/>
             </p>
 
             @Html.HiddenFor(e => e.Latitude, new { id = "latitude" })
+            @Html.ValidationMessageFor(e => e.Latitude, "", new { @class = "text-danger" })
             @Html.HiddenFor(e => e.Longitude, new { id = "longitude" })
+            @Html.ValidationMessageFor(e => e.Longitude, "", new { @class = "text-danger" })
             <p>
                 <br />
-                <input id="Submit1" type="submit" value="Submit" />
+                <input id="Submit1" type="button" value="Submit" />
                 <input id="Reset1" type="reset" value="Clear" />
             </p>
         }

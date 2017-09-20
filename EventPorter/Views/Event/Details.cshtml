@@ -131,9 +131,7 @@
             <div id="event_left_col">
                 <div id="event-owner" class="row col-xs-12">
                     <div class="row text-center">
-                        <h5>
-                            @Model.CreatorUserName
-                        </h5>
+                        <p>Creator</p>
                     </div>
                     <div class="row text-center">                               
                         @*
@@ -141,6 +139,9 @@
                         *@
                         <img class="img-thumbnail" src="~/Content/images/lil_porter.png" alt="icon_image" />
                     </div>
+                    <h5 class="text-center">
+                        @Model.CreatorUserName
+                    </h5>
                 </div>
                 @*<div class="row col-lg-12">
                     <div class="col-lg-8 text-center">

@@ -12,6 +12,7 @@ namespace EventPorter.Models
         public string CreatorUserName { get; set; }
         public List<Image> Gallery { get; set; }
         public int ThumbnailID { get; set; }
+        [Required]
         public string LocationDesc { get; set; }
         public float Longitude { get; set; }
         public float Latitude { get; set; }

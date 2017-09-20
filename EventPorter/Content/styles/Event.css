@@ -88,6 +88,7 @@
     border-radius: 20px;
     margin-bottom: -60px;
     box-shadow: 0 0 80px #272727;
+    word-break: break-word;
 }
 
 .jumbotron h1 {
@@ -104,7 +105,7 @@
 
 #event-content{
     margin-top: 80px;
-    margin-bottom: 120px;]
+    margin-bottom: 120px;
 }
 
 #buy-button {
@@ -119,8 +120,8 @@
 }
 
 #description {
-    background-color: darkgray;
-    color: white;
+    background-color: white;
+    color: #202020;
     padding: 20px;
     border-radius: 25px;
     /*box-shadow: 0 0 20px darkgrey;*/
