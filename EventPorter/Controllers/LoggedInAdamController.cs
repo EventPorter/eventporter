@@ -30,6 +30,4 @@ namespace EventPorter.Controllers
             return View();
         }
     }
-
-    
 }

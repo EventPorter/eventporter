@@ -255,8 +255,17 @@
                 @*
                     @Model.DateAndTime.GetSimpleDate()
                 *@
+                @{ 
+                    string coOrds = Model.Latitude + "," + Model.Longitude;
+                    string mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + coOrds + "&zoom=14&markers=color:blue|"+ coOrds + "&size=400x400&key=AIzaSyCwiT70R1-6azas3x7pa5rNcUmzlWWxjR8";
+                }
+  
                 <p>Location </p>
-                <p>@Model.LocationDesc</p>
+                <a href="@mapURL" target="_blank"><p>@Model.LocationDesc</p>
+                    <p>
+                        <img src="@mapURL" style="width:150px;height:150px;" alt="map of location" />
+                    </p>
+                </a>
                 <p>Starting: </p>
                 <p>@Model.StartDateAndTime.ToShortDateString()  @Model.StartDateAndTime.ToShortTimeString()</p>
                 <p>Ending:</p>
@@ -273,17 +282,23 @@
                 *@
                 @{ 
                     string price = "Free!";
+                    bool userLoggedIn = Session["name"] != null;
                 }
                 @if (Model.Price != 0)
                 {
                     price = "&euro; " + Model.Price.ToString();
                 }
                 <p>Ticket Price:@Html.Raw(price)</p>
-                                    
-                @if(Model.Price == 0){
-                    <div class="btn btn-primary text-center">Get Ticket</div>
+                       
+                @if (userLoggedIn && Model.CreatorUserName == Session["name"].ToString())
+                {
+                    <div id="delete-button" class="btn btn-danger text-center">Delete Event</div>
+                }
+                else if (Model.Price == 0)
+                {
+                    <div id="free-button" class="btn btn-primary text-center">Get Ticket</div>
                 }else{
-                    <div class="btn btn-primary text-center">Add To Cart</div>
+                    <div id="cart-button" class="btn btn-primary text-center">Add To Cart</div>
                 }
                                     
                 @*<div id="buy-button" class="btn btn-primary text-center">Add To Cart</div>*@

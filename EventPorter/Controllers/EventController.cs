@@ -10,7 +10,7 @@ namespace EventPorter.Controllers
 {
     public class EventController : Controller
     {
-        DAO dao = new DAO();
+        DAO dao = DAO.GetInstance();
 
         // List of all events
         public ActionResult Index()
