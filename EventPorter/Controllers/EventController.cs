@@ -90,6 +90,11 @@ namespace EventPorter.Controllers
                                     //  do something?
                                 }
                                 numImages++;
+                                //  no more than 5 images permitted
+                                if(numImages == 6)
+                                {
+                                    break;
+                                }
                             }
                         }
                         ViewBag.CreatorThumbnailPath = dao.GetUserThumbnail(newEvent.CreatorUserName);

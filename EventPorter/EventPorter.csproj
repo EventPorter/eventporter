@@ -247,6 +247,8 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\SiteScripts\CheckFileCountOkay.js" />
+    <Content Include="Scripts\SiteScripts\CreateEventSubmitCheck.js" />
     <Content Include="Scripts\SiteScripts\EventDateTimePicker.js" />
     <Content Include="Scripts\SiteScripts\GoogleCoordScript.js" />
     <Content Include="Scripts\SiteScripts\ImagePreviewScript.js" />

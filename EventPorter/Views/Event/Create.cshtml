@@ -14,29 +14,8 @@
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAZGYfMvJydZwbZ4XgK6iibAZJBuPqP9Gw"></script>
     <script src="~/Scripts/SiteScripts/GoogleCoordScript.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            //  gets co-ordinates of location prior to submitting using google api
-            $('#Submit1').click(function () {
-                if ($.trim($('#location_input').val()).length != 0) {
-                    updateLocation();
-
-                    //  a small paused required to solve an issue requiring user to press submit twice(due to google api)
-                    setTimeout(function () {
-                        if (document.getElementById('latitude').value.length != 0) {
-                            //alert("hellO");
-                            $('#form_create').submit();
-                        }
-                    }, 1500);
-                }
-                else {
-                    alert("location required");
-                }
-            });
-        });
-    </script>
+    <script src="~/Scripts/SiteScripts/CreateEventSubmitCheck.js"></script>
+    <script src="~/Scripts/SiteScripts/CheckFileCountOkay.js"></script>
 }
 
 @if (Session["name"] == null)
@@ -96,8 +75,9 @@
                 @*<input id="btn" type="button" value="Get Co-ordinates" />*@
                 <!--<p id="location_result"></p>-->
             </p>
+            <p>A maximum of 5 images will be used:</p>
             <p>
-                <input type="file" name="images" accept="image/*" multiple/>
+                <input id="file_input" type="file" name="images" accept="image/*" multiple/>
             </p>
 
             <p>
