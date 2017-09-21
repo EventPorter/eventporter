@@ -16,6 +16,7 @@
     <h2 class="text-info">Register</h2>
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-group", enctype = "multipart/form-data" }))
     {
+        @Html.AntiForgeryToken()
         @*@Html.ValidationSummary(false, "", new { @class = "error" })*@
         <p>
             @Html.LabelFor(a => a.Firstname, new { @class = "form-text" })

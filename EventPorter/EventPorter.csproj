@@ -122,6 +122,7 @@
     <Content Include="Content\images\social\facebook_icon.png" />
     <Content Include="Content\images\social\instagram_icon.png" />
     <Content Include="Content\images\social\linkedin-3-xxl.png" />
+    <Content Include="Content\images\social\twitter-3-xxl.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\styles\Cart.css" />
     <Content Include="Content\styles\Event.css" />

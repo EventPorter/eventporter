@@ -16,8 +16,14 @@
     border: 1px solid #808080;
 }*/
 
-#event-title{
+#event-title {
+    color: black;
     text-align: center;
+    text-transform: uppercase;
+    word-spacing: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-shadow: 0 0 10px purple;
 }
 
 #event-owner{
@@ -112,6 +118,10 @@
     background-color: #e12d2d;
     box-shadow: 0 0 15px pink;
     border: 1px solid darkgrey;
+}
+
+#edit-button{
+    margin-bottom: 5px;
 }
 
 #buy-button:hover {

@@ -75,6 +75,10 @@ html {
     margin-bottom: 20px;
 }
 
+.footer_icon:hover {
+    box-shadow: 0 0 20px white;
+}
+
 /* Set padding to keep content from hitting the edges */
 /*.body-content {
     padding-left: 15px;
