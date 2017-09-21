@@ -23,6 +23,7 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(User user, HttpPostedFileBase thumbnail)
         {
             int count = 0;
@@ -63,6 +64,7 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login (User user)
         {
             ModelState.Remove("FirstName");
