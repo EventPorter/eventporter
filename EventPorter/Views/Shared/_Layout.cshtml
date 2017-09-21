@@ -72,16 +72,36 @@
 
     <footer class="footer">
         <div class="container-fluid">
-            <div class="col-xs-12">
+                <span><img src="~/Content/images/social/facebook_icon.png" class="footer_icon img-rounded" /></span>
+                <span><img src="~/Content/images/social/instagram_icon.png" class="footer_icon img-rounded" /></span>
+                <span><img src="~/Content/images/social/email_icon.png" class="footer_icon img-rounded" /></span>
+                <span><img src="~/Content/images/social/linkedin-3-xxl.png" class="footer_icon img-rounded" /></span>
+            <br />
+            <div id="footer_sitemap">
+                <h4>sitemap</h4><br />
+                <span>@Html.ActionLink("homepage", "Index", "Home")</span>
+                <span>@Html.ActionLink("abous us", "Index", "AboutUs")</span>
+                <span>@Html.ActionLink("contact us", "Index", "ContactUs")</span>
+                @if (Session["name"] == null)
+                {
+                    <span>@Html.ActionLink("register", "Index", "Account")</span>
+                }
+                else
+                {
+                    <span>@Html.ActionLink("profile", "AdamProfile", "Account")</span>
+                    <span>@Html.ActionLink("create event", "Create", "Event")</span>
+                }
+            </div>
+            <div id="footer_legal_text" class="col-xs-12">
                 <row>
                     <div class="col-xs-4">
                         <span><a href="/">&copy;@DateTime.Now.Year EventPorter</a></span>
                     </div>
                     <div class="col-xs-4">
-                        @Html.ActionLink("Terms and Conditions", "Index","Terms And Conditions")
+                        @Html.ActionLink("Terms and Conditions", "Index","TermsAndConditions")
                     </div>
                     <div class="col-xs-4">
-                       @Html.ActionLink("Privacy Policy", "Index", "Privacy Policy")
+                       @Html.ActionLink("Privacy Policy", "Index", "PrivacyPolicy")
                     </div>
                 </row>
             </div>
