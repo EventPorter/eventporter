@@ -10,7 +10,9 @@ namespace EventPorter.Controllers
 {
     public class AccountController : Controller
     {
-        DAO dao = new DAO();
+        DAO dao = DAO.GetInstance();
+
+        //DAO dao = new DAO();
         // GET: Account
         public ActionResult Index()
         {

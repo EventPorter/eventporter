@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EventPorter.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,13 @@ namespace EventPorter.Controllers
 {
     public class CartController : Controller
     {
-        // GET: Cart
-        public ActionResult Index()
+        DAO dao = DAO.GetInstance();
+
+        public ActionResult ViewCart()
         {
-            return View();
+            int userID = (int)Session["id"];
+            List<CartEvent> items = dao.GetCartItemsUnconfirmed(userID);
+            return View(items);
         }
     }
 }

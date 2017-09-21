@@ -11,10 +11,21 @@ namespace EventPorter.Models
 {
     public class DAO
     {
+        private static DAO dao;
         SqlConnection conn;
         public string message { get; set; }
         
-        
+        private DAO()
+        {
+        }
+
+        public static DAO GetInstance()
+        {
+            if (dao == null)
+                dao = new DAO();
+            return dao;
+        }
+
         //MAKE SURE THERE IS A VALID CONNECTION STRING IN THE WEBCONFIG FILE POINTING TO THE LOCAL DB
         //Create a connection object
         public void Connection()
@@ -162,7 +173,7 @@ namespace EventPorter.Models
         public int Insert(Event newEvent)
         {
             //no of rows affected by insertion
-            int count = 0;
+            int id = -1;
             SqlCommand cmd;
             Connection();
             cmd = new SqlCommand("uspInsertEvent", conn);
@@ -183,7 +194,7 @@ namespace EventPorter.Models
             try
             {
                 conn.Open();
-                count = cmd.ExecuteNonQuery();
+                id = (int)cmd.ExecuteScalar();
             }
             catch (SqlException ex)
             {
@@ -193,7 +204,7 @@ namespace EventPorter.Models
             {
                 conn.Close();
             }
-            return count;
+            return id;
         }
 
         public Event GetEvent(int id)
@@ -223,6 +234,7 @@ namespace EventPorter.Models
                     _event.Price = decimal.Parse(reader["Price"].ToString());
                     _event.Longitude = float.Parse(reader["Longitude"].ToString());
                     _event.Latitude = float.Parse(reader["Latitude"].ToString());
+                    _event.LocationDesc = reader["LocationDesc"].ToString();
                 }
             }
             catch (SqlException ex)
@@ -238,6 +250,33 @@ namespace EventPorter.Models
                 conn.Close();
             }
             return _event;
+        }
+
+        public int RemoveEvent(int eventID)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspRemoveEvent", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //cmd.Parameters.AddWithValue("@userID", userID);
+            cmd.Parameters.AddWithValue("@eventID", eventID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
         }
 
         public List<Event> SearchEvents(string searchString)
@@ -353,5 +392,279 @@ namespace EventPorter.Models
         }
         #endregion
 
+        #region Image
+        public int Insert(Image img)
+        {
+            int id = -1;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspInsertImage", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.AddWithValue("@filepath", img.FilePath);
+            try
+            {
+                conn.Open();
+                id = (int) cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return id;
+        }
+
+        public int Insert(EventImage eventImg)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspInsertEventImage", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventID", eventImg.EventID);
+            cmd.Parameters.AddWithValue("@imageID", eventImg.ImageID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public List<Image> GetEventGalleryImages(int eventID)
+        {
+            List<Image> images = new List<Image>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetEventGalleryImages", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventID", eventID);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Image img = new Image();
+                    img.ID = int.Parse(reader["ID"].ToString());
+                    img.FilePath = reader["FilePath"].ToString();
+                    images.Add(img);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return images;
+        }
+
+        public Image GetImage(int id)
+        {
+            Image img = null;
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetImage", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@imageID", id);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    img = new Image();
+                    img.FilePath = reader["FilePath"].ToString();
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return img;
+        }
+        #endregion
+
+        #region Cart
+        public int Insert(CartItem item)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspAddToCart", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@eventID", item.EventID);
+            cmd.Parameters.AddWithValue("@imageID", item.UserID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public int Remove(CartItem item)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspRemoveItemFromCart", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", item.UserID);
+            cmd.Parameters.AddWithValue("@eventID", item.EventID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public int GetNumberOfItemsInCart(int userID)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspGetNumItemsInCart", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", userID);
+            try
+            {
+                conn.Open();
+                count = (int) cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public List<CartEvent> GetCartItemsUnconfirmed(int userID)
+        {
+            List<CartEvent> itemsInCart = new List<CartEvent>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetCartItems", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", userID);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //[Event].[Title], [Event].[Thumbnail], [Event].[Description], [Event].[ID] FROM[Event] WHERE[Event].[Title]
+                    CartEvent _event = new CartEvent();
+                    _event.ID = int.Parse(reader["ID"].ToString());
+                    _event.Title = reader["Title"].ToString();
+                    _event.Price = decimal.Parse(reader["Price"].ToString());
+                    itemsInCart.Add(_event);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return itemsInCart;
+        }
+
+        public int ConfirmCartItem(CartItem item)
+        {
+            // count
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspSetItemConfirmedStatus", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", item.UserID);
+            cmd.Parameters.AddWithValue("@eventID", item.EventID);
+            cmd.Parameters.AddWithValue("@confirmedStatus", (int) item.Confirmed);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+        #endregion
     }
 }

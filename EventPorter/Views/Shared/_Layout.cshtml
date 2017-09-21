@@ -43,10 +43,10 @@
 
                 @*PLACEHOLDER: REMOVE THIS BADASS ADAM AT SOME POINT*@
                 @*<img src="~/Content/images/lil_porter.png" alt="big P" class="navbar-brand" />*@
-                <img src="~/Content/logo.png" alt="Event Porter Logo" class="navbar-brand" />
+                <img id="navbar_logo" src="~/Content/logo.png" alt="Event Porter Logo" class="navbar-brand" />
                 @*-------------------------------*@
 
-                @Html.ActionLink("EventPorter", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("EVENT PORTER", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-collapse collapse">
@@ -69,7 +69,6 @@
         @RenderBody()
         @*<div class="navbar navbar-fixed-bottom text-center">*@
     </div>
-
 
     <footer class="footer">
         <div class="container-fluid">

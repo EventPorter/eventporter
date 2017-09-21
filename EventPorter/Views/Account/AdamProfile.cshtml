@@ -9,63 +9,63 @@
     <link href="~/Content/styles/EventCardDisplay.css" rel="stylesheet" type="text/css" />
 }
 
+<div class="container-fluid">
+    <div class="container profile-container" id="profile-div">
+        <div class="row">
+            <h2 class="col-md-12 modal-title">Profile</h2>
+        </div>
+        <div class="container">
+            <div class="row profile">
+                <div class="col-md-3">
+                    <div class="profile-sidebar">
+                        <!-- sidebar for Adam profile pic -->
+                        <div class="profile-Adampic">
+                            <img src="~/Content/images/lil_porter.png" class="img-responsive" alt="">
+                        </div>
+                        <!-- sidebar for Adam info -->
+                        <div class="profile-Adamtitle">
+                            <div class="profile-Adamtitle-Adamname">
+                                @Model.Username
+                            </div>
+                        </div>
 
-<div class="container-fluid profile-container" id="profile-div">
-    @*<div class="row">
-    <h2 class="col-md-12 modal-title">Profile</h2>
-    </div>*@
-    <div class="container>
-        <div class="row profile">
-            <div class="col-md-3">
-                <div class="profile-sidebar">
-                    <!-- sidebar for Adam profile pic -->
-                    <div class="profile-Adampic">
-                        <img src="~/Content/images/lil_porter.png" class="img-responsive img-circle" alt="">
-                    </div>
-                    <!-- sidebar for Adam info -->
-                    <div class="profile-Adamtitle">
-                        <div class="profile-Adamtitle-Adamname">
-                            @Model.Username
+                        <!-- buttons -->
+                        <div class="profile-Adambuttons">
+                            <button type="button" class="btn btn-success btn-sm">Invite</button>
+                            <button type="button" class="btn btn-danger btn-sm">Message</button>
+                        </div>
+                        <!-- menu -->
+                        <div class="profile-Adammenu">
+                            <ul class="nav">
+                                <li class="active">
+                                    <a class="glyphicon glyphicon-home profile-Adammenu" id="Overview"> Overview</a>
+                                </li>
+                                <li>
+                                    <a class="glyphicon glyphicon-cog profile-Adammenu" id="Settings"> Settings</a>
+                                </li>
+                                <li>
+                                    <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
+                                </li>
+                                <li>
+                                    <a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- buttons -->
-                    <div class="profile-Adambuttons">
-                        <button type="button" class="btn btn-success btn-sm">Invite</button>
-                        <button type="button" class="btn btn-danger btn-sm">Message</button>
-                    </div>
-                    <!-- menu -->
-                    <div class="profile-Adammenu">
-                        <ul class="nav">
-                            <li>
-                                <a class="glyphicon glyphicon-home profile-Adammenu" id="Overview"> Overview</a>
-                            </li>
-                            <li>
-                                <a class="glyphicon glyphicon-cog profile-Adammenu" id="Settings"> Settings</a>
-                            </li>
-                            <li>
-                                <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
-                            </li>
-                            <li>
-                                <a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
-            <div class="col-md-9" id="infoDiv">
-                <p></p>
-            </div>
-            @*<div class="col-md-5">
-                    <div class="profile-content">
-                        Upcoming Event cards here
-                    </div>
+                <div class="col-md-9" id="infoDiv">
                 </div>
-                <div class="col-md-4">
-                    <div class="profile-content">
-                        Past event cards here/only show these to other users
+                @*<div class="col-md-5">
+                        <div class="profile-content">
+                            Upcoming Event cards here
+                        </div>
                     </div>
-                </div>*@
+                    <div class="col-md-4">
+                        <div class="profile-content">
+                            Past event cards here/only show these to other users
+                        </div>
+                    </div>*@
+            </div>
         </div>
     </div>
 </div>

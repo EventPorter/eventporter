@@ -10,11 +10,17 @@ namespace EventPorter.Models
     {
         public int ID { get; set; }
         public string CreatorUserName { get; set; }
-        public string[] Gallery { get; set; }
+        public List<Image> Gallery { get; set; }
         public int ThumbnailID { get; set; }
+        [Required]
         public string LocationDesc { get; set; }
         public float Longitude { get; set; }
         public float Latitude { get; set; }
+
+        public Event()
+        {
+            Gallery = new List<Image>();
+        }
 
         [Required]
         [Display(Name = "Title")]
