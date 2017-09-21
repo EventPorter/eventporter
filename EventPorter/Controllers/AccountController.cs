@@ -125,6 +125,8 @@ namespace EventPorter.Controllers
         public ActionResult AdamInfo()
         {
             User currentAdam = dao.GetUserInfo(Session["name"].ToString());
+            int count = dao.GetNoOfUserEvents(Session["name"].ToString());
+            ViewBag.Count = count;
 
             return View(currentAdam);
         }

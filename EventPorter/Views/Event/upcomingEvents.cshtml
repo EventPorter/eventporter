@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EventPorter.Models.Event>
+
+@{ 
+    Layout = null;
+}
+
+
+    <div class="row upcoming-row">
+        <h2 class="panel-heading">Upcoming Events...</h2>
+            <div class="columns">
+                @foreach (var e in Model)
+                {
+                    <div class="pin col-sm-3">
+                        <img src="~/Content/images/test_img3.jpg" />
+                        <p>@e.Title</p>
+                    </div>
+                }
+                </div>
+            
+                @*<div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper">
+                            <div class="card front card-inverse" style="width: 20rem;">
+                                <img class="card-img-top img-responsive" src="~/Content/images/test_img2.jpg" alt="Card image cap">
+                                <div class="card-img-overlay">
+                                    <h4 class="card-title text-center">@e.Title</h4>
+
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last update 3 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card back" style="width: 20rem;">
+                                <div class="card-block">
+                                    <h4 class="card-title">@e.CreatorUserName</h4>
+                                    <p class="card-text description">@e.Description</p>
+                                    @Html.ActionLink("More...", "Browse", "Event", new { @e.ID }, new { @class = "btn" })
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                
+</div>

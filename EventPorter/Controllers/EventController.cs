@@ -158,35 +158,35 @@ namespace EventPorter.Controllers
                 return View(events);
             }
         }
-
-        public ActionResult EventCardDisplayFullView()
+        [HttpPost]
+        public ActionResult EventCardDisplayFullView(string search_param, string searchInput)
         {
-            List<Event> events = new List<Event>();
-            Event e = dao.GetEvent(1);
-            Event e1 = dao.GetEvent(2);
-            Event e2 = dao.GetEvent(3);
-
-            events.Add(e);
-            events.Add(e1);
-            events.Add(e2);
-            events.Add(e);
-            events.Add(e1);
-            events.Add(e2);
-
-            List<Event> UserEventList = new List<Event>();
-            UserEventList.Add(e);
-            UserEventList = dao.SearchEvents("low");
-
-            if (Session["id"] == null)
-            {
-                return View(events);
-            }
-            else
-            {
-                return View(events);
-            }
+            List<Event> UserEventList = dao.SearchEvents(searchInput);
+            
+            return View(UserEventList);
         }
 
-        
+        public ActionResult getAjaxResult(string q)
+        {
+            string searchResult = null;
+
+            var eventName = (from e in dao.SearchEvents(q)
+                             where e.Title.Contains(q)
+                             orderby e.Title
+                             select e).Take(10);
+            foreach(Event e in eventName)
+            {
+                searchResult += string.Format("{0}|\r\n", e.Title);
+            }
+
+            return Content(searchResult);
+        }
+
+        public ActionResult upcomingEvents()
+        {
+            List<Event> upcoming = dao.GetUpcomingEvents();
+            return View(upcoming);
+        }
+
     }
 }
