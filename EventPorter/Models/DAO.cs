@@ -390,6 +390,51 @@ namespace EventPorter.Models
             }
             return count;
         }
+
+        public List<Event> GetUpcomingEvents()
+        {
+            List<Event> events = new List<Event>();
+            SqlCommand cmd;
+            SqlDataReader reader;
+            Connection();
+            cmd = new SqlCommand("uspGetEventByDate", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@date", DateTime.Now);
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Event _event = new Event();
+                    _event.ID = int.Parse(reader["ID"].ToString());
+                    _event.Title = reader["Title"].ToString();
+                    _event.Description = reader["Description"].ToString();
+                    _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
+                    events.Add(_event);
+                }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            catch (FormatException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            var orderedUpcoming = (from e in events
+                                   orderby e.StartDateAndTime
+                                   select e).ToList();
+
+            return orderedUpcoming;
+        }
+
         #endregion
 
         #region Image

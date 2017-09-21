@@ -174,5 +174,11 @@ namespace EventPorter.Controllers
             return Content(searchResult);
         }
 
+        public ActionResult upcomingEvents()
+        {
+            List<Event> upcoming = dao.GetUpcomingEvents();
+            return View(upcoming);
+        }
+
     }
 }

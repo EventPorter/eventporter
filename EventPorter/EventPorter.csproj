@@ -137,6 +137,7 @@
     <Content Include="Content\styles\LoginRegister.css" />
     <Content Include="Content\styles\Profile.css" />
     <Content Include="Content\styles\Site.css" />
+    <Content Include="Content\styles\upcomingEvents.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -304,6 +305,7 @@
     <Content Include="Views\Event\UserEvents.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
+    <Content Include="Views\Event\upcomingEvents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
