@@ -127,7 +127,7 @@ namespace EventPorter.Controllers
             User currentAdam = dao.GetUserInfo(Session["name"].ToString());
             int count = dao.GetNoOfUserEvents(Session["name"].ToString());
             ViewBag.Count = count;
-
+            ViewBag.Thumbnail = dao.GetUserThumbnail(currentAdam.Username);
             return View(currentAdam);
         }
 
@@ -160,6 +160,7 @@ namespace EventPorter.Controllers
 
             //  Get the details of the currently logged in user using their username from the Session
             User currentUser = dao.GetUserInfo(Session["name"].ToString());
+            ViewBag.Thumbnail = dao.GetUserThumbnail(currentUser.Username);
             return View(currentUser);
         }
 

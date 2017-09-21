@@ -20,7 +20,14 @@
                     <div class="profile-sidebar">
                         <!-- sidebar for Adam profile pic -->
                         <div class="profile-Adampic">
-                            <img src="~/Content/images/lil_porter.png" class="img-responsive" alt="">
+                            @if (ViewBag.Thumbnail != null)
+                            {
+                                <img src=@Url.Content(ViewBag.Thumbnail) class="img-responsive" alt="profile picture" />
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/porter_male.JPG" class="img-responsive" alt="profile picture">
+                            }
                         </div>
                         <!-- sidebar for Adam info -->
                         <div class="profile-Adamtitle">
