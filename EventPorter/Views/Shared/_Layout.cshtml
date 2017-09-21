@@ -3,12 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title> 
+    <title>@ViewBag.Title</title>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@    
     
-    @*cdn*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    @*local*@
-    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" />*@
 
     <link href="~/Content/styles/Site.css" rel="stylesheet" type="text/css" />
     @RenderSection("Styles", false)
@@ -17,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     
     <link rel="icon" href="@Url.Content("~/Content/favicon.ico")" />
-    
+
     <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
     <script type="text/javascript">
         var webAuth = new auth0.WebAuth({
@@ -29,9 +27,11 @@
             scope: 'openid profile'
         });
     </script>
+    @*<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
 </head>
 <body>
-    <div id="bootstrapCssTest" class="hidden"></div>
+@*      <div class="navbar navbar-inverse navbar-static-top">*@
     <div id="site-navbar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -72,40 +72,46 @@
 
     <footer class="footer">
         <div class="container-fluid">
-            <div class="col-xs-12">
+                <span><img src="~/Content/images/social/facebook_icon.png" class="footer_icon img-rounded" /></span>
+                <span><img src="~/Content/images/social/instagram_icon.png" class="footer_icon img-rounded" /></span>
+                <span><img src="~/Content/images/social/email_icon.png" class="footer_icon img-rounded" /></span>
+                <span><img src="~/Content/images/social/linkedin-3-xxl.png" class="footer_icon img-rounded" /></span>
+            <br />
+            <div id="footer_sitemap">
+                <h4>sitemap</h4><br />
+                <span>@Html.ActionLink("homepage", "Index", "Home")</span>
+                <span>@Html.ActionLink("abous us", "Index", "AboutUs")</span>
+                <span>@Html.ActionLink("contact us", "Index", "ContactUs")</span>
+                @if (Session["name"] == null)
+                {
+                    <span>@Html.ActionLink("register", "Index", "Account")</span>
+                }
+                else
+                {
+                    <span>@Html.ActionLink("profile", "AdamProfile", "Account")</span>
+                    <span>@Html.ActionLink("create event", "Create", "Event")</span>
+                }
+            </div>
+            <div id="footer_legal_text" class="col-xs-12">
                 <row>
                     <div class="col-xs-4">
                         <span><a href="/">&copy;@DateTime.Now.Year EventPorter</a></span>
                     </div>
                     <div class="col-xs-4">
-                        @Html.ActionLink("Terms and Conditions", "Index","TermsAndConditions", null, new { target = "_blank" })
+                        @Html.ActionLink("Terms and Conditions", "Index","TermsAndConditions")
                     </div>
                     <div class="col-xs-4">
-                       @Html.ActionLink("Privacy Policy", "Index", "PrivacyPolicy", null, new { target="_blank"})
+                       @Html.ActionLink("Privacy Policy", "Index", "PrivacyPolicy")
                     </div>
                 </row>
             </div>
         </div>
-    </footer>   
-    <!-- jQuery remote CDN -->
+    </footer>
     <script type="text/javascript"
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-    <!-- jQuery local fallback -->
-    @*<script>window.jQuery || document.write('<script src="~/Scripts/jquery-3.2.1.min.js"><\/script>');</script>*@
-
-    <!-- Bootstrap JS remote CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Bootstrap JS local fallback -->
-    @*<script>if (typeof ($.fn.modal) === 'undefined') { document.write('<script src="~/Scripts/bootstrap.min.js"><\/script>'); }</script>*@   
-    
-    <!-- Bootstrap CSS local fallback -->
-    @*<script type="text/javascript">
-        if ($('#bootstrapCssTest').is(':visible') === true) {
-            $('<link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" />').appendTo('head');
-        }
-    </script>*@
     @RenderSection("Scripts", false)
 </body>
 </html>

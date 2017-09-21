@@ -118,6 +118,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\porter_female.JPG" />
     <Content Include="Content\images\porter_male.JPG" />
+    <Content Include="Content\images\social\email_icon.png" />
+    <Content Include="Content\images\social\facebook_icon.png" />
+    <Content Include="Content\images\social\instagram_icon.png" />
+    <Content Include="Content\images\social\linkedin-3-xxl.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\styles\Cart.css" />
     <Content Include="Content\styles\Event.css" />
