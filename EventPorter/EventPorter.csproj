@@ -111,6 +111,7 @@
     <Content Include="App_Data\Data_log.ldf">
       <DependentUpon>Data.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -266,6 +267,8 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoggedInAdamController.cs" />
+    <Compile Include="Controllers\PrivacyPolicyController.cs" />
+    <Compile Include="Controllers\TermsAndConditionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,6 +313,8 @@
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
     <Content Include="Views\Event\upcomingEvents.cshtml" />
+    <Content Include="Views\PrivacyPolicy\Index.cshtml" />
+    <Content Include="Views\TermsAndConditions\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
