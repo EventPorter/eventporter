@@ -11,8 +11,16 @@
                 @foreach (var e in Model)
                 {
                     <div class="pin col-sm-3">
-                        <img src="~/Content/images/test_img3.jpg" />
+                        @if (e.Gallery != null && e.Gallery.Count != 0)
+                        {
+                            <img class="card-img-top img-responsive" src=@Url.Content(e.Gallery.ElementAt(e.Gallery.Count - 1).FilePath) alt="Card image cap">
+                        }
+                        else
+                        {
+                            <img class="card-img-top img-responsive" src="~/Content/images/test_img2.jpg" alt="Card image cap">
+                        }
                         <p>@e.Title</p>
+                        <span class="btn-sm">@Html.ActionLink("More...", "Browse", "Event", new { @e.ID }, new { @class = "btn" })</span>
                     </div>
                 }
                 </div>

@@ -47,7 +47,14 @@
                 <div class="flip-container col-md-3" ontouchstart="this.classList.toggle('hover');">
                     <div class="flipper">
                         <div class="card front card-inverse" style="width: 20rem;">
-                            <img class="card-img-top img-responsive" src="~/Content/images/test_img2.jpg" alt="Card image cap">
+                            @if (e.Gallery != null && e.Gallery.Count != 0)
+                            {
+                                <img class="card-img-top img-responsive" src=@Url.Content(e.Gallery.ElementAt(e.Gallery.Count - 1).FilePath) alt="Card image cap">
+                            }
+                            else
+                            {
+                                <img class="card-img-top img-responsive" src="~/Content/images/test_img2.jpg" alt="Card image cap">
+                            }
                             <div class="card-img-overlay">
                                 <h4 class="card-title text-center">@e.Title</h4>
 

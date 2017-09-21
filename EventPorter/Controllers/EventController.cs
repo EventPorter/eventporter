@@ -128,9 +128,16 @@ namespace EventPorter.Controllers
         {
             List<Event> userEvents = new List<Event>();
             userEvents = dao.SearchUserEvents(Session["name"].ToString());
+            foreach (var e in userEvents)
+            {
+                e.Gallery = dao.GetEventGalleryImages(e.ID);
+                
+            }
             return PartialView(userEvents);
 
         }
+
+        //not sure what the below does but I'm afarid to touch it -Chris
         public ActionResult EventCardDisplay()
         {
             List<Event> events = new List<Event>();
@@ -155,14 +162,19 @@ namespace EventPorter.Controllers
             }
             else
             {
-                return View(events);
+                return View(UserEventList);
             }
         }
         [HttpPost]
         public ActionResult EventCardDisplayFullView(string search_param, string searchInput)
         {
             List<Event> UserEventList = dao.SearchEvents(searchInput);
-            
+            foreach (var e in UserEventList)
+            {
+                e.Gallery = dao.GetEventGalleryImages(e.ID);
+
+            }
+
             return View(UserEventList);
         }
 
@@ -185,6 +197,11 @@ namespace EventPorter.Controllers
         public ActionResult upcomingEvents()
         {
             List<Event> upcoming = dao.GetUpcomingEvents();
+            foreach (var e in upcoming)
+            {
+                e.Gallery = dao.GetEventGalleryImages(e.ID);
+
+            }
             return View(upcoming);
         }
 
