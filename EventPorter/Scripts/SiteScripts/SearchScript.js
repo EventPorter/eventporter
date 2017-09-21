@@ -29,10 +29,36 @@
             $('#search-bar').addClass('relative-searchbar');
         }
     });
+    //method below for search events NOT YET COMPLETE??
+    //function search() {
+    //    var search_filter = $('#search_param').val();
+    //    var search_text = $('#searchInput').val();
+    //    alert("Filter: " + search_filter + " User input: " + search_text);
+    //    $.ajax({
+    //        url: '@Url.Action("Event", "EventCardDisplay")',
+    //        data: { 'searchParam': search_filter, 'searchInput': search_text },
+    //        type: 'post',
+    //        cache: false            
+    //    });
+    //}
+    //method below for autocomplete
+    //$("#search_input").autocomplete({
+    //    source: function (request, response) {
+    //        $.ajax({
+    //            url: "/Event/getAjaxResult",
+    //            type: "POST",
+    //            //dataType: "json",
+    //            data: { Prefix: request.term },
+    //            success: function (data) {
+    //                response($.map(data, function (item) {
+    //                    return { label: item.Name, value: item.Name };
+    //                }))
 
-    function search() {
-        var search_filter = $('#search_param').val();
-        var search_text = $('#search_input').val();
-        alert("Filter: " + search_filter + " User input: " + search_text);
-    }
+    //            }
+    //        })
+    //    },
+    //    messages: {
+    //        noResults: "", results: ""
+    //    }
+    //});
 });

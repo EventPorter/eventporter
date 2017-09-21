@@ -5,10 +5,14 @@
 
 @section Styles {
     <link href="@Url.Content("~/Content/styles/Homepage.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/upcomingEvents.css")" rel="stylesheet" type="text/css" />
 }
 
 @section Scripts {
     <script type="text/javascript" src="~/Scripts/SiteScripts/SearchScript.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
 }
 
 <div class="container-fluid">
@@ -89,63 +93,36 @@
                 </a>*@
         </div>
     </div>
-    <div id="search-bar" class="input-group relative-searchbar">
-        <div class="input-group-btn search-panel">
-            <button type="button" id="search_option_btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span id="search_concept">All</span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#today">Today</a></li>
-                <li><a href="#tomorrow">Tomorrow</a></li>
-                <li><a href="#this_week">This Week</a></li>
-                <li><a href="#this_month">This Month</a></li>
-                <li><a href="#this_year">This Year</a></li>
-                <li class="divider"></li>
-                <li><a href="#all">All</a></li>
-            </ul>
-        </div>
-        <input type="hidden" name="search_param" value="all" id="search_param">
-        <input type="text" class="form-control" id="search_input" autofocus placeholder="Search for event..." onkeypress="handle(event)">
-        <span class="input-group-btn remove_all_padding">
-            <button id="search_button" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-        </span>
-    </div>
+    @*<div id="search-bar" class="input-group relative-searchbar">*@
+        @using (Html.BeginForm("EventCardDisplayFullView", "Event", FormMethod.Post, new { @class= "input-group relative-searchbar", @id = "search-bar", @style="margin-left:-5%"}))
+        {
+            <div class="input-group-btn search-panel">
+                <button type="button" id="search_option_btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="search_concept">All</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#today">Today</a></li>
+                    <li><a href="#tomorrow">Tomorrow</a></li>
+                    <li><a href="#this_week">This Week</a></li>
+                    <li><a href="#this_month">This Month</a></li>
+                    <li><a href="#this_year">This Year</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#all">All</a></li>
+                </ul>
+            </div>
 
-    <div class="container">
-        <div class="row">
-            @Html.ActionLink("Event", "Details", "Event")
-        </div>
-        @*<div class="row">
-            @Html.ActionLink("Create Event", "Create", "Event")
-        </div>*@
-        <div class="row">
-            @Html.ActionLink("Profile", "AdamProfile", "Account")
-        </div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
+            <input type="hidden" name="search_param" value="all" id="search_param">
+            <label for="searchbar" hidden="hidden">Search</label>
+            <input type="text" class="form-control" id="searchInput" name="searchInput" autofocus placeholder="Search for event..." onkeypress="handle(event)"/>
+            <span class="input-group-btn remove_all_padding">
+                <input id="search_button" class="btn btn-default" type="Submit" /><span class="glyphicon glyphicon-search"></span>
+            </span>
+        
+        }
+    @*</div>*@
 
-            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
-
-            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
-
-            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
-
-            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc felis, lacinia id maximus ut, fermentum et velit. Aliquam auctor neque est, eu fermentum tellus tristique non. Phasellus eleifend massa urna, sit amet molestie odio mollis eu. Integer iaculis egestas est ultricies pulvinar. Ut bibendum blandit feugiat. Cras nec turpis et ipsum commodo efficitur at a quam. Sed ullamcorper ornare sagittis. Ut pretium, neque id ultricies hendrerit, lacus risus congue magna, vitae finibus lacus augue quis ligula. Proin tincidunt maximus ullamcorper. Nulla nisl ligula, commodo nec tincidunt ut, luctus quis libero. Aliquam fringilla lorem non tortor ornare, eu venenatis ipsum dapibus. Cras euismod arcu a tincidunt sagittis. Mauris fringilla felis sem, id pretium velit lacinia eget. Quisque sed tellus ut ligula facilisis gravida dictum at lacus.
-
-            Morbi maximus magna nunc, a tempus risus suscipit in. Vestibulum aliquam rutrum massa nec laoreet. Morbi pharetra nunc velit. Quisque arcu nulla, feugiat sit amet urna id, pellentesque tristique dolor. Curabitur interdum, dui id tristique rhoncus, mi arcu rhoncus metus, sit amet bibendum metus dolor eget enim. In at vulputate elit. Nam eu nisl mollis, imperdiet libero ut, commodo diam. Donec mollis bibendum sagittis. Nullam ac urna eu mi cursus varius. Fusce posuere nunc ac odio interdum, ac consectetur erat rhoncus. Sed lobortis neque ut porta lacinia. Vivamus id mollis est. Aliquam aliquet magna purus, gravida interdum leo suscipit in. In laoreet lacus id leo dignissim, et volutpat felis varius. Aliquam euismod sit amet sem eget ullamcorper.
-        </p>
+    <div class="container-fluid">
+      @Html.Action("upcomingEvents", "Event")
     </div>
 </div>
 
