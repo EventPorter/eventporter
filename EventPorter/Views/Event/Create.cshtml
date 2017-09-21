@@ -12,50 +12,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="~/Scripts/SiteScripts/EventDateTimePicker.js"></script>
 
-
-
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAZGYfMvJydZwbZ4XgK6iibAZJBuPqP9Gw"></script>
-
-    <script type="text/javascript">
-        function updateLocation() {
-            var geocoder = new google.maps.Geocoder();
-            var loc = document.getElementById('location_input').value;
-            //var res = document.getElementById('location_result');
-            geocoder.geocode({ 'address': loc }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var latitude = results[0].geometry.location.lat();
-                    var longitude = results[0].geometry.location.lng();
-                    document.getElementById('latitude').value = parseFloat(latitude);
-                    document.getElementById('longitude').value = parseFloat(longitude);
-                    //alert("lng: " + longitude + " lat: " + latitude);
-                    //res.innerHTML = "Lat: " + latitude + " Lng: " + longitude;
-                }
-            });
-        }
-
-        $(document).ready(function () {
-            //$("#btn").click(function () {
-            //    updateLocation();
-            //});
-            
-            $('#Submit1').click(function () {
-                if ($.trim($('#location_input').val()).length != 0) {
-                    updateLocation();
-
-                    //  a small paused sorted an issue requiring user to press submit twice
-                    setTimeout(function () {
-                        if (document.getElementById('latitude').value.length != 0) {
-                            //alert("hellO");
-                            $('#form_create').submit();
-                        }
-                    }, 1500);
-                }
-                else {
-                    alert("location required");
-                }
-            });
-        });
-    </script>
+    <script src="~/Scripts/SiteScripts/GoogleCoordScript.js"></script>
+    <script src="~/Scripts/SiteScripts/CreateEventSubmitCheck.js"></script>
+    <script src="~/Scripts/SiteScripts/CheckFileCountOkay.js"></script>
 }
 
 @if (Session["name"] == null)
@@ -115,8 +75,9 @@
                 @*<input id="btn" type="button" value="Get Co-ordinates" />*@
                 <!--<p id="location_result"></p>-->
             </p>
+            <p>A maximum of 5 images will be used:</p>
             <p>
-                <input type="file" name="images" accept="image/*" multiple/>
+                <input id="file_input" type="file" name="images" accept="image/*" multiple/>
             </p>
 
             <p>

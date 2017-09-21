@@ -7,10 +7,14 @@
     <link href="~/Content/styles/LoginRegister.css" rel="stylesheet" />
 }
 
+@section Scripts{
+    <script src="~/Scripts/SiteScripts/ImagePreviewScript.js"></script>
+}
+
 <br />
 <div class="container">
     <h2 class="text-info">Register</h2>
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-group" }))
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-group", enctype = "multipart/form-data" }))
     {
         @*@Html.ValidationSummary(false, "", new { @class = "error" })*@
         <p>
@@ -52,6 +56,11 @@
             @*@Html.TextBoxFor(a => a.PassConf, new { @class = "form-control" })*@
             @Html.PasswordFor(a => a.PassConf, new { @class = "form-control" })
             @Html.ValidationMessageFor(a => a.PassConf, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            Thumbnail:<br />
+            <img id="thumb_preview" src="~/Content/images/porter_male.JPG" alt="profile thumbnail" style="width:120px;height:120px;box-shadow: 0 0 10px black;"/><br />
+            <input id="thumb_input" type="file" name="thumbnail" accept="image/*" />
         </p>
         @*<p>
             @Html.LabelFor(a => a.UserType, new { @class="form-text" })
