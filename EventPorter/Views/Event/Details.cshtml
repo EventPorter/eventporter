@@ -137,7 +137,15 @@
                         @*
                             Model.Creator.Picture in here Model.Nickname for alt tag
                         *@
-                        <img class="img-thumbnail" src="~/Content/images/lil_porter.png" alt="icon_image" />
+                        @*<img class="img-thumbnail" src="~/Content/images/lil_porter.png" alt="icon_image" />*@
+                        @if (ViewBag.CreatorThumbnailPath != null)
+                        {
+                            <img class="img-thumbnail" src=@Url.Content(ViewBag.CreatorThumbnailPath) alt="event creator profile picture." />
+                        }
+                        else
+                        {
+                            <img class="img-thumbnail" src="~/Content/images/male_porter.jpg" alt="icon_image" />
+                        }
                     </div>
                     <h5 class="text-center">
                         @Model.CreatorUserName

@@ -634,5 +634,58 @@ namespace EventPorter.Models
             return count;
         }
         #endregion
+
+        #region Thumbnail
+        public int UpdateUserThumbnail(string username, int thumbID)
+        {
+            int count = 0;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspUpdateUserThumbnail", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@thumbID", thumbID);
+            try
+            {
+                conn.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public string GetUserThumbnail(string username)
+        {
+            string thumbnailPath = null;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspGetUserThumbnail", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@username", username);
+            try
+            {
+                conn.Open();
+                thumbnailPath = cmd.ExecuteScalar() as string;
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return thumbnailPath;
+        }
+        #endregion
     }
 }

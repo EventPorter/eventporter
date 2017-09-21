@@ -35,12 +35,14 @@ namespace EventPorter.Controllers
 
             //  Get event gallery images ( potentially be none, as optional )
             requestedEvent.Gallery = dao.GetEventGalleryImages(id);
+            ViewBag.CreatorThumbnailPath = dao.GetUserThumbnail(requestedEvent.CreatorUserName);
 
             return View("Details", requestedEvent);
         }
         
         public ActionResult Details(Event e)
         {
+            ViewBag.CreatorThumbnailPath = dao.GetUserThumbnail(e.CreatorUserName);
             return View(e);
         }
 
@@ -60,7 +62,7 @@ namespace EventPorter.Controllers
                     //newEvent.Latitude = 53.341753f;
                     //newEvent.Longitude = -6.2672377f;
                     //newEvent.Price = 0;
-                    newEvent.ThumbnailID = 0;
+                    newEvent.ThumbnailID = 1;
                     newEvent.ID = dao.Insert(newEvent);
                     if (newEvent.ID > -1)
                     {
@@ -90,6 +92,7 @@ namespace EventPorter.Controllers
                                 numImages++;
                             }
                         }
+                        ViewBag.CreatorThumbnailPath = dao.GetUserThumbnail(newEvent.CreatorUserName);
                         return View("Details", newEvent);
                     }
                     else
