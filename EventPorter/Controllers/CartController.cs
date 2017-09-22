@@ -12,9 +12,9 @@ namespace EventPorter.Controllers
         DAO dao = DAO.GetInstance();
         CartItem cartItem;
 
-        public ActionResult ViewCart()
+        public ActionResult ViewCart(int id)
         {
-            int userID = (int)Session["id"];
+            int userID = id;
             List<CartEvent> items = dao.GetCartItemsUnconfirmed(userID);
             return View(items);
         }
@@ -25,7 +25,9 @@ namespace EventPorter.Controllers
             cartItem = new CartItem(userId, eventID, Confirmed.No);
             if(dao.Insert(cartItem) == 0)
                 return View(dao.message);
-            return View("ViewCart");
+            //ViewBag["MostRecentPage"] = dao.GetEvent(eventID);
+            return RedirectToAction("Browse", "Event", new { id = eventID });
+            //return View("ViewCart");
         }
         
     }
