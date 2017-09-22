@@ -574,7 +574,7 @@ namespace EventPorter.Models
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@eventID", item.EventID);
-            cmd.Parameters.AddWithValue("@userID", item.UserID);
+            cmd.Parameters.AddWithValue("@imageID", item.UserID);
             try
             {
                 conn.Open();
@@ -644,7 +644,7 @@ namespace EventPorter.Models
             return count;
         }
 
-        public List<CartEvent> GetCartItemsUnconfirmed(int userID)
+        public List<CartEvent> GetCartItems(int userID)
         {
             List<CartEvent> itemsInCart = new List<CartEvent>();
             SqlCommand cmd;
@@ -709,6 +709,42 @@ namespace EventPorter.Models
                 conn.Close();
             }
             return count;
+        }
+
+        public bool CheckIfUserIsAttendingEvent(int userID, int eventID)
+        {
+            bool result = false;
+            //SqlDataReader reader;
+            SqlCommand cmd;
+            Connection();
+            cmd = new SqlCommand("uspIsAttendingEvent", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@userID", userID);
+            cmd.Parameters.AddWithValue("@eventID", eventID);
+            try
+            {
+                conn.Open();
+                object objResult = cmd.ExecuteScalar();
+                if (objResult == null)
+                    return false;
+
+                result = (bool)objResult;
+                //    while (reader.Read())
+                //    {
+                //        int result = int.Parse(reader["Confirmed"].ToString());
+                //        attending = result == (int)Confirmed.Yes;
+                //    }
+            }
+            catch (SqlException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
         }
         #endregion
 
