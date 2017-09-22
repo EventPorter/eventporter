@@ -11,6 +11,7 @@ namespace EventPorter.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Session["LastEventVistedID"] = null;
             return View();
         }
     }

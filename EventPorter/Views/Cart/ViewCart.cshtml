@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EventPorter.Models.CartEvent>
+﻿@model List<EventPorter.Models.CartEvent>
 @{
     ViewBag.Title = "Cart";
 }
@@ -16,59 +16,66 @@
     
 
     <table id="cart" class="table table-hover table-condensed">
-@foreach (var c in Model)
-{
-        <thead>
-            <tr>
-                <th style="width:50%">Product</th>
-                <th style="width:10%">Price</th>
-                <th style="width:8%">Quantity</th>
-                <th style="width:22%" class="text-center">Subtotal</th>
-                <th style="width:10%"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-th="Product">
-                    <div class="row">
-                        <div class="col-sm-2 hidden-xs">
-                            <img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
-                        <div class="col-sm-10">
-                            <h4 class="nomargin">@c.Title</h4>
-                            <p>Description</p>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var c in Model)
+            {
+            <thead>
+                <tr>
+                    <th style="width:50%">Product</th>
+                    <th style="width:10%">Price</th>
+                    <th style="width:8%">Quantity</th>
+                    <th style="width:22%" class="text-center">Subtotal</th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs">
+                                <img src="http://placehold.it/100x100" alt="..." class="img-responsive" />
+                            </div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin">@c.Title</h4>
+                                <p>Description</p>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td data-th="Price">@c.Price</td>
-                <td data-th="Quantity">
-                    <input type="number" class="form-control text-center" value="1">
-                </td>
-                <td data-th="Subtotal" class="text-center">@c.Price</td>
-                <td class="actions" data-th="">
-                    <i class="fa fa-trash-o"></i>@Ajax.ActionLink("Remove Item", "RemoveItemFromCart", "Cart", new { item = Model }, null, new { @class="btn btn-danger btn-sm" } )
-                </td>
-            </tr>
-        </tbody>
+                    </td>
+                    <td data-th="Price">@c.Price</td>
+                    <td data-th="Quantity">
+                        <input type="number" class="form-control text-center" value="1">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">@c.Price</td>
+                    <td class="actions" data-th="">
+                        <i class="fa fa-trash-o"></i>@Ajax.ActionLink("Remove Item", "RemoveItemFromCart", "Cart", new { eventID = c.ID }, null, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            </tbody>
+            }
         }
-       
+   
+       @{ decimal priceHolder = 0; }
         <tfoot>
             <tr class="visible-xs">
-                
-            @foreach (var e in Model)
+            @if (Model != null && Model.Count > 0)
             {
-                decimal total = 0;
-                total += e.Price;
-
-
-                <td class="text-center"><strong>@total</strong></td>
+                foreach (var e in Model)
+                {
+                    priceHolder += e.Price;
+                }
+                priceHolder = Math.Round(priceHolder, 2);
+                <td class="text-center"><strong>@Html.Raw(priceHolder)</strong></td>
             }
             </tr>
             <tr>
-                <td><i class="fa fa-angle-left"></i>@Html.ActionLink("Continue Shopping", "Index", "Home", new { @class = "btn btn-warning" })</td>
+                <td><i class="fa fa-angle-left"></i>@Html.ActionLink("Continue Shopping", "Index", "Home", null, new { @class = "btn btn-warning" })</td>
                 @*<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>*@
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong></strong></td>
-                <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                <td>
+                @Html.ActionLink("Checkout", "Checkout", "Cart", new { totalCost = @priceHolder }, new { @class= "btn btn-success btn-block" })
+                @*<a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>*@
             </tr>
         </tfoot>
         

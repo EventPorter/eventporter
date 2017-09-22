@@ -1,0 +1,43 @@
+﻿@model EventPorter.Models.PaymentDetails
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form-group", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            @Html.LabelFor(p => p.FullNameAsOnCard, new { @class = "form-text" })
+            @Html.TextBoxFor(p => p.FullNameAsOnCard, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.FullNameAsOnCard, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            @Html.LabelFor(p => p.CreditCardNumber, new { @class = "form-text" })
+            @Html.TextBoxFor(p => p.CreditCardNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.CreditCardNumber, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            @Html.LabelFor(p => p.Pin, new { @class = "form-text" })
+            @Html.TextBoxFor(p => p.Pin, new { @class = "form-control", maxlength = "4" })
+            @Html.ValidationMessageFor(p => p.Pin, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            @Html.LabelFor(p => p.ExpiryDate, new { @class = "form-text" })
+            @Html.EditorFor(p => p.ExpiryDate, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.ExpiryDate, "", new { @class = "text-danger" })
+            @if (ViewBag.Status != null)
+            {
+                <span class="text-danger"> @Html.Raw(ViewBag.Status.ToString())</span>
+            }
+        </p>
+        <p>
+            Total Cost: <span class="text-info"> &euro;@Html.Raw(Model.Cost)</span>
+        </p>
+        <p>
+            <input id="Submit1" type="submit" value="Submit" class="btn" />
+            <input id="Reset1" type="reset" value="Clear" class="btn" />
+        </p>
+    }
+</div>
+

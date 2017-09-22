@@ -230,7 +230,7 @@
                 {
                     if (ViewBag.TicketFailed != null)
                     {
-                        <p>ViewBag.TicketFailed</p>
+                        <p class="text-info"> @Html.Raw(price)</p>
                     }
                     @Html.ActionLink("Get Ticket", "AddEventAttendee", "Event", new
                         {

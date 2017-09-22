@@ -3,7 +3,7 @@
     <li>@Html.ActionLink(" Logout", "LogOut", "Account", null, new { @class = "glyphicon glyphicon-log-out" })</li>
     <li>@Html.ActionLink(" " + @Session["name"].ToString(), "AdamProfile", "Account", null, new { @class = "glyphicon glyphicon-user" })</li>
     @*<li>@EventPorter.Models.DAO.GetInstance().GetNumberOfItemsInCart((int)Session["id"])</li>*@
-    <li>@Html.ActionLink("Cart", "ViewCart", "Cart", new { id = (int)Session["id"] }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+    <li>@Html.ActionLink(" Cart", "ViewCart", "Cart", new { id = (int)Session["id"] }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
 }
 else
 {

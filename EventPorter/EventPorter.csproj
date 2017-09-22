@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -283,6 +284,7 @@
     <Compile Include="Models\CartEvent.cs" />
     <Compile Include="Models\EventImage.cs" />
     <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\PaymentDetails.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ContactUs.cs" />
@@ -320,6 +322,8 @@
     <Content Include="Views\Event\upcomingEvents.cshtml" />
     <Content Include="Views\PrivacyPolicy\Index.cshtml" />
     <Content Include="Views\TermsAndConditions\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\PaymentConfirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

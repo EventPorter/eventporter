@@ -14,6 +14,10 @@
 <br />
 <div class="container">
     <h2 class="text-info">Register</h2>
+        @if (ViewBag.Status != null)
+        {
+            <p class="text-danger"> @Html.Raw(ViewBag.Status.ToString())</p>
+        }
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-group", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

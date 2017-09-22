@@ -27,11 +27,17 @@ namespace EventPorter.Controllers
         public ActionResult Register(User user, HttpPostedFileBase thumbnail)
         {
             int count = 0;
-            user.RegDate = DateTime.Now;
-            user.UserType = Role.User;
-            user.ThumbnailID = DEFAULT_THUMB_ID;
             if (ModelState.IsValid)
             {
+                TimeSpan ageTest = DateTime.Now.Subtract(user.DateOfBirth);
+                if((ageTest.TotalDays / 365) < 18)
+                {
+                    ViewBag.Status = "Must be over 18 to use this site";
+                    return View(user);
+                }
+                user.RegDate = DateTime.Now;
+                user.UserType = Role.User;
+                user.ThumbnailID = DEFAULT_THUMB_ID;
                 count = dao.Insert(user);
                 if (count == 1)
                 {

@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
     <link href="~/Content/styles/Profile.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/styles/EventCardDisplay.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        #nav_eventporter_title{
-            padding-top: 15px;
-        }
-    </style>
 }
 
 <div class="container-fluid">
@@ -59,7 +54,7 @@
                                     <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
                                 </li>
                                 <li>
-                                    @Html.ActionLink("Cart", "ViewCart", "Cart", new { id = (int)Session["id"] }, new { @class="profile-Adammenu glyphicon-shopping-cart" })
+                                    @Html.ActionLink(" Cart", "ViewCart", "Cart", new { id = (int)Session["id"] }, new { @class="profile-Adammenu glyphicon glyphicon-shopping-cart" })
                                     @*<a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>*@
                                 </li>
                             </ul>

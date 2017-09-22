@@ -47,17 +47,18 @@
     width: 36%;
     max-width: 400px;
     z-index: 2000;
-    left: 43%;
 }
 
 .relative-searchbar {
     position: relative;
     top: -40px;
+    left: 43%;
 }
 
 .fix-searchbar {
     position: fixed;
     top: 8px;
+    left: 275px;
     /*box-shadow: 0 0 10px black;*/
 }
 

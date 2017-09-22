@@ -19,12 +19,12 @@
 
     $(window).scroll(function () {
         //+ $('#site-navbar').outerHeight() if static navbar top
-        if ($(window).scrollTop() >= $('#home_gallery').innerHeight()) {
+        if (($(window).scrollTop() + 30) >= $('#home_gallery').innerHeight()) {
             $('#search-bar').removeClass('relative-searchbar');
             $('#search-bar').addClass('fix-searchbar');
         }
         //+ $('#site-navbar').outerHeight() if static navbar top
-        else if ($(window).scrollTop() < $('#home_gallery').innerHeight()) {
+        else if (($(window).scrollTop() + 30) < $('#home_gallery').innerHeight()) {
             $('#search-bar').removeClass('fix-searchbar');
             $('#search-bar').addClass('relative-searchbar');
         }

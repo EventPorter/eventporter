@@ -18,6 +18,9 @@ namespace EventPorter.Controllers
         //    return View();
         //}
 
+
+        //Seperate view used for log ins using Owin
+
         [Authorize]
         public ActionResult Index()
         {
