@@ -52,6 +52,7 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Event newEvent, HttpPostedFileBase[] images)
         {
             if (ModelState.IsValid)

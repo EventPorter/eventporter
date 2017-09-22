@@ -1,6 +1,6 @@
 ﻿body {
     margin-top: 51px;
-    margin-bottom: 80px;
+    margin-bottom: 280px;
     background-color: #f7f7f7;
     font-family: 'Raleway', sans-serif;
 }
@@ -29,13 +29,14 @@ html {
     bottom: 0;
     position: absolute;
     width: 100%;
-    height: 60px;
+    height: 260px;
     color: white;
     text-align: center;
-    background-color: #8c69e2;
-    padding-top: 20px;
+    background-color: #2b2b2b;
+    padding-top: 25px;
     /*box-shadow: 0 -10px 50px #262626;*/
-    box-shadow: 0 -10px 30px darkgrey;
+    box-shadow: 0 -10px 30px pink;
+    border-top: solid 1px purple;
 }
 
 .footer a {
@@ -50,6 +51,32 @@ html {
     color: black;
     text-decoration: none;
     text-shadow: none;
+}
+
+#footer_sitemap {
+    border-top: dashed 1px white;
+    border-bottom: dashed 1px white;
+    margin-top: 19px;
+    padding-bottom: 20px;
+}
+
+#footer_sitemap span{
+    margin-right: 30px;
+}
+
+#footer_legal_text {
+    margin-top: 30px;
+}
+
+.footer_icon {
+    box-shadow: 0 0 20px purple;
+    height: 30px;
+    width: 30px;
+    margin-bottom: 20px;
+}
+
+.footer_icon:hover {
+    box-shadow: 0 0 20px white;
 }
 
 /* Set padding to keep content from hitting the edges */

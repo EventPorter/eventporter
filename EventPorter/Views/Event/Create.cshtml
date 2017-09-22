@@ -9,6 +9,12 @@
 
 @section Scripts {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <!-- Moment local fallback -->
+    @*<script>
+        if (!window.moment) {
+            document.write('<script src="~/Scripts/moment.min.js"><\/script>');
+        }
+    </script>*@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="~/Scripts/SiteScripts/EventDateTimePicker.js"></script>
 
@@ -18,6 +24,9 @@
     <script src="~/Scripts/SiteScripts/CheckFileCountOkay.js"></script>
 }
 
+@*
+    if user not logged in, bring them to login page
+*@
 @if (Session["name"] == null)
 {
     Response.Redirect(Url.Action("Login", "Account"));
@@ -25,26 +34,41 @@
 
 <div class="container-fluid">
     <div id="create-form" class="container">
-        @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { enctype = "multipart/form-data", @id="form_create" }))
+        @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { enctype = "multipart/form-data", @id = "form_create" }))
         {
+            @Html.AntiForgeryToken()
             <h2>Create</h2>
-            @*@Html.ValidationSummary(false, "", new { @class = "error" })*@
+            @*
+                TITLE
+            *@
             <p>
                 @Html.LabelFor(e => e.Title)<br />
                 @Html.TextBoxFor(e => e.Title, new { @class = "form-control create-title", placeholder = "Enter title for event here...", maxlength = "70" })
                 @Html.ValidationMessageFor(e => e.Title, "", new { @class = "text-danger" })
             </p>
+
+            @*
+                DESCRIPTION
+            *@
             <p>
                 @Html.LabelFor(e => e.Description)<br />
                 @Html.TextAreaFor(e => e.Description, new { @class = "form-control create-description", placeholder = "Enter event description here...", maxlength = "1500" })
                 @Html.ValidationMessageFor(e => e.Description, "", new { @class = "text-danger" })
             </p>
+
+            @*
+                PRICE
+            *@
             <p>
                 @Html.LabelFor(e => e.Price)<br />
-                @Html.TextBoxFor(e => e.Price, new { @class = "form-control", placeholder = "Cost...", @id="price_input" })
+                @Html.TextBoxFor(e => e.Price, new { @class = "form-control", @placeholder = "Cost...", @id="price_input" })
                 @Html.ValidationMessageFor(e => e.Price, "", new { @class = "text-danger" })
             </p>
+            
             <p>
+                @*
+                    STARTING DATETIME
+                *@
                 <div class="form-group">
                     @Html.LabelFor(e => e.StartDateAndTime)<br />
                     <div class="input-group date" id="startDate">
@@ -55,6 +79,10 @@
                         @Html.ValidationMessageFor(e => e.StartDateAndTime, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+                @*
+                    ENDING DATETIME
+                *@
                 <div class="form-group">
                     @Html.LabelFor(e => e.EndDateAndTime)<br />
                     <div class="input-group date" id="endDate">
@@ -66,20 +94,27 @@
                     </div>
                 </div>
             </p>
-            //Location
+
+            @*
+                LOCATION
+            *@
             <p>
                 @Html.LabelFor(e => e.LocationDesc)
-                @Html.TextBoxFor(e => e.LocationDesc, new { @id = "location_input", @class = "form-control", maxlength = "70" })
+                @Html.TextAreaFor(e => e.LocationDesc, new { @id = "location_input", @class = "form-control", maxlength = "70" })
                 @Html.ValidationMessageFor(e => e.LocationDesc, "", new { @class = "text-danger" })
-                @*<input id="location_input" type="text" />*@
-                @*<input id="btn" type="button" value="Get Co-ordinates" />*@
-                <!--<p id="location_result"></p>-->
             </p>
+
+            @*
+                GALLERY IMAGES
+            *@
             <p>A maximum of 5 images will be used:</p>
             <p>
                 <input id="file_input" type="file" name="images" accept="image/*" multiple/>
             </p>
 
+            @*
+                placeholders for location latitude and longitude (hidden)
+            *@
             <p>
                 @Html.HiddenFor(e => e.Latitude, new { id = "latitude" })
                 @Html.ValidationMessageFor(e => e.Latitude, "", new { @class = "text-danger" })
@@ -88,6 +123,10 @@
                 @Html.HiddenFor(e => e.Longitude, new { id = "longitude" })
                 @Html.ValidationMessageFor(e => e.Longitude, "", new { @class = "text-danger" })
             </p>
+
+            @*
+                SUBMIT AND RESET BUTTON
+            *@
             <p>
                 <br />
                 <input id="Submit1" type="button" value="Submit" />

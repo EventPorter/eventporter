@@ -13,6 +13,7 @@
     <h2 class="text-info">Login</h2>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-group" }))
     {
+        @Html.AntiForgeryToken()
         @Html.ValidationSummary(false, "", new { @class = "error" })
         <p>
             @Html.LabelFor(a => a.Username, new { @class = "form-text" })
