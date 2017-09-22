@@ -29,6 +29,13 @@ namespace EventPorter.Controllers
             return RedirectToAction("Browse", "Event", new { id = eventID });
             //return View("ViewCart");
         }
+
+        public ActionResult RemoveItemFromCart(CartItem item)
+        {
+            dao.Remove(item);
+            return View("ViewCart");
+
+        }
         
     }
 }
