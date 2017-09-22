@@ -62,7 +62,6 @@ namespace EventPorter.Controllers
                 ViewBag.ContactConfirm = "Thank you for getting in contact, we'll probably never get back to you LOL";
                 return View("Index");
             }
-
             else
                 return View("Index", contactUs);
         }

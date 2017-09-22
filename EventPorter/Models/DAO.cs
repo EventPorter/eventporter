@@ -412,6 +412,7 @@ namespace EventPorter.Models
                     _event.Title = reader["Title"].ToString();
                     _event.Description = reader["Description"].ToString();
                     _event.ThumbnailID = int.Parse(reader["ThumbnailID"].ToString());
+                    _event.Gallery = dao.GetEventGalleryImages(_event.ID);
                     events.Add(_event);
                 }
             }
@@ -574,7 +575,8 @@ namespace EventPorter.Models
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@eventID", item.EventID);
-            cmd.Parameters.AddWithValue("@imageID", item.UserID);
+            cmd.Parameters.AddWithValue("@userID", item.UserID);
+            cmd.Parameters.AddWithValue("@confirmationStatus", item.UserID);
             try
             {
                 conn.Open();

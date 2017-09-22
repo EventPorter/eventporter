@@ -16,6 +16,11 @@
     border: 1px solid #808080;
 }*/
 
+#creator_thumb{
+    width: 120px;
+    height: 120px;
+}
+
 #event-title {
     color: black;
     text-align: center;

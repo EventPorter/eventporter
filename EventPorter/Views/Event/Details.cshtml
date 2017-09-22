@@ -117,11 +117,11 @@
                         *@
                         @if (ViewBag.CreatorThumbnailPath != null)
                         {
-                            <img class="img-thumbnail" src=@Url.Content(ViewBag.CreatorThumbnailPath) alt="event creator profile picture." />
+                            <img id="creator_thumb" class="img-thumbnail" src=@Url.Content(ViewBag.CreatorThumbnailPath) alt="event creator profile picture." />
                         }
                         else
                         {
-                            <img class="img-thumbnail" src="~/Content/images/male_porter.jpg" alt="icon_image" />
+                            <img id="creator_thumb" class="img-thumbnail" src="~/Content/images/male_porter.jpg" alt="icon_image" />
                         }
                     </div>
                     @*
@@ -241,7 +241,13 @@
                     );
                     @*<div id="free-button" class="btn btn-primary text-center">Get Ticket</div>*@
                 }else{
-                    <div id="cart-button" class="btn btn-primary text-center">Add To Cart</div>
+                    @Html.ActionLink("Add To Cart", "AddToCart", "Cart", new
+                        {
+                           eventID = Model.ID
+                        },
+                        new { @id = "free-button", @class = "btn btn-primary text-center" }
+                    );
+                    @*<div id="cart-button" class="btn btn-primary text-center">Add To Cart</div>*@
                 }
                 @*
                     BUTTON END

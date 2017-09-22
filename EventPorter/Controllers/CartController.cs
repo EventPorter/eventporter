@@ -15,14 +15,14 @@ namespace EventPorter.Controllers
         public ActionResult ViewCart(int id)
         {
             int userID = id;
-            List<CartEvent> items = dao.GetCartItemsUnconfirmed(userID);
+            List<CartEvent> items = dao.GetCartItems(userID);
             return View(items);
         }
 
         public ActionResult AddToCart(int eventID)
         {
             int userId = (int)Session["id"];
-            cartItem = new CartItem(userId, eventID, Confirmed.No);
+            cartItem = new CartItem() { UserID = userId, EventID = eventID, Confirmed = Confirmed.No };
             if(dao.Insert(cartItem) == 0)
                 return View(dao.message);
             //ViewBag["MostRecentPage"] = dao.GetEvent(eventID);
