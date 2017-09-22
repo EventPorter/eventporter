@@ -157,7 +157,33 @@ namespace EventPorter.Controllers
             return PartialView(userEvents);
 
         }
+        public ActionResult EventCardDisplay()
+        {
+            List<Event> events = new List<Event>();
+            Event e = dao.GetEvent(1);
+            Event e1 = dao.GetEvent(2);
+            Event e2 = dao.GetEvent(3);
 
+            events.Add(e);
+            events.Add(e1);
+            events.Add(e2);
+            events.Add(e);
+            events.Add(e1);
+            events.Add(e2);
+
+            List<Event> UserEventList = new List<Event>();
+            UserEventList.Add(e);
+            UserEventList = dao.SearchEvents("low");
+
+            if (Session["id"] == null)
+            {
+                return View(events);
+            }
+            else
+            {
+                return View(events);
+            }
+        }
         [HttpPost]
         public ActionResult EventCardDisplayFullView(string search_param, string searchInput)
         {

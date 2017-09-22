@@ -17,5 +17,12 @@ namespace EventPorter.Models
         public int EventID { get; set; }
         //  whether or not they paid for it (or it was free)
         public Confirmed Confirmed { get; set; }
+
+        public CartItem(int id, int eid, Confirmed c)
+        {
+            UserID = id;
+            EventID = eid;
+            Confirmed = c;
+        }
     }
 }

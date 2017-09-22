@@ -10,12 +10,32 @@ namespace EventPorter.Controllers
     public class CartController : Controller
     {
         DAO dao = DAO.GetInstance();
+        CartItem cartItem;
 
-        public ActionResult ViewCart()
+        public ActionResult ViewCart(int id)
         {
-            int userID = (int)Session["id"];
-            List<CartEvent> items = dao.GetCartItems(userID);
+            int userID = id;
+            List<CartEvent> items = dao.GetCartItemsUnconfirmed(userID);
             return View(items);
         }
+
+        public ActionResult AddToCart(int eventID)
+        {
+            int userId = (int)Session["id"];
+            cartItem = new CartItem(userId, eventID, Confirmed.No);
+            if(dao.Insert(cartItem) == 0)
+                return View(dao.message);
+            //ViewBag["MostRecentPage"] = dao.GetEvent(eventID);
+            return RedirectToAction("Browse", "Event", new { id = eventID });
+            //return View("ViewCart");
+        }
+
+        public ActionResult RemoveItemFromCart(CartItem item)
+        {
+            dao.Remove(item);
+            return View("ViewCart");
+
+        }
+        
     }
 }
