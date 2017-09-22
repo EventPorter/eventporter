@@ -574,7 +574,7 @@ namespace EventPorter.Models
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@eventID", item.EventID);
-            cmd.Parameters.AddWithValue("@imageID", item.UserID);
+            cmd.Parameters.AddWithValue("@userID", item.UserID);
             try
             {
                 conn.Open();

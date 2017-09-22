@@ -54,7 +54,8 @@
                                     <a class="glyphicon glyphicon-ok profile-Adammenu" id="Events"> Events</a>
                                 </li>
                                 <li>
-                                    <a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>
+                                    @Html.ActionLink("Cart", "ViewCart", "Cart", null, new { @class = "profile-Adammenu glyphicon-shopping-cart" })
+                                    @*<a class="glyphicon glyphicon-flag profile-Adammenu" id="Help"> Help</a>*@
                                 </li>
                             </ul>
                         </div>

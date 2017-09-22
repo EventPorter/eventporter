@@ -304,9 +304,11 @@
                 }
                 else if (Model.Price == 0)
                 {
+                    @Html.ActionLink(" Add To Cart", "AddToCart", "Cart", new { eventID = Model.ID }, new { @class = "btn btn-primary text-center" })
                     <div id="free-button" class="btn btn-primary text-center">Get Ticket</div>
                 }else{
-                    <div id="cart-button" class="btn btn-primary text-center">Add To Cart</div>
+                    @Html.ActionLink(" Add To Cart", "AddToCart", "Cart", new { eventID = Model.ID }, new { @class = "btn btn-primary text-center" })
+                    @*<div id="cart-button" class="btn btn-primary text-center">Add To Cart</div>*@
                 }
                                     
                 @*<div id="buy-button" class="btn btn-primary text-center">Add To Cart</div>*@
