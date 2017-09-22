@@ -14,7 +14,7 @@ namespace EventPorter.Controllers
         public ActionResult ViewCart()
         {
             int userID = (int)Session["id"];
-            List<CartEvent> items = dao.GetCartItemsUnconfirmed(userID);
+            List<CartEvent> items = dao.GetCartItems(userID);
             return View(items);
         }
     }

@@ -11,9 +11,8 @@
 @section Scripts {
     <script type="text/javascript">
         $('document').ready(function () {
-            $('#free-button').click(function () {
-                
-            });
+            //$('#free-button').click(function () {
+            //});
 
             $('#cart-button').click(function () {
 
@@ -213,14 +212,34 @@
                 @*
                     BUTTON START
                 *@
-                @if (userLoggedIn && Model.CreatorUserName == Session["name"].ToString())
+                @if(Session["name"] == null){
+                    @Html.ActionLink("Login", "Login", "Account", null,
+                                    new { @id = "login-button", @class = "btn btn-primary text-center" }
+                                );
+                }
+                else if (userLoggedIn && Model.CreatorUserName == Session["name"].ToString())
                 {
                     <div id="edit-button" class="btn btn-primary text-center">Edit Event</div>
                     <div id="delete-button" class="btn btn-danger text-center">Delete Event</div>
                 }
+                else if (ViewBag.Attending != null && (bool)ViewBag.Attending)
+                {
+                    <div id="attending-button" class="btn btn-primary text-center disabled">Already Attending</div>
+                }
                 else if (Model.Price == 0)
                 {
-                    <div id="free-button" class="btn btn-primary text-center">Get Ticket</div>
+                    if (ViewBag.TicketFailed != null)
+                    {
+                        <p>ViewBag.TicketFailed</p>
+                    }
+                    @Html.ActionLink("Get Ticket", "AddEventAttendee", "Event", new
+                        {
+                           attendeeID = int.Parse(Session["id"].ToString()),
+                           eventID = Model.ID
+                        },
+                        new { @id = "free-button", @class = "btn btn-primary text-center" }
+                    );
+                    @*<div id="free-button" class="btn btn-primary text-center">Get Ticket</div>*@
                 }else{
                     <div id="cart-button" class="btn btn-primary text-center">Add To Cart</div>
                 }

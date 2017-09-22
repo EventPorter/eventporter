@@ -23,6 +23,18 @@ namespace EventPorter.Controllers
             return View();
         }
         
+        public ActionResult AddEventAttendee(int attendeeID, int eventID)
+        {
+            int count = dao.Insert(new CartItem() { UserID = attendeeID, EventID = eventID, Confirmed = Confirmed.Yes });
+            if (count < 1)
+            {
+                ViewBag.TicketFailed = "Failed to provide ticket, please try again.";
+                return RedirectToAction("Browse", new { id = eventID });
+            }
+            ViewBag.Attending = dao.CheckIfUserIsAttendingEvent(attendeeID, eventID);
+            return RedirectToAction("Browse", new { id = eventID });
+        }
+
         public ActionResult Browse(int id)
         {
             Event requestedEvent = dao.GetEvent(id);
@@ -36,6 +48,13 @@ namespace EventPorter.Controllers
             //  Get event gallery images ( potentially be none, as optional )
             requestedEvent.Gallery = dao.GetEventGalleryImages(id);
             ViewBag.CreatorThumbnailPath = dao.GetUserThumbnail(requestedEvent.CreatorUserName);
+            if (Session["id"] != null)
+            {
+                int userID = int.Parse(Session["id"].ToString());
+                ViewBag.Attending = dao.CheckIfUserIsAttendingEvent(userID, requestedEvent.ID);
+            }
+
+            Session["LastEventVistedID"] = requestedEvent.ID;
 
             return View("Details", requestedEvent);
         }
@@ -43,6 +62,12 @@ namespace EventPorter.Controllers
         public ActionResult Details(Event e)
         {
             ViewBag.CreatorThumbnailPath = dao.GetUserThumbnail(e.CreatorUserName);
+            if(Session["id"] != null)
+            {
+                int userID = int.Parse(Session["id"].ToString());
+                ViewBag.Attending = dao.CheckIfUserIsAttendingEvent(userID, e.ID);
+            }
+            Session["LastEventVistedID"] = e.ID;
             return View(e);
         }
 
@@ -132,33 +157,7 @@ namespace EventPorter.Controllers
             return PartialView(userEvents);
 
         }
-        public ActionResult EventCardDisplay()
-        {
-            List<Event> events = new List<Event>();
-            Event e = dao.GetEvent(1);
-            Event e1 = dao.GetEvent(2);
-            Event e2 = dao.GetEvent(3);
 
-            events.Add(e);
-            events.Add(e1);
-            events.Add(e2);
-            events.Add(e);
-            events.Add(e1);
-            events.Add(e2);
-
-            List<Event> UserEventList = new List<Event>();
-            UserEventList.Add(e);
-            UserEventList = dao.SearchEvents("low");
-
-            if (Session["id"] == null)
-            {
-                return View(events);
-            }
-            else
-            {
-                return View(events);
-            }
-        }
         [HttpPost]
         public ActionResult EventCardDisplayFullView(string search_param, string searchInput)
         {

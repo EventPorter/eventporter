@@ -4,26 +4,38 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Contact Us</h2>
-<h3>Use the form below to send us any comments or queries you may have</h3>
-@using (Html.BeginForm("Comments", "ContactUs", FormMethod.Post))
-{
-    @Html.ValidationSummary(false, "", new { @class = "error" })
-    <p>
-        @Html.LabelFor(c => c.FirstName)
-        @Html.TextBoxFor(c => c.FirstName)<span> (Required)</span>
-    </p>
+<div class="container">
+    <h2>Contact Us</h2>
+    <h3>Use the form below to send us any comments or queries you may have</h3>
+    @using (Html.BeginForm("UserFeedback", "ContactUs", FormMethod.Post))
+    {
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <p>
+            @Html.LabelFor(c => c.FirstName)<span> (Required)</span>
+        </p>
+        <p>
+            @Html.TextBoxFor(c => c.FirstName)
+        </p>
 
-    <p>
-        @Html.LabelFor(c => c.Email)
-        @Html.TextBoxFor(c => c.Email)<span> (Required)</span>
-    </p>
-    <p>
-        @Html.LabelFor(c => c.Comments)
-        @Html.TextAreaFor(c => c.Comments, new { @rows = 6, @cols = 60 })<span> (Required)</span>
-    </p>
-    <input type="submit" value="Submit" />
+        <p>
+            @Html.LabelFor(c => c.Email)<span> (Required)</span>
+        </p>
+        <p>
+            @Html.TextBoxFor(c => c.Email)
+        </p>
+        <p>
+            @Html.LabelFor(c => c.Comments)<span> (Required)</span>
+        </p>
+        <p>
+            @Html.TextAreaFor(c => c.Comments, new { @rows = 6, @cols = 60 })
+        </p>
+        <input type="submit" value="Submit" />
+        <input id="Reset1" type="reset" value="Clear" />
+        if (ViewBag.ContactConfirm != null)
+        {
+            <p class="text-success">@Html.Raw(ViewBag.ContactConfirm.ToString())</p>
+        }
 
-}
-
+    }
+</div>
 

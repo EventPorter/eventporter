@@ -40,7 +40,7 @@ namespace EventPorter.Controllers
         }
 
         [HttpPost]
-        public ActionResult User_Feedback(ContactUs contactUs)
+        public ActionResult UserFeedback(ContactUs contactUs)
         {
             if (ModelState.IsValid)
             {
@@ -59,36 +59,38 @@ namespace EventPorter.Controllers
                 dt.Rows.Add(row);
                 ds.AcceptChanges();
                 ds.WriteXml(Server.MapPath("~/App_Data/Comments.xml"));
-                return View("Comments");
+                ViewBag.ContactConfirm = "Thank you for getting in contact, we'll probably never get back to you LOL";
+                return View("Index");
             }
 
-            else return View("Index", contactUs);
+            else
+                return View("Index", contactUs);
         }
 
-        public ActionResult ShowFeedback()
-        {
-            List<ContactUs> contactList = new List<ContactUs>();
-            if (System.IO.File.Exists(Server.MapPath("~/App_Data/Comments.xml")))
-            {
-                DataSet dataSet = new DataSet();
-                dataSet.ReadXml(Server.MapPath("~/App_Data/Comments.xml"));
-                DataTable table = dataSet.Tables[0];//dataSet.Tables["user_comments"]
-                foreach (DataRow row in table.Rows)
-                {
-                    ContactUs contact = new ContactUs();
-                    if (row["name"] != null)
-                        contact.FirstName = row["firstname"].ToString();
-                    contact.Email = row["email"].ToString();
-                    contact.Comments = row["comments"].ToString();
-                    contactList.Add(contact);
-                }
-                ViewBag.Message = "";
-            }
-            else ViewBag.Message = "Your comments have not been saved successfully. Please try again.";
+        //public ActionResult ShowFeedback()
+        //{
+        //    List<ContactUs> contactList = new List<ContactUs>();
+        //    if (System.IO.File.Exists(Server.MapPath("~/App_Data/Comments.xml")))
+        //    {
+        //        DataSet dataSet = new DataSet();
+        //        dataSet.ReadXml(Server.MapPath("~/App_Data/Comments.xml"));
+        //        DataTable table = dataSet.Tables[0];//dataSet.Tables["user_comments"]
+        //        foreach (DataRow row in table.Rows)
+        //        {
+        //            ContactUs contact = new ContactUs();
+        //            if (row["name"] != null)
+        //                contact.FirstName = row["firstname"].ToString();
+        //            contact.Email = row["email"].ToString();
+        //            contact.Comments = row["comments"].ToString();
+        //            contactList.Add(contact);
+        //        }
+        //        ViewBag.Message = "";
+        //    }
+        //    else ViewBag.Message = "Your comments have not been saved successfully. Please try again.";
 
-            return View(contactList);
+        //    return View(contactList);
         
           
-        }
+        //}
     }
 }

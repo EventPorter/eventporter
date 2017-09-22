@@ -90,6 +90,12 @@ namespace EventPorter.Controllers
                     {
                         Session["name"] = userCheck.Username;
                         Session["id"] = userCheck.UserId;
+                        if (Session["LastEventVistedID"] != null)
+                        {
+                            int eID = (int)Session["LastEventVistedID"];
+                            Session["LastEventVistedID"] = null;
+                            return RedirectToAction("Browse", "Event", new { id = eID });
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                     else
